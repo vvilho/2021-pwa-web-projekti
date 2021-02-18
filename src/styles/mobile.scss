@@ -1,0 +1,87 @@
+@media screen and (max-width: 768px) {
+  nav {
+    background-color: var(--main-bg-color);
+  }
+
+  /* Show Hamburger */
+  nav label {
+    display: inline-block;
+    color: var(--main-em-color);
+    font-style: normal;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+  /* Toggle show/hide menu on checkbox click */
+  nav ul {
+    display: none;
+  }
+
+  nav input:checked ~ ul {
+    display: block;
+  }
+
+  #logo-min-text {
+    display: inline-block;
+  }
+
+  nav,
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  nav ul li a:hover {
+    background-color: white;
+    border-radius: 0;
+    color: var(--main-em-color);
+  }
+
+  nav ul li a {
+    display: block;
+  }
+
+  nav span {
+    display: none;
+  }
+
+  /* Showcase are rules */
+
+  #showcase {
+    display: none;
+  }
+
+  .info-area {
+    background: white url(../assets/img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg) no-repeat
+      center center/cover;
+  }
+
+  #info-text {
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2em;
+  }
+
+  .restaurant {
+    flex-direction: column;
+    justify-items: flex-start;
+    width: 100%;
+  }
+
+  .res-heading {
+    justify-content: flex-start;
+  }
+
+  .res-heading > span {
+    margin-left: 30px;
+  }
+
+  .res-logo {
+    flex: 0;
+  }
+
+  .res-logo > img {
+    width: 30%;
+    padding-left: 1em;
+  }
+}

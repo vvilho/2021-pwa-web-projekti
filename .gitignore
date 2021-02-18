@@ -1,0 +1,13 @@
+.DS_Store
+*.swp
+.project
+.idea/
+.vscode/
+npm-debug.log
+.jshintrc
+.vs/
+node_modules/
+dist/
+# implementation secific settings
+src/settings.js
+docs/

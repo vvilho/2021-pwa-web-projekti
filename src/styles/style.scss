@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --main-em-color:  rgb(172, 101, 101);
+    /* #AC6565 */
+    --main-bg-color: #43E04F;
+  }
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* p {
+    margin: 0.75rem 0;
+} */
+
+/* utility & main classes */
+/* here some css variables */
+
+/* Hamburger menu */
+/* Hide Hamburger */
+nav > label, #hamburger {
+    display: none;
+  }
+
+nav {
+    display: flex;
+    position: sticky;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    top: 0;
+    background-color: white;
+    color: #fff;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 1.2em;
+    /* border: 1px solid #000; */
+}
+nav ul {
+    display: flex;
+    align-content: center;
+    list-style-type: none;
+}
+
+nav ul a {
+    color: var(--main-em-color);
+    padding: 0.6rem;
+    margin: 0 0.25em;
+}
+
+nav ul li a:hover {
+    background-color: var(--main-bg-color);
+    border-radius: 5px;
+    color: #fff;
+}
+
+nav span {
+    width: 20vw;
+}
+
+#search {
+    width: 100%;
+    min-width: 50px;
+    box-sizing: border-box;
+    padding: 0.5rem 1.5rem 0.5rem 35px;
+    margin: 0.5rem 0;
+    display: inline-block;
+    border: 1px solid var(--main-em-color);
+    border-radius: 4px;
+    outline: none;
+
+}
+#search-form {
+    position: relative;
+}
+
+#search-img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+#search-img > svg {
+    fill:  var(--main-em-color);
+}
+
+#showcase {
+    display: flex;
+    height: 30vh;
+    font-family: 'Roboto Slab', serif;
+}
+
+#showcase-logoarea {
+    flex: 4;
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo-text {
+    color: white;
+    font-size: 60px;
+    font-weight: 800;
+}
+
+#logo-min-text {
+    color: white;
+    font-weight: 800;
+    position: absolute;
+    top: 19px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.2em;
+    display: none;
+}
+
+#slogan {
+    color: white;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+#showcase-imgarea {
+    flex: 6;
+    background: white url(../assets/img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg)
+    no-repeat center center/cover;
+
+}
+
+#triangle {
+    width: 0;
+	height: 0;
+	border-bottom: 30vh solid var(--main-bg-color);
+	border-right: 10vw solid transparent;
+}
+
+.info-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: lightpink; */
+}
+
+#info-text {
+    width: 80vw;
+    padding: 2em 0;
+    text-align: center;
+    /* This way the text wont wrap */
+    font-size: 1.5em;
+}
+
+.restaurant-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 1em;
+}
+
+.restaurant {
+    width: 48%;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.057);
+    margin: 1em 0;
+    border: 1px dashed var(--main-em-color);
+    border-radius: 10px;
+    display: flex;
+}
+
+.res-logo {
+    flex: 3;
+}
+
+.res-logo > img {
+    width: 100%;
+    cursor: pointer;
+}
+
+.res-logo > img:hover {
+    opacity: 0.7;
+}
+
+.res-menu {
+    flex: 7;
+    padding: 0 0 1em 1em;
+    line-height: 120%;
+}
+
+/* reset for all of the fonts */
+.res-menu > * {
+    font-size: 12px;
+}
+
+/* res heading first */
+.res-heading {
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#location-icon {
+    width: 25px;
+    position: relative;
+    top: 10px;
+}
+
+#location-icon:hover {
+    fill: var(--main-bg-color);
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

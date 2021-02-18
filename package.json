@@ -1,0 +1,37 @@
+{
+  "name": "ruokalista-app",
+  "version": "1.3.0",
+  "description": "Display sodexo menu",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "docs": "jsdoc -R readme.md -d docs -r src/",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "mattpe",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "css-loader": "^5.0.2",
+    "eslint": "^7.17.0",
+    "eslint-loader": "^4.0.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.1",
+    "jsdoc": "^3.6.6",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.1",
+    "webpack-merge": "^5.7.3",
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-webpack-plugin": "^6.1.0",
+    "write-file-webpack-plugin": "^4.5.1"
+  },
+  "dependencies": {}
+}
