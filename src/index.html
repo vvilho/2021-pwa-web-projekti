@@ -10,12 +10,12 @@
   <nav>
     <label for="hamburger">&#9776;</label>
     <input type="checkbox" id="hamburger" />
-    <div id="logo-min-text">Lounari.</div>
+    <div class="appLangClassAppnamemobile" id="logo-min-text">Lounari.</div>
     <ul>
-      <li><a href="#">Etusivu</a></li>
-      <li><a href="#">Ruokalistat</a></li>
-      <li><a href="#transport">Reitit</a></li>
-      <li><a href="#contact">Yhteystiedot</a></li>
+      <li><a class="appLangClassHome" href="#">Etusivu</a></li>
+      <li><a class="appLangClassMenu" href="#">Ruokalistat</a></li>
+      <li><a class="appLangClassRoutes" href="#transport">Reitit</a></li>
+      <li><a class="appLangClassContacts" href="#contact">Yhteystiedot</a></li>
     </ul>
     <span>
       <form id="search-form">
@@ -97,8 +97,8 @@
   <!-- Headerlogo -->
   <header id="showcase">
     <div id="showcase-logoarea">
-      <div id="logo-text">Lounari.</div>
-      <div id="slogan">Missä tänään syötäisiin.</div>
+      <div class="appLangClassAppname" id="logo-text">Lounari.</div>
+      <div class="appLangClassSlogan"  id="slogan">Missä tänään syötäisiin.</div>
     </div>
     <div id="showcase-imgarea">
       <div id="triangle"></div>
@@ -107,13 +107,25 @@
   <!-- Main area with infotext and menus -->
   <main>
     <div class="info-area">
-      <div id="info-text">
+      <div class="appLangClassMaintext"  id="info-text">
         Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä.<br>
         Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounaslistan.
         Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla
         ravintolan logoa.
       </div>
     </div>
+    <div class="tool-buttons">
+      <button id="switch-lang">Switch language</button>
+    </div>
+    <form>
+      <label for="campuses">Campus:</label>
+      <select name="campuses" id="campuses">
+        <option value="arabia">Arabia</option>
+        <option value="karamalmi">Karaportti</option>
+        <option value="myllypuro">Myllypuro</option>
+        <option value="myyrmäki">Myyrmaki</option>
+      </select>
+    </form>
     <div class="restaurant-area">
       <div class="restaurant">
         <div class="res-logo" id="trigger">
@@ -166,11 +178,9 @@
         </div>
       </div>
     </div>
-    <div class="tool-buttons">
-      <button id="switch-lang">Switch language</button>
-    </div>
+
     <section id="transport">
-      <h2>HSL Reitit</h2>
+      <h2 class="appLangClassHslroute" >HSL Reitit</h2>
       <div class="hsl-data">
         <p>Tietoja ladataan...</p>
       </div>

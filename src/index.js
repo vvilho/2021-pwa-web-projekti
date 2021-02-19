@@ -5,9 +5,13 @@ import './styles/style.scss';
 import './styles/mobile.scss';
 import './styles/widescreen.scss';
 import HSLData from './modules/hsl-data';
+import LanguageData from './data/language.json';
+import CampusData from './data/campuses.json';
 
 const today = new Date().toISOString().split('T')[0];
 let languageSetting = 'fi';
+let campus = 'arabia';
+
 
 // TODO: Load from local storage if exists or use default:
 const userSettings = {
@@ -18,6 +22,25 @@ const userSettings = {
 // TODO: updateUserSettings function
 // - refresh page (e.g. use DOM manipulation to change class names)
 // - save settings object to local storage
+
+/**
+ * All classes of those DOM object that has text that has to cahnge
+ * When language setting is changed
+ *
+ * @type {string} name of class
+ */
+const languagDomClasses = [
+  "appLangClassHome",
+  "appLangClassMenu",
+  "appLangClassRoutes",
+  "appLangClassContacts",
+  "appLangClassAppname",
+  "appLangClassAppnamemobile",
+  "appLangClassSlogan",
+  "appLangClassMaintext",
+  "appLangClassHslroute"
+];
+
 
 const restaurants = [{
   displayName: 'Myyrmäen Sodexo',
@@ -71,15 +94,30 @@ const renderNoDataNotification = (message, restaurant) => {
   restaurantDiv.innerHTML = `<p>${message}</p>`;
 };
 
+const createUiLanguages = (language) => {
+  try {
+    for (const dom of languagDomClasses){
+      let domName = dom.slice(12).toLowerCase();
+      document.querySelector("." + dom).textContent = LanguageData[domName][language];
+    }
+  }catch(e){
+    console.log("Error in createUiLanguages: ", e);
+  }
+};
+
+
 /**
  * Switches application language between en/fi
  * and updates menu data
  */
+
 const switchLanguage = () => {
   if (languageSetting === 'fi') {
     languageSetting = 'en';
+    createUiLanguages(languageSetting);
   } else {
     languageSetting = 'fi';
+    createUiLanguages(languageSetting);
   }
   console.log('language changed to: ', languageSetting);
   loadAllMenuData();
@@ -102,20 +140,37 @@ const loadAllMenuData = async () => {
   }
 };
 
-// DEMO only
-const loadHSLData = async () => {
-  const result = await HSLData.getRidesByStopId(2132208);
-  const stop = result.data.stop;
-  console.log('loadHSLData', stop);
+
+const loadHSLData = async (stopid) => {
+  console.log(Object.keys(stopid).length);
+  document.querySelector('.hsl-data').textContent = "";
   const stopElement = document.createElement('div');
-  stopElement.innerHTML = `<h3>Seuraavat vuorot pysäkiltä ${stop.name}</h3><ul>`;
-  for (const ride of stop.stoptimesWithoutPatterns) {
-    stopElement.innerHTML += `<li>${ride.trip.routeShortName},
+  for(const i of stopid){
+    console.log(Object.values(i));
+
+    const result = await HSLData.getRidesByStopId(Object.values(i));
+    const stop = result.data.stop;
+    console.log('loadHSLData', stop);
+
+
+    stopElement.innerHTML += `<br><h3>Seuraavat vuorot pysäkiltä ${stop.name}</h3>`;
+    const ulElement = document.createElement('ul');
+
+    for (const ride of stop.stoptimesWithoutPatterns) {
+      ulElement.innerHTML += `<li>${ride.trip.routeShortName},
       ${ride.trip.tripHeadsign},
       ${HSLData.formatTime(ride.scheduledDeparture)}</li>`;
+    }
+    stopElement.appendChild(ulElement);
+    document.querySelector('.hsl-data').appendChild(stopElement);
   }
-  stopElement.innerHTML += `</ul>`;
-  document.querySelector('.hsl-data').appendChild(stopElement);
+
+
+};
+
+const hslForEachCampus = () => {
+  campus = document.querySelector('#campuses').value;
+  loadHSLData(CampusData[campus]["hslstopid"]);
 };
 
 /**
@@ -137,12 +192,16 @@ const registerServiceWorkers = () => {
  * App initialization
  */
 const init = () => {
+  console.log(document.querySelector('#campuses').value);
   document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
+  document.querySelector('#campuses').addEventListener('change', hslForEachCampus);
   loadAllMenuData();
-  loadHSLData();
+  loadHSLData(CampusData[campus]["hslstopid"]);
   setModalControls();
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
   //registerServiceWorkers();
 };
 init();
+
+

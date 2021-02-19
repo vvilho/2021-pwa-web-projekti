@@ -1,0 +1,49 @@
+{
+  "arabia": {
+    "displayname": "Arabia",
+    "foodmenu": "",
+    "coverimage": "",
+    "wheather": "",
+    "hslstopid": [
+      {"1": 1230101},
+      {"2": 1230104},
+      {"3": 1230406}
+    ]
+
+  },
+  "karamalmi": {
+    "displayname": "Karamalmi",
+    "foodmenu": "",
+    "coverimage": "",
+    "wheather": "",
+    "hslstopid": [
+      {"1": 2132208},
+      {"2": 2132207},
+      {"3": 2132226},
+      {"4": 2132225}
+    ]
+  },
+  "myllypuro": {
+    "displayname": "Myllypuro",
+    "foodmenu": "",
+    "coverimage": "",
+    "wheather": "",
+    "hslstopid": [
+      {"1": 1454601},
+      {"2": 1454602},
+      {"3": 1454140},
+      {"4": 1454141}
+    ]
+  },
+  "myyrmäki": {
+    "displayname": "Myyrmäki",
+    "foodmenu": "",
+    "coverimage": "",
+    "wheather": "",
+    "hslstopid": [
+      {"1": 4150269},
+      {"2": 1454140},
+      {"3": 1454141}
+    ]
+  }
+}
