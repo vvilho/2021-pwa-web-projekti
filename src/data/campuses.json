@@ -1,7 +1,9 @@
 {
   "arabia": {
     "displayname": "Arabia",
-    "foodmenu": "",
+    "restaurantname": "Sodexo Arabia",
+    "foodmenuid": "166",
+    "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
@@ -13,7 +15,9 @@
   },
   "karamalmi": {
     "displayname": "Karamalmi",
-    "foodmenu": "",
+    "restaurantname": "Fazer Karamalmi",
+    "foodmenuid": "270540",
+    "restauranttype": "FazerData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
@@ -25,7 +29,9 @@
   },
   "myllypuro": {
     "displayname": "Myllypuro",
-    "foodmenu": "",
+    "restaurantname": "Sodexo Myllypuro",
+    "foodmenuid": "158",
+    "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
@@ -37,7 +43,9 @@
   },
   "myyrmäki": {
     "displayname": "Myyrmäki",
-    "foodmenu": "",
+    "restaurantname": "Sodexo Myyrmäki",
+    "foodmenuid": "157",
+    "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
