@@ -150,7 +150,7 @@ const forEachCampus = () => {
 };
 
 const campusInit = () => {
-  if (localStorage.getItem('Campus') == '') {
+  if (localStorage.getItem('Campus') == null) {
     localStorage.setItem('Campus', campus);
   }
   campus = localStorage.getItem('Campus');
