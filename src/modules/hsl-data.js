@@ -2,10 +2,19 @@ import {fetchPostJson} from "./network";
 
 const apiUrl = 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql';
 
+
+/**
+ * Sends POST query in digitransit API to get tarnsportation informaation
+ *
+ * @param {number} id -Bus stop id
+ * @return {JSON} list of trips from current stop
+ */
 const getRidesByStopId = async (id) => {
+
   const query = `{
     stop(id: "HSL:${id}") {
       name
+      vehicleType
       stoptimesWithoutPatterns {
         scheduledArrival
         realtimeArrival
@@ -24,8 +33,17 @@ const getRidesByStopId = async (id) => {
       }
     }
   }`;
-  // TODO: add try-catch error handling
-  return await fetchPostJson(apiUrl, 'application/graphql', query);
+
+  const data = await fetchPostJson(apiUrl, 'application/graphql', query);
+
+  setTimeout(() => {
+    if (data == null){
+       throw new Error("Loading timeout");
+       return
+    }
+  },5000)
+  return data;
+
 
 };
 

@@ -3,51 +3,112 @@
     "displayname": "Arabia",
     "location": "Helsinki",
     "foodmenu": "",
+    "restaurantname": "Sodexo Arabia",
+    "foodmenuid": "178",
+    "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
-      {"1": 1230101},
-      {"2": 1230104},
-      {"3": 1230406}
+      {
+        "id": 1230101,
+        "type": "bus"
+      },
+      {
+        "id": 1230104,
+        "type": "bus"
+      },
+      {
+        "id": 1230406,
+        "type": "tram"
+      }
     ]
-
   },
   "karamalmi": {
     "displayname": "Karamalmi",
     "location": "Espoo",
     "foodmenu": "",
+    "restaurantname": "Fazer Karamalmi",
+    "foodmenuid": "270540",
+    "restauranttype": "FazerData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
-      {"1": 2132208},
-      {"2": 2132207},
-      {"3": 2132226},
-      {"4": 2132225}
+      {
+        "id": 2132208,
+        "type": "bus"
+      },
+      {
+        "id": 2132207,
+        "type": "bus"
+      },
+      {
+        "id": 2132226,
+        "type": "bus"
+      },
+      {
+        "id": 2132225,
+        "type": "bus"
+      }
     ]
   },
   "myllypuro": {
     "displayname": "Myllypuro",
     "location": "Helsinki",
     "foodmenu": "",
+    "restaurantname": "Sodexo Myllypuro",
+    "foodmenuid": "158",
+    "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
-      {"1": 1454601},
-      {"2": 1454602},
-      {"3": 1454140},
-      {"4": 1454141}
+      {
+        "id": 1454601,
+        "type": "metro"
+      },
+      {
+        "id": 1454602,
+        "type": "metro"
+      },
+      {
+        "id": 1454140,
+        "type": "bus"
+      },
+      {
+        "id": 1454141,
+        "type": "bus"
+      }
     ]
   },
   "myyrmäki": {
     "displayname": "Myyrmäki",
     "location": "Vantaa",
     "foodmenu": "",
+    "restaurantname": "Sodexo Myyrmäki",
+    "foodmenuid": "152",
+    "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
     "hslstopid": [
-      {"1": 4150269},
-      {"2": 1454140},
-      {"3": 1454141}
+      {
+        "id": 4150269,
+        "type": "bus"
+      },
+      {
+        "id": 4150201,
+        "type": "bus"
+      },
+      {
+        "id": 4150202,
+        "type": "bus"
+      },
+      {
+        "id": 4150551,
+        "type": "train"
+      },
+      {
+        "id": 4150501,
+        "type": "train"
+      }
     ]
   }
 }

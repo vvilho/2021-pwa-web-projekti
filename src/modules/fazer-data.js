@@ -49,7 +49,7 @@ const getDailyMenu = async (restaurantId, lang, date) => {
   }
   let menuData;
   try {
-    menuData = await fetchGetJson(`${lang == 'fi'?weeklyUrlFi:weeklyUrlEn}2020-01-14`);
+    menuData = await fetchGetJson(`${lang == 'fi'?weeklyUrlFi:weeklyUrlEn}2020-02-07`);
   } catch (error) {
     throw new Error(error.message);
   }

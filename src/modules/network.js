@@ -1,7 +1,7 @@
 /**
  * Network functions
  * @module modules/network
- * @author mattpe <mattpe@metropolia.fi>
+ * @author vilhov <vilhov@metropolia.fi>
  *
  */
 import {networkProxyUrl} from "../settings";
