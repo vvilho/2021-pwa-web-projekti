@@ -17,8 +17,9 @@ let campus = 'arabia';
  * All classes of those DOM object that has text that has to cahnge
  * When language setting is changed
  *
- * @type {string} name of class
+ * @type {string[]} list of classnames
  */
+
 const languagDomClasses = [
   "appLangClassHome",
   "appLangClassMenu",
@@ -36,7 +37,6 @@ const languagDomClasses = [
  * Displays lunch menu items as html list
  *
  * @param {Array} menuData - Lunch menu array
- * @param {string} restaurant - element target id
  */
 const renderMenu = (menuData) => {
   const restaurantDiv = document.querySelector('#fazer-kp');
@@ -54,14 +54,19 @@ const renderMenu = (menuData) => {
  * Displays a notification message instead of dishes
  * when menu data is not available
  *
- * @param {string} message
- * @param {string} restaurant
+ * @param {string} message -Error message
  */
 const renderNoDataNotification = (message) => {
   const restaurantDiv = document.querySelector('#fazer-kp');
   restaurantDiv.innerHTML = `<p>${message}</p>`;
 };
 
+
+/**
+ * Changes every elements text that has to change during language change
+ *
+ * @param {string} language -language shortname ("fi"/"en")
+ */
 const createUiLanguages = (language) => {
   try {
     for (const dom of languagDomClasses) {
@@ -78,7 +83,6 @@ const createUiLanguages = (language) => {
  * Switches application language between en/fi
  * and updates menu data
  */
-
 const switchLanguage = () => {
   if (languageSetting === 'fi') {
     languageSetting = 'en';
@@ -92,7 +96,8 @@ const switchLanguage = () => {
 };
 
 /**
- * Load data for all restaurant boxes
+ * Loads menudata for current campus' restaurant
+ *
  * @async
  */
 const loadAllMenuData = async () => {
@@ -113,6 +118,12 @@ const loadAllMenuData = async () => {
     renderNoDataNotification('No data available..', CampusData[campus]["displayname"]);
   }
 };
+
+/**
+ *
+ * @param {number} id -Transportation vehicle id
+ * @returns {string} -Icon/image of vehicle
+ */
 const transportationVehicleIcon = (id) => {
   if (id == 0) {
     return `<img src="./assets/icons/tram.svg">`;
@@ -125,15 +136,18 @@ const transportationVehicleIcon = (id) => {
   }
 };
 
+/**
+ *
+ * @param {number} stopid -Id for current bus stop etc.
+ * @async
+ */
 const loadHSLData = async (stopid) => {
-  const stopElement = document.createElement('div');
-  const ulElement = document.createElement('ul');
+try{
   let list = [];
   for (const i of stopid) {
 
     const result = await HSLData.getRidesByStopId(i["id"]);
     const stop = result.data.stop;
-
 
     for (const ride of stop.stoptimesWithoutPatterns) {
       list.push({
@@ -146,16 +160,40 @@ const loadHSLData = async (stopid) => {
   list.sort((a, b) => {
     return (a.timestamp) - (b.timestamp);
   });
-  console.log(list);
-  for (const ride of list.slice(0,6)){
+
+  renderHSLData(list);
+}catch (error) {
+  renderHSLData([]);
+  console.log(error);
+}
+
+
+
+};
+/**
+ * Render HSL transportation data on website
+ *
+ *
+ * @param {array} list - List of coming HSL transportation
+ */
+const renderHSLData = async (list) => {
+
+  const stopElement = document.createElement('div');
+  const ulElement = document.createElement('ul');
+
+  for (const ride of await list.slice(0,6)){
     const liElement = document.createElement('li');
     liElement.innerHTML = ride.data;
     ulElement.appendChild(liElement);
   }
+
   document.querySelector('.hsl-data').textContent = "";
 
+  if(list.length == 0){
+    document.querySelector('.hsl-data').textContent = "HSL data can not be loaded";
+    return;
+  }
   stopElement.appendChild(ulElement);
-
   document.querySelector('.hsl-data').appendChild(stopElement);
 
 };
