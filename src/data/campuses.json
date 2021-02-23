@@ -2,7 +2,7 @@
   "arabia": {
     "displayname": "Arabia",
     "restaurantname": "Sodexo Arabia",
-    "foodmenuid": "166",
+    "foodmenuid": "178",
     "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
@@ -44,7 +44,7 @@
   "myyrmäki": {
     "displayname": "Myyrmäki",
     "restaurantname": "Sodexo Myyrmäki",
-    "foodmenuid": "157",
+    "foodmenuid": "152",
     "restauranttype": "SodexoData",
     "coverimage": "",
     "wheather": "",
