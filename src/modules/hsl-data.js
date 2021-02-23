@@ -6,6 +6,7 @@ const getRidesByStopId = async (id) => {
   const query = `{
     stop(id: "HSL:${id}") {
       name
+      vehicleType
       stoptimesWithoutPatterns {
         scheduledArrival
         realtimeArrival

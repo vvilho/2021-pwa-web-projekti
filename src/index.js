@@ -113,32 +113,50 @@ const loadAllMenuData = async () => {
     renderNoDataNotification('No data available..', CampusData[campus]["displayname"]);
   }
 };
-
+const transportationVehicleIcon = (id) => {
+  if (id == 0) {
+    return `<img src="./assets/icons/tram.svg">`;
+  } else if (id == 1) {
+    return `<img src="./assets/icons/subway.svg">`;
+  } else if (id == 109) {
+    return `<img src="./assets/icons/train.svg">`;
+  } else if (id == 3) {
+    return `<img src="./assets/icons/bus.svg">`;
+  }
+};
 
 const loadHSLData = async (stopid) => {
-  console.log(Object.keys(stopid).length);
-  document.querySelector('.hsl-data').textContent = "";
   const stopElement = document.createElement('div');
+  const ulElement = document.createElement('ul');
+  let list = [];
   for (const i of stopid) {
-    console.log(Object.values(i));
 
-    const result = await HSLData.getRidesByStopId(Object.values(i));
+    const result = await HSLData.getRidesByStopId(i["id"]);
     const stop = result.data.stop;
-    console.log('loadHSLData', stop);
 
-
-    stopElement.innerHTML += `<br><h3>Seuraavat vuorot pysäkiltä ${stop.name}</h3>`;
-    const ulElement = document.createElement('ul');
 
     for (const ride of stop.stoptimesWithoutPatterns) {
-      ulElement.innerHTML += `<li>${ride.trip.routeShortName},
-      ${ride.trip.tripHeadsign},
-      ${HSLData.formatTime(ride.scheduledDeparture)}</li>`;
+      list.push({
+        data: transportationVehicleIcon(stop.vehicleType) + ` ${ride.trip.routeShortName},  ${ride.trip.tripHeadsign}, ${HSLData.formatTime(ride.scheduledDeparture)}`,
+        timestamp: ride.scheduledDeparture
+      });
     }
-    stopElement.appendChild(ulElement);
-    document.querySelector('.hsl-data').appendChild(stopElement);
-  }
 
+  }
+  list.sort((a, b) => {
+    return (a.timestamp) - (b.timestamp);
+  });
+  console.log(list);
+  for (const ride of list.slice(0,6)){
+    const liElement = document.createElement('li');
+    liElement.innerHTML = ride.data;
+    ulElement.appendChild(liElement);
+  }
+  document.querySelector('.hsl-data').textContent = "";
+
+  stopElement.appendChild(ulElement);
+
+  document.querySelector('.hsl-data').appendChild(stopElement);
 
 };
 
