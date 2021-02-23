@@ -39,9 +39,9 @@ const getRidesByStopId = async (id) => {
   setTimeout(() => {
     if (data == null){
        throw new Error("Loading timeout");
-       return
+       return;
     }
-  },5000)
+  },5000);
   return data;
 
 

@@ -204,6 +204,8 @@ const forEachCampus = () => {
   loadHSLData(CampusData[campus]["hslstopid"]);
   localStorage.setItem('Campus', campus);
   loadAllMenuData();
+  loadWeatherData(CampusData[campus]["location"], languageSetting);
+
 };
 
 const campusInit = () => {
@@ -212,6 +214,7 @@ const campusInit = () => {
   }
   campus = localStorage.getItem('Campus');
   document.querySelector('#campuses option[value="' + campus + '"]').selected = true;
+  loadWeatherData(CampusData[campus]["location"], languageSetting);
   loadAllMenuData();
   loadHSLData(CampusData[campus]["hslstopid"]);
 };
@@ -269,7 +272,7 @@ const init = () => {
 
   setModalControls();
 
-  loadWeatherData(CampusData[campus]["location"], languageSetting);
+
 
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
