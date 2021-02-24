@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
+@import "./variables";
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -143,7 +145,7 @@ nav span {
 
 #showcase-imgarea {
     flex: 6;
-    background: white url(../assets/img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg)
+    background: white url($cover-image-url)
     no-repeat center center/cover;
 
 }

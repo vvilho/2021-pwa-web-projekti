@@ -1,3 +1,4 @@
+@import "./variables";
 @media screen and (max-width: 768px) {
   nav {
     background-color: var(--main-bg-color);
@@ -53,7 +54,7 @@
   }
 
   .info-area {
-    background: white url(../assets/img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg) no-repeat
+    background: white url($cover-image-url) no-repeat
       center center/cover;
   }
 

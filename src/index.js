@@ -4,6 +4,7 @@ import {setModalControls} from './modules/modal';
 import './styles/style.scss';
 import './styles/mobile.scss';
 import './styles/widescreen.scss';
+import scssVariables from './styles/_variables.scss';
 import HSLData from './modules/hsl-data';
 import LanguageData from './data/language.json';
 import CampusData from './data/campuses.json';
@@ -45,10 +46,19 @@ const renderMenu = (menuData) => {
   const ul = document.createElement('ul');
   for (const item of menuData) {
     const listItem = document.createElement('li');
-    listItem.textContent = item;
+    listItem.innerHTML = item;
     ul.appendChild(listItem);
   }
+
   restaurantDiv.appendChild(ul);
+  //Add diet code properties after the menu
+  restaurantDiv.innerHTML +=
+    languageSetting == "fi"?
+      `<br><br>(G) Gluteeniton, (L) Laktoositon, (VL) Vähälaktoosinen, (M) Maidoton, (*) Voi hyvin,
+        (Veg) Soveltuu vegaaniruokavalioon, (VS) Sis. tuoretta valkosipulia, (A) Sis. allergeeneja`
+      :
+      `<br><br>(G) Gluten free, (L) Lactose free, (VL) Low lactose, (M) Milk-free, (*) Wellbeing,
+        (Veg) Suitable for vegans, (VS) Contains fresh garlic, (A) Contains allergens`;
 };
 
 /**
@@ -57,11 +67,10 @@ const renderMenu = (menuData) => {
  *
  * @param {string} message -Error message
  */
-const renderNoDataNotification = (message) => {
+const renderNoMenuDataNotification = (message) => {
   const restaurantDiv = document.querySelector('#fazer-kp');
   restaurantDiv.innerHTML = `<p>${message}</p>`;
 };
-
 
 /**
  * Changes every elements text that has to change during language change
@@ -116,7 +125,7 @@ const loadAllMenuData = async () => {
   } catch (error) {
     console.error(error);
     // notify user if errors with data
-    renderNoDataNotification('No data available..', CampusData[campus]["displayname"]);
+    renderNoMenuDataNotification('No data available..', CampusData[campus]["displayname"]);
   }
 };
 
@@ -126,15 +135,18 @@ const loadAllMenuData = async () => {
  * @returns {string} -Icon/image of vehicle
  */
 const transportationVehicleIcon = (id) => {
+  let vehicle;
   if (id == 0) {
-    return `<img src="./assets/icons/tram.svg">`;
+    vehicle = "tram";
   } else if (id == 1) {
-    return `<img src="./assets/icons/subway.svg">`;
+    vehicle = "subway";
   } else if (id == 109) {
-    return `<img src="./assets/icons/train.svg">`;
+    vehicle = "train";
   } else if (id == 3) {
-    return `<img src="./assets/icons/bus.svg">`;
+    vehicle = "bus";
   }
+  return `<img src="./assets/icons/${vehicle}.svg">`;
+
 };
 
 /**
@@ -143,34 +155,40 @@ const transportationVehicleIcon = (id) => {
  * @async
  */
 const loadHSLData = async (stopid) => {
-try{
-  let list = [];
-  for (const i of stopid) {
+  try {
+    let list = [];
+    for (const i of stopid) {
 
-    const result = await HSLData.getRidesByStopId(i["id"]);
-    const stop = result.data.stop;
+      const result = await HSLData.getRidesByStopId(i["id"]);
+      const stop = result.data.stop;
 
-    for (const ride of stop.stoptimesWithoutPatterns) {
-      list.push({
-        data: transportationVehicleIcon(stop.vehicleType) + ` ${ride.trip.routeShortName},  ${ride.trip.tripHeadsign}, ${HSLData.formatTime(ride.scheduledDeparture)}`,
-        timestamp: ride.scheduledDeparture
-      });
+      for (const ride of stop.stoptimesWithoutPatterns) {
+        list.push({
+          data: transportationVehicleIcon(stop.vehicleType) + ` ${ride.trip.routeShortName},  ${ride.trip.tripHeadsign}, ${HSLData.formatTime(ride.scheduledDeparture)}`,
+          timestamp: ride.scheduledDeparture
+        });
+      }
+
     }
+    list.sort((a, b) => {
+      return (a.timestamp) - (b.timestamp);
+    });
 
+    renderHSLData(list);
+  } catch (error) {
+    renderHSLData([]);
+    console.log(error);
   }
-  list.sort((a, b) => {
-    return (a.timestamp) - (b.timestamp);
-  });
-
-  renderHSLData(list);
-}catch (error) {
-  renderHSLData([]);
-  console.log(error);
-}
-
 
 
 };
+
+const changeBackgroundImage = () => {
+  document.querySelector('#showcase-imgarea').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
+  document.querySelector('.info-area').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
+
+};
+
 /**
  * Render HSL transportation data on website
  *
@@ -182,7 +200,7 @@ const renderHSLData = async (list) => {
   const stopElement = document.createElement('div');
   const ulElement = document.createElement('ul');
 
-  for (const ride of await list.slice(0,6)){
+  for (const ride of await list.slice(0, 6)) {
     const liElement = document.createElement('li');
     liElement.innerHTML = ride.data;
     ulElement.appendChild(liElement);
@@ -190,7 +208,7 @@ const renderHSLData = async (list) => {
 
   document.querySelector('.hsl-data').textContent = "";
 
-  if(list.length == 0){
+  if (list.length == 0) {
     document.querySelector('.hsl-data').textContent = "HSL data can not be loaded";
     return;
   }
@@ -199,15 +217,27 @@ const renderHSLData = async (list) => {
 
 };
 
+
+/**
+ * After campus is changed from select menu
+ * HSL, weather and restaurant menu are updated
+ * and new campus is saved to local storage
+ */
 const forEachCampus = () => {
   campus = document.querySelector('#campuses').value;
   loadHSLData(CampusData[campus]["hslstopid"]);
   localStorage.setItem('Campus', campus);
   loadAllMenuData();
   loadWeatherData(CampusData[campus]["location"], languageSetting);
+  changeBackgroundImage();
 
 };
 
+
+/**
+ * Runs when app is first onened
+ *
+ */
 const campusInit = () => {
   if (localStorage.getItem('Campus') == null) {
     localStorage.setItem('Campus', campus);
@@ -217,6 +247,7 @@ const campusInit = () => {
   loadWeatherData(CampusData[campus]["location"], languageSetting);
   loadAllMenuData();
   loadHSLData(CampusData[campus]["hslstopid"]);
+  // document.querySelector('#showcase-imgarea').style.background = "";
 };
 
 
@@ -233,16 +264,15 @@ const loadWeatherData = async (campus, language) => {
   let temp = document.querySelector('.temp');
 
   const result = await WeatherData.getWeatherData(campus, language);
-  console.log('loadWeatherData', result);
-    let nameValue = result.name;
-    let weatherIconValue = result.weather[0].icon;
-    let tempValue = result.main.temp;
-    let descValue = result.weather[0].description;
+  let nameValue = result.name;
+  let weatherIconValue = result.weather[0].icon;
+  let tempValue = result.main.temp;
+  let descValue = result.weather[0].description;
 
-    name.innerHTML = nameValue;
-    weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png">`;
-    temp.innerHTML = tempValue + ' C';
-    desc.innerHTML = descValue;
+  name.innerHTML = nameValue;
+  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png">`;
+  temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
+  desc.innerHTML = descValue;
 };
 
 
@@ -271,7 +301,6 @@ const init = () => {
   document.querySelector('#campuses').addEventListener('change', forEachCampus);
 
   setModalControls();
-
 
 
   // Service workers registeration below disabled temporarily for easier local development
