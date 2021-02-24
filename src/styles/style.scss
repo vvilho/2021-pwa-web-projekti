@@ -2,172 +2,262 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
-:root {
-    --main-em-color: rgb(0, 0, 0);
-    /* #AC6565 */
-    --main-bg-color: #43E04F;
-  }
+$color-orange: #FF7820;
+$color-brown: #8F2D00;
+$color-black: #000000;
+$color-gray: #BABABA;
+$color-white: #ffffff;
+$color-ligth-blue: #EAF3FA;
+$color-ligth-pink: #F8F4F2;
+$color-blue: #0093FF;
 
 body {
-    font-family: 'Lato', sans-serif;
-    font-size: 1em;
+  margin: 0;
+  font: 100% Helvetica, sans-serif;
+}
+#metropolia-logo-small {
+  display: none;
 }
 
-a {
-    text-decoration: none;
+#metropolia-logo {
+  display: block;
+  max-width: 28.125em;
+  margin: 0 2em;
 }
 
-/* p {
-    margin: 0.75rem 0;
-} */
-
-/* utility & main classes */
-/* here some css variables */
-
-/* Hamburger menu */
-/* Hide Hamburger */
-nav > label, #hamburger {
-    display: none;
-  }
-
-nav {
+@media screen and (min-width: 300px) {
+  nav {
     display: flex;
-    position: sticky;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    top: 0;
-    background-color: white;
-    color: #fff;
     justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    font-size: 1.2em;
-    /* border: 1px solid #000; */
-}
-nav ul {
-    display: flex;
-    align-content: center;
-    list-style-type: none;
+  }
 }
 
-nav ul a {
-    color: var(--main-em-color);
-    padding: 0.6rem;
-    margin: 0 0.25em;
+@media screen and (min-width: 735px) {
+  #metropolia-logo-small {
+    display: block;
+    width: 250px;
+    margin: 0.5em 2em;
 }
 
-nav ul li a:hover {
-    background-color: var(--main-bg-color);
-    border-radius: 5px;
-    color: #fff;
+#metropolia-logo {
+  display: none;
+}
 }
 
-nav span {
-    width: 20vw;
+%attr-shared {
+  display: inline-block;
+  background-color: $color-orange;
+  color: $color-white;
+  font-weight: 400;
+  border-radius: 0.5em;
+  font-size: 1em;
+  padding: 0.625em 1.25em;
+  margin: 0.625em;
+  border: none;
+  cursor: pointer;
 }
 
-#search {
-    width: 100%;
-    min-width: 50px;
-    box-sizing: border-box;
-    padding: 0.5rem 1.5rem 0.5rem 35px;
-    margin: 0.5rem 0;
-    display: inline-block;
-    border: 1px solid var(--main-em-color);
-    border-radius: 4px;
-    outline: none;
-
-}
-#search-form {
-    position: relative;
+.btn-lang {
+  @extend  %attr-shared;
+  &:hover {
+      background-color: lighten($color-orange, 10%);
+  }
 }
 
-#search-img {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 10px;
+select {
+  @extend  %attr-shared;
+  min-width: 8em;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $color-orange;
+  /* for svg icon: arrow */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238F2D00%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
 }
 
-#search-img > svg {
-    fill:  var(--main-em-color);
+label {
+  color: $color-brown;
+  font-size: 1.2em;
 }
 
-#showcase {
-    display: flex;
-    height: 30vh;
-    font-family: 'Roboto Slab', serif;
+%flex-center-shared {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#showcase-logoarea {
-    flex: 4;
-    background-color: var(--main-bg-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.container-center {
+  @extend  %flex-center-shared;
 }
 
-#logo-text {
-    color: white;
-    font-size: 60px;
-    font-weight: 800;
+header {
+  @extend  %flex-center-shared;
+  margin: 2em 0 1em 0;
 }
 
-#logo-min-text {
-    color: white;
-    font-weight: 800;
-    position: absolute;
-    top: 19px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Roboto Slab', serif;
-    font-size: 1.2em;
-    display: none;
+#hero {
+  @extend  %flex-center-shared;
+  z-index: -1;
+  width: 100%;
+  height: 40vh;
+  background: url(../assets/img/karamalmin-kampus-ilmakuva-medium.jpg)
+  no-repeat center center/cover;
+  /*background-size: contain;
+  position: relative;
+  overflow: hidden;*/
 }
 
-#slogan {
-    color: white;
-    font-size: 23px;
-    font-weight: 400;
+#hero-front {
+  @extend  %flex-center-shared;
+  width: 100%;
+  height: 20vh;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
-#showcase-imgarea {
-    flex: 6;
-    background: white url(../assets/img/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-691114.jpg)
-    no-repeat center center/cover;
-
+h1 {
+  font-size: 5.5vh;
+  font-weight: 500;
+  color: $color-brown;
 }
 
-#triangle {
-    width: 0;
-	height: 0;
-	border-bottom: 30vh solid var(--main-bg-color);
-	border-right: 10vw solid transparent;
+main {
+  padding:0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.info-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: lightpink; */
+h2 {
+  text-align: center;
 }
 
-#info-text {
-    width: 80vw;
-    padding: 2em 0;
-    text-align: center;
-    /* This way the text wont wrap */
-    font-size: 1.5em;
+#hsl-container {
+  position: relative;
+}
+
+%card-shared {
+  width: 100%;
+  border-radius: 0 30px 30px 30px;
+  margin: 1em 0;
+  padding: 1.5em;
+  box-shadow: 0px 3px 10px $color-gray;
+}
+
+#forecast {
+  @extend %card-shared;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  float: right;
+  border-radius: 30px 0 30px 30px;
+  width: 280px;
+  height: 50px;
+  background-color: $color-ligth-blue;
+}
+
+h3 {
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid $color-gray;
+  margin-bottom: 0.04em;
+}
+
+.hsl-card {
+  @extend %card-shared;
+  height: 280px;
+  background-color: $color-ligth-blue;
+}
+
+.hsl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.3em;
+  border-bottom: 1px solid $color-gray;
+}
+
+.hsl-lable {
+  display: flex;
+  align-items: center;
+  background-color: $color-blue;
+  border-radius: 4px;
+  font-weight: 300;
+  color: $color-white;
+  font-size: 1em;
+  padding: 0.25em 0.5em;
+}
+
+.hsl-lable > img {
+  height: 1.2em;
+  padding-right: 0.5em;
+}
+
+%btn--hsl-shared {
+  position: absolute;
+  bottom: -0.5em;
+  width: 4em;
+  height: 4em;
+  padding: 0.8em;
+  background-color: $color-black;
+  color: $color-white;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  #btn-hsl-left, #btn-hsl-right  {
+      width: 3em;
+      height: 3em;
+      bottom: 0em;
+  }
+}
+
+#btn-hsl-left {
+  @extend  %btn--hsl-shared;
+  transform: scale(-1, 1);
+  left: -1em;
+}
+
+#btn-hsl-right {
+  @extend  %btn--hsl-shared;
+  right: -1em;
+}
+
+#btn-hsl-left, #btn-hsl-right > svg {
+  fill: $color-white;
+}
+
+#btn-hsl-left:hover, #btn-hsl-right:hover {
+  background-color: lighten($color-black, 25%);
+}
+
+#food-list-container, #hsl-container {
+  margin-top: 2em;
+}
+
+.food-list-card {
+  @extend %card-shared;
+  min-height: 200px;
+  background-color: $color-ligth-pink;
+}
+
+.dishes {
+  margin-top: 0.2em;
+  margin-bottom: 2em;
+  line-height: 1.5;
+}
+
+.dishes-labels {
+  margin-bottom: 1em;
 }
 
 .restaurant-area {
@@ -187,39 +277,6 @@ nav span {
     display: flex;
 }
 
-.res-logo {
-    flex: 3;
-}
-
-.res-logo > img {
-    width: 100%;
-    cursor: pointer;
-}
-
-.res-logo > img:hover {
-    opacity: 0.7;
-}
-
-.res-menu {
-    flex: 7;
-    padding: 0 0 1em 1em;
-    line-height: 120%;
-}
-
-/* reset for all of the fonts */
-.res-menu > * {
-    font-size: 12px;
-}
-
-/* res heading first */
-.res-heading {
-    margin-bottom: 20px;
-    font-weight: 900;
-    font-size: 21px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
 
 #location-icon {
     width: 25px;
@@ -270,8 +327,4 @@ nav span {
   }
 
 
-  li img {
-    height: 25px;
-    width: auto;
-    padding-top: 5px;
-  }
+
