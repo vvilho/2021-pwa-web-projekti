@@ -431,6 +431,9 @@ input:checked + .slider .en
 
 .slider.round:before {
   border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  color: $color-brown;
 }
 
 

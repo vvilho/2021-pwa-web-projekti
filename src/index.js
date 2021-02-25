@@ -161,7 +161,7 @@ const loadHSLData = async (stopid) => {
 
       for (const ride of stop.stoptimesWithoutPatterns) {
         list.push({
-          data: transportationVehicleIcon(stop.vehicleType) + ` ${ride.trip.routeShortName},  ${ride.trip.tripHeadsign}, ${HSLData.formatTime(ride.scheduledDeparture)}`,
+          data: transportationVehicleIcon(stop.vehicleType) + ` ${ride.trip.routeShortName},  ${ride.trip.tripHeadsign}, <b>${HSLData.formatTime(ride.scheduledDeparture)}</b>`,
           timestamp: ride.scheduledDeparture
         });
       }
