@@ -8,15 +8,22 @@
     <!-- Nav buttons -->
     <nav>
       <div class="tool-buttons">
-          <button class="btn-lang" id="switch-lang">FI/EN</button>
+<!--          <button class="btn-lang" id="switch-lang">FI/EN</button>-->
+        <label class="switch">
+          <input type="checkbox" id="togBtn">
+          <div class="slider round">
+            <span class="fi">FI</span>
+            <span class="en">EN</span>
+          </div>
+        </label>
       </div>
       <!-- Headerlogo -->
       <img id="metropolia-logo-small" src="./assets/icons/metropolia.svg" alt="metropolia logo">
       <form>
-          <label for="campuses">Campus:</label>
+          <label for="campuses" class="app-lang-campuses">Campus:</label>
           <select name="campuses" id="campuses">
               <option value="arabia">Arabia</option>
-              <option value="karamalmi">Karaportti</option>
+              <option value="karamalmi">Karamalmi</option>
               <option value="myllypuro">Myllypuro</option>
               <option value="myyrmäki">Myyrmäki</option>
           </select>
@@ -31,7 +38,7 @@
   <header>
       <div id="hero">
           <div id="hero-front">
-              <h1>Karamalmin kampus</h1>
+              <h1 class="current-campus">Karamalmin kampus</h1>
           </div>
       </div>
   </header>
@@ -42,40 +49,22 @@
       <ul id="forecast">
           <li class="name"></li>
           <p class="weather-icon"></p>
-          <!-- <li class="desc"></li> -->
+<!--           <li class="desc"></li> -->
           <li class="temp"></li>
       </ul>
 </div>
 
+    <!-- HSL reittitiedot -->
 <section id="hsl-container">
-  <h2>HSL Reitit</h2>
+  <h2 class="app-lang-hslroute">HSL Reitit</h2>
   <div class="hsl-card">
-      <h3>Karanristi</h3>
-      <ul class="hsl-row">
-          <li class="hsl-lable"><img src="./assets/icons/front-of-bus.svg" alt=""> 532</li>
-          <li class="hsl-stop-name">Leppävaara</li>
-          <li class="hsl-time">13:30</li>
-      </ul>
-      <ul class="hsl-row">
-          <li class="hsl-lable"><img src="./assets/icons/front-of-bus.svg" alt="">532</li>
-          <li class="hsl-stop-name">Leppävaara as.</li>
-          <li class="hsl-time">13:30</li>
-      </ul>
-      <ul class="hsl-row">
-          <li class="hsl-lable"><img src="./assets/icons/front-of-bus.svg" alt="">532</li>
-          <li class="hsl-stop-name">Leppävaara</li>
-          <li class="hsl-time">13:30</li>
-      </ul>
-      <ul class="hsl-row">
-          <li class="hsl-lable"><img src="./assets/icons/front-of-bus.svg" alt="">532</li>
-          <li class="hsl-stop-name">Leppävaara</li>
-          <li class="hsl-time">13:30</li>
-      </ul>
-      <ul class="hsl-row">
-          <li class="hsl-lable"><img src="./assets/icons/front-of-bus.svg" alt="">532</li>
-          <li class="hsl-stop-name">Leppävaara</li>
-          <li class="hsl-time">13:30</li>
-      </ul>
+      <h3 class="app-lang-timetable">Aikataulu</h3>
+    <div class="hsl-card-content">
+      <p>Tietoja ladataan...</p>
+    </div>
+
+
+
   </div>
   <button id="btn-hsl-left">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -167,23 +156,14 @@ l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,4
 </button>
 </section>
 <section id="food-list-container">
-  <h2>Ruokalistat</h2>
+  <h2 class="app-lang-menu">Ruokalista</h2>
   <div class="food-list-card">
     <h3 class="res-heading"></h3>
-      <div class="dishes" id="fazer-kp">Ei tiedoja</div>
-      <p class="dishes-labels">(G) Gluteeniton, (L) Laktoositon,
-          (VL) Vähälaktoosinen, (M) Maidoton, (*) Voi hyvin,
-          (Veg) Soveltuu vegaaniruokavalioon,
-          (VS) Sis. tuoretta valkosipulia, (A) Sis. allergeeneja</p>
+      <div class="dishes">Ei tiedoja</div>
+      <p class="dish-labels"></p>
   </div>
 </section>
 
-    <section id="transport">
-      <h2 class="appLangClassHslroute" >HSL Reitit</h2>
-      <div class="hsl-data">
-        <p>Tietoja ladataan...</p>
-      </div>
-    </section>
 
     <section id="contact">
       <p>Yhteystiedot tänne</p>

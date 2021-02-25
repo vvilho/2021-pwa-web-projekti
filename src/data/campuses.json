@@ -1,6 +1,7 @@
 {
   "arabia": {
-    "displayname": "Arabia",
+    "displayname_fi": "Arabian kampus",
+    "displayname_en": "Arabia campus",
     "location": "Helsinki",
     "foodmenu": "",
     "restaurantname": "Sodexo Arabia",
@@ -24,7 +25,8 @@
     ]
   },
   "karamalmi": {
-    "displayname": "Karamalmi",
+    "displayname_fi": "Karamalmin kampus",
+    "displayname_en": "Karamalmi campus",
     "location": "Espoo",
     "foodmenu": "",
     "restaurantname": "Fazer Karamalmi",
@@ -52,7 +54,8 @@
     ]
   },
   "myllypuro": {
-    "displayname": "Myllypuro",
+    "displayname_fi": "Myllypuron kampus",
+    "displayname_en": "Myllypuro campus",
     "location": "Helsinki",
     "foodmenu": "",
     "restaurantname": "Sodexo Myllypuro",
@@ -80,7 +83,8 @@
     ]
   },
   "myyrmäki": {
-    "displayname": "Myyrmäki",
+    "displayname_fi": "Myyrmäen kampus",
+    "displayname_en": "Myyrmäki campus",
     "location": "Vantaa",
     "foodmenu": "",
     "restaurantname": "Sodexo Myyrmäki",

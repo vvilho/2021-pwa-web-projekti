@@ -32,6 +32,10 @@ body {
   max-width: 28.125em;
   margin: 0 2em;
 }
+.hsl-icon {
+  height: 15px;
+  width: auto;
+}
 
 @media screen and (min-width: 300px) {
   nav {
@@ -111,7 +115,7 @@ header {
   z-index: -1;
   width: 100%;
   height: 40vh;
-  background: url(../assets/img/karamalmi-kampus-medium.jpg)
+  background: url(../assets/img/karamalmi-kampus-big.jpg)
   no-repeat center center/cover;
   /*background-size: contain;
   position: relative;
@@ -120,6 +124,7 @@ header {
 
 #hero-front {
   @extend  %flex-center-shared;
+  text-align: center;
   width: 100%;
   height: 20vh;
   background-color: rgba(255, 255, 255, 0.75);
@@ -169,7 +174,8 @@ h2 {
 h3 {
   padding-bottom: 0.5em;
   border-bottom: 1px solid $color-gray;
-  margin-bottom: 0.04em;
+  margin-bottom: 1em;
+
 }
 
 .hsl-card {
@@ -178,105 +184,110 @@ h3 {
   background-color: $color-ligth-blue;
 }
 
+li {
+  padding-top: 0.5em;
+}
+
+
 
 #showcase-imgarea {
-    flex: 6;
-    background: white url($cover-image-url)
-    no-repeat center center/cover;
-
-.hsl-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 2.3em;
-  border-bottom: 1px solid $color-gray;
-}
+  flex: 6;
+  background: white url($cover-image-url) no-repeat center center/cover;
 
 
-.hsl-lable {
-  display: flex;
-  align-items: center;
-  background-color: $color-blue;
-  border-radius: 4px;
-  font-weight: 300;
-  color: $color-white;
-  font-size: 1em;
-  padding: 0.25em 0.5em;
-}
+  .hsl-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.3em;
+    border-bottom: 1px solid $color-gray;
+  }
 
-.hsl-lable > img {
-  height: 1.2em;
-  padding-right: 0.5em;
-}
 
-%btn--hsl-shared {
-  position: absolute;
-  bottom: -0.5em;
-  width: 4em;
-  height: 4em;
-  padding: 0.8em;
-  background-color: $color-black;
-  color: $color-white;
-  border-radius: 7px;
-  border: none;
-  cursor: pointer;
-}
+  .hsl-lable {
+    display: flex;
+    align-items: center;
+    background-color: $color-blue;
+    border-radius: 4px;
+    font-weight: 300;
+    color: $color-white;
+    font-size: 1em;
+    padding: 0.25em 0.5em;
+  }
 
-@media screen and (max-width: 500px) {
-  #btn-hsl-left, #btn-hsl-right  {
+  .hsl-lable > img {
+    height: 1.2em;
+    padding-right: 0.5em;
+  }
+
+  %btn--hsl-shared {
+    position: absolute;
+    bottom: -0.5em;
+    width: 4em;
+    height: 4em;
+    padding: 0.8em;
+    background-color: $color-black;
+    color: $color-white;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 500px) {
+    #btn-hsl-left, #btn-hsl-right {
       width: 3em;
       height: 3em;
       bottom: 0em;
+    }
   }
-}
 
-#btn-hsl-left {
-  @extend  %btn--hsl-shared;
-  transform: scale(-1, 1);
-  left: -1em;
-}
+  #btn-hsl-left {
+    @extend %btn--hsl-shared;
+    transform: scale(-1, 1);
+    left: -1em;
+  }
 
-#btn-hsl-right {
-  @extend  %btn--hsl-shared;
-  right: -1em;
-}
+  #btn-hsl-right {
+    @extend %btn--hsl-shared;
+    right: -1em;
+  }
 
-#btn-hsl-left, #btn-hsl-right > svg {
-  fill: $color-white;
-}
+  #btn-hsl-left, #btn-hsl-right > svg {
+    fill: $color-white;
+  }
 
-#btn-hsl-left:hover, #btn-hsl-right:hover {
-  background-color: lighten($color-black, 25%);
-}
+  #btn-hsl-left:hover, #btn-hsl-right:hover {
+    background-color: lighten($color-black, 25%);
+  }
 
-#food-list-container, #hsl-container {
-  margin-top: 2em;
-}
+  #food-list-container, #hsl-container {
+    margin-top: 2em;
+  }
 
-.food-list-card {
-  @extend %card-shared;
-  min-height: 200px;
-  background-color: $color-ligth-pink;
-}
+  .food-list-card {
+    @extend %card-shared;
+    min-height: 200px;
+    background-color: $color-ligth-pink;
+  }
 
-.dishes {
-  margin-top: 0.2em;
-  margin-bottom: 2em;
-  line-height: 1.5;
-}
+  .dishes {
+    margin-top: 0.2em;
+    margin-bottom: 2em;
+    line-height: 1.5;
+  }
 
-.dishes-labels {
-  margin-bottom: 1em;
-}
+  .dish-labels {
+    margin-bottom: 1em;
+  }
 
-.restaurant-area {
+  .restaurant-area {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 0 1em;
-}
+  }
 
-.restaurant {
+  .restaurant {
     width: 48%;
     padding: 1em;
     background-color: rgba(0, 0, 0, 0.057);
@@ -284,21 +295,21 @@ h3 {
     border: 1px dashed var(--main-em-color);
     border-radius: 10px;
     display: flex;
-}
+  }
 
 
-#location-icon {
+  #location-icon {
     width: 25px;
     position: relative;
     top: 10px;
-}
+  }
 
-#location-icon:hover {
+  #location-icon:hover {
     fill: var(--main-bg-color);
-}
+  }
 
-/* The Modal (background) */
-.modal {
+  /* The Modal (background) */
+  .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -307,8 +318,8 @@ h3 {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   }
 
   /* Modal Content/Box */
@@ -328,12 +339,99 @@ h3 {
     font-weight: bold;
   }
 
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+
+close:hover,
+close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+}
+
+
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 34px;
+  margin: 0.625em;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-orange;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: $color-orange;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(55px);
+  -ms-transform: translateX(55px);
+  transform: translateX(55px);
+}
+
+/*------ ADDED CSS ---------*/
+.fi
+{
+  display: none;
+}
+
+.fi, .en
+{
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  font-size: 0.7em;
+  font-family: Verdana, sans-serif;
+}
+
+input:checked+ .slider .fi
+{display: block;}
+
+input:checked + .slider .en
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 0.5em;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 
 
 

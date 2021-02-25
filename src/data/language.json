@@ -1,38 +1,22 @@
 {
-  "home": {
-    "fi": "Etusivu",
-    "en": "Home"
-  },
-  "menu": {
-    "fi": "Ruokalistat",
-    "en": "Menus"
-  },
-  "routes": {
-    "fi": "Reitit",
-    "en": "Routes"
-  },
-  "contacts": {
-    "fi": "Yhteystiedot",
-    "en": "Contacts"
-  },
-  "appname": {
-    "fi": "Lounari",
-    "en": "Lunchyman"
-  },
-  "appnamemobile": {
-    "fi": "Lounari",
-    "en": "Lunchyman"
-  },
-  "slogan": {
-    "fi": "Missä tänään syötäisiin?",
-    "en": "Where to eat?"
-  },
-  "maintext": {
-    "fi": "Missä tänään syötäisiin? Tuttu tarina ennen lounashetkeä. Palvelu etsii lähelläsi olevat lounaspaikat, sekä näyttää niiden päivittäisen lounaslistan. Viikottaiset lounaslistat ovat myös käytettävissäsi. Pääset niihin klikkaamalla ravintolan logoa.",
-    "en": "Where to eat? Question we face all the time near lunch. Lunchyman finds nearby lunch places and shows their daily menu."
+
+
+  "campuses": {
+    "fi": "Kampukset",
+    "en": "Campuses"
   },
   "hslroute": {
     "fi": "HSL Reitit",
     "en": "HSL Routes"
+  },
+  "timetable": {
+    "fi": "Aikataulu",
+    "en": "Timetable"
+  },
+  "menu": {
+    "fi": "Ruokalista",
+    "en": "menu"
   }
+
+
 }

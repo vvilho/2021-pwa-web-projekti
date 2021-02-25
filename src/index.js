@@ -23,15 +23,10 @@ let campus = document.querySelector('#campuses').value;
  */
 
 const languagDomClasses = [
-  "appLangClassHome",
-  "appLangClassMenu",
-  "appLangClassRoutes",
-  "appLangClassContacts",
-  "appLangClassAppname",
-  "appLangClassAppnamemobile",
-  "appLangClassSlogan",
-  "appLangClassMaintext",
-  "appLangClassHslroute"
+  "campuses",
+  "hslroute",
+  "timetable",
+  "menu"
 ];
 
 
@@ -41,7 +36,7 @@ const languagDomClasses = [
  * @param {Array} menuData - Lunch menu array
  */
 const renderMenu = (menuData) => {
-  const restaurantDiv = document.querySelector('#fazer-kp');
+  const restaurantDiv = document.querySelector('.dishes');
   restaurantDiv.innerHTML = '';
   const ul = document.createElement('ul');
   for (const item of menuData) {
@@ -52,7 +47,7 @@ const renderMenu = (menuData) => {
 
   restaurantDiv.appendChild(ul);
   //Add diet code properties after the menu
-  restaurantDiv.innerHTML +=
+  document.querySelector('.dish-labels').innerHTML =
     languageSetting == "fi"?
       `<br><br>(G) Gluteeniton, (L) Laktoositon, (VL) Vähälaktoosinen, (M) Maidoton, (*) Voi hyvin,
         (Veg) Soveltuu vegaaniruokavalioon, (VS) Sis. tuoretta valkosipulia, (A) Sis. allergeeneja`
@@ -68,7 +63,7 @@ const renderMenu = (menuData) => {
  * @param {string} message -Error message
  */
 const renderNoMenuDataNotification = (message) => {
-  const restaurantDiv = document.querySelector('#fazer-kp');
+  const restaurantDiv = document.querySelector('.dishes');
   restaurantDiv.innerHTML = `<p>${message}</p>`;
 };
 
@@ -80,8 +75,7 @@ const renderNoMenuDataNotification = (message) => {
 const createUiLanguages = (language) => {
   try {
     for (const dom of languagDomClasses) {
-      let domName = dom.slice(12).toLowerCase();
-      document.querySelector("." + dom).textContent = LanguageData[domName][language];
+      document.querySelector(".app-lang-"+dom).textContent = LanguageData[dom][language];
     }
   } catch (e) {
     console.log("Error in createUiLanguages: ", e);
@@ -97,12 +91,15 @@ const switchLanguage = () => {
   if (languageSetting === 'fi') {
     languageSetting = 'en';
     createUiLanguages(languageSetting);
+    localStorage.setItem('Lang', languageSetting);
   } else {
     languageSetting = 'fi';
     createUiLanguages(languageSetting);
+    localStorage.setItem('Lang', languageSetting);
   }
   console.log('language changed to: ', languageSetting);
   loadAllMenuData();
+  changeCampusName();
 };
 
 /**
@@ -145,7 +142,7 @@ const transportationVehicleIcon = (id) => {
   } else if (id == 3) {
     vehicle = "bus";
   }
-  return `<img src="./assets/icons/${vehicle}.svg">`;
+  return `<img class="hsl-icon" src="./assets/icons/${vehicle}.svg">`;
 
 };
 
@@ -184,8 +181,8 @@ const loadHSLData = async (stopid) => {
 };
 
 const changeBackgroundImage = () => {
-  document.querySelector('#showcase-imgarea').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
-  document.querySelector('.info-area').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
+  //TODO: tee valmiiksi changeBackGorudimage
+  document.querySelector('#hero').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
 
 };
 
@@ -196,6 +193,8 @@ const changeBackgroundImage = () => {
  * @param {array} list - List of coming HSL transportation
  */
 const renderHSLData = async (list) => {
+  document.querySelector('.hsl-card-content').textContent = "";
+  document.querySelector('.hsl-card-content').textContent = "Loading data...";
 
   const stopElement = document.createElement('div');
   const ulElement = document.createElement('ul');
@@ -206,14 +205,14 @@ const renderHSLData = async (list) => {
     ulElement.appendChild(liElement);
   }
 
-  document.querySelector('.hsl-data').textContent = "";
+  document.querySelector('.hsl-card-content').textContent = "";
 
   if (list.length == 0) {
     document.querySelector('.hsl-data').textContent = "HSL data can not be loaded";
     return;
   }
   stopElement.appendChild(ulElement);
-  document.querySelector('.hsl-data').appendChild(stopElement);
+  document.querySelector('.hsl-card-content').appendChild(stopElement);
 
 };
 
@@ -230,9 +229,21 @@ const forEachCampus = () => {
   loadAllMenuData();
   loadWeatherData(CampusData[campus]["location"], languageSetting);
   changeBackgroundImage();
+  changeCampusName();
 
 };
 
+/**
+ * Changes campus' name
+ *
+ */
+const changeCampusName = () => {
+
+  const currentCampus = document.querySelector('.current-campus');
+  const data = CampusData[campus];
+  currentCampus.textContent = languageSetting == "fi" ?
+    data["displayname_fi"]:data["displayname_en"];
+};
 
 /**
  * Runs when app is first onened
@@ -242,12 +253,22 @@ const campusInit = () => {
   if (localStorage.getItem('Campus') == null) {
     localStorage.setItem('Campus', campus);
   }
+  if (localStorage.getItem('Lang') == null) {
+    localStorage.setItem('Lang', languageSetting);
+  }
+  languageSetting = localStorage.getItem('Lang')
   campus = localStorage.getItem('Campus');
   document.querySelector('#campuses option[value="' + campus + '"]').selected = true;
   loadWeatherData(CampusData[campus]["location"], languageSetting);
   loadAllMenuData();
   loadHSLData(CampusData[campus]["hslstopid"]);
-  // document.querySelector('#showcase-imgarea').style.background = "";
+  changeCampusName();
+  changeBackgroundImage();
+  createUiLanguages(languageSetting);
+  if(languageSetting== "en"){
+    document.querySelector('#togBtn').checked = true;
+  }
+
 };
 
 
@@ -272,7 +293,7 @@ const loadWeatherData = async (campus, language) => {
   name.innerHTML = nameValue;
   weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png">`;
   temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
-  desc.innerHTML = descValue;
+  // desc.innerHTML = descValue;
 };
 
 
@@ -297,10 +318,10 @@ const registerServiceWorkers = () => {
 const init = () => {
 
   campusInit();
-  document.querySelector('#switch-lang').addEventListener('click', switchLanguage);
+  document.querySelector('#togBtn').addEventListener('click', switchLanguage);
   document.querySelector('#campuses').addEventListener('change', forEachCampus);
 
-  setModalControls();
+  // setModalControls();
 
 
   // Service workers registeration below disabled temporarily for easier local development
