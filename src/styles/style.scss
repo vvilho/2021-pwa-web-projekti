@@ -21,6 +21,7 @@ body {
   margin: 0;
   font: 100% Helvetica, sans-serif;
 }
+
 #metropolia-logo-small {
   display: none;
 }
@@ -36,9 +37,7 @@ body {
     display: flex;
     justify-content: space-between;
   }
-  .hero-front{
-    text-align: center;
-  }
+
 }
 
 @media screen and (min-width: 735px) {
@@ -46,11 +45,11 @@ body {
     display: block;
     width: 250px;
     margin: 0.5em 2em;
-}
+  }
 
-#metropolia-logo {
-  display: none;
-}
+  #metropolia-logo {
+    display: none;
+  }
 }
 
 %attr-shared {
@@ -67,14 +66,15 @@ body {
 }
 
 .btn-lang {
-  @extend  %attr-shared;
+  @extend %attr-shared;
+
   &:hover {
-      background-color: lighten($color-orange, 10%);
+    background-color: lighten($color-orange, 10%);
   }
 }
 
 select {
-  @extend  %attr-shared;
+  @extend %attr-shared;
   min-width: 8em;
   -webkit-appearance: none;
   appearance: none;
@@ -84,6 +84,8 @@ select {
   background-repeat: no-repeat, repeat;
   background-position: right .7em top 50%, 0 0;
   background-size: .65em auto, 100%;
+  box-shadow: 0px 3px 10px $color-gray;
+
 }
 
 label {
@@ -99,28 +101,27 @@ label {
 }
 
 .container-center {
-  @extend  %flex-center-shared;
+  @extend %flex-center-shared;
 }
 
 header {
-  @extend  %flex-center-shared;
+  @extend %flex-center-shared;
   margin: 2em 0 1em 0;
 }
 
 #hero {
-  @extend  %flex-center-shared;
+  @extend %flex-center-shared;
   z-index: -1;
   width: 100%;
   height: 40vh;
-  background: url(../assets/img/karamalmi-kampus-medium.jpg)
-  no-repeat center center/cover;
+  background: url(../assets/img/karamalmi-kampus-medium.jpg) no-repeat center center/cover;
   /*background-size: contain;
   position: relative;
   overflow: hidden;*/
 }
 
 #hero-front {
-  @extend  %flex-center-shared;
+  @extend %flex-center-shared;
   width: 100%;
   height: 20vh;
   background-color: rgba(255, 255, 255, 0.75);
@@ -130,10 +131,11 @@ h1 {
   font-size: 5.5vh;
   font-weight: 500;
   color: $color-brown;
+  text-align: center;
 }
 
 main {
-  padding:0 16px;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -146,13 +148,15 @@ h2 {
 #hsl-container {
   position: relative;
 }
-.hsl-container{
+
+.hsl-container {
   height: 220px;
   overflow: scroll;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
-.hsl-container::-webkit-scrollbar{
+
+.hsl-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -228,24 +232,24 @@ h3 {
 }
 
 @media screen and (max-width: 500px) {
-  #btn-hsl-left, #btn-hsl-right  {
-      width: 3em;
-      height: 3em;
-      bottom: 0em;
+  #btn-hsl-left, #btn-hsl-right {
+    width: 3em;
+    height: 3em;
+    bottom: 0em;
   }
-  .app-lang-campuses{
+  .app-lang-campuses {
     display: none;
   }
 }
 
 #btn-hsl-left {
-  @extend  %btn--hsl-shared;
+  @extend %btn--hsl-shared;
   transform: scale(-1, 1);
   left: -1em;
 }
 
 #btn-hsl-right {
-  @extend  %btn--hsl-shared;
+  @extend %btn--hsl-shared;
   right: -1em;
 }
 
@@ -274,7 +278,7 @@ h3 {
 }
 
 .dishes li {
-  margin-top:1em;
+  margin-top: 1em;
 }
 
 .dishes-labels {
@@ -282,72 +286,72 @@ h3 {
 }
 
 .restaurant-area {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 0 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 1em;
 }
 
 .restaurant {
-    width: 48%;
-    padding: 1em;
-    background-color: rgba(0, 0, 0, 0.057);
-    margin: 1em 0;
-    border: 1px dashed var(--main-em-color);
-    border-radius: 10px;
-    display: flex;
+  width: 48%;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.057);
+  margin: 1em 0;
+  border: 1px dashed var(--main-em-color);
+  border-radius: 10px;
+  display: flex;
 }
 
 
 #location-icon {
-    width: 25px;
-    position: relative;
-    top: 10px;
+  width: 25px;
+  position: relative;
+  top: 10px;
 }
 
 #location-icon:hover {
-    fill: var(--main-bg-color);
+  fill: var(--main-bg-color);
 }
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
 
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 
- /*------ change languages toggle ---------*/
+/*------ change languages toggle ---------*/
 
 .switch {
   position: relative;
@@ -355,9 +359,13 @@ h3 {
   width: 90px;
   height: 34px;
   margin: 0.625em;
+  box-shadow: 0px 3px 10px $color-gray;
+  border-radius: 0.5em;
 }
 
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 .slider {
   position: absolute;
@@ -368,8 +376,8 @@ h3 {
   bottom: 0;
   padding: 0 0.4em;
   background-color: $color-orange;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .7s;
+  transition: .7s;
 }
 
 .slider:before {
@@ -380,8 +388,10 @@ h3 {
   left: 4px;
   bottom: 4px;
   background-color: $color-white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .7s;
+  transition: .7s;
+  z-index:1;
+
 }
 
 input:checked + .slider {
@@ -399,41 +409,32 @@ input:checked + .slider:before {
 }
 
 
-.fi
-{
-  display: none;
-}
+
 
 .fi {
   color: white;
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 25%;
   font-size: 0.9em;
   font-family: Verdana, sans-serif;
+  z-index:0;
+
 }
 
 .en {
   color: white;
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 75%;
   font-size: 0.9em;
   font-family: Verdana, sans-serif;
+  z-index: 0;
+
 }
 
-
-input:checked+ .slider .fi
-{display: block;}
-
-input:checked + .slider .en
-{display: none;}
-
-/*--------- END --------*/
-
-/* Rounded sliders */
 .slider.round {
   border-radius: 0.5em;
 }
