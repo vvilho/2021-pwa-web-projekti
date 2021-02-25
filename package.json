@@ -33,5 +33,7 @@
     "workbox-webpack-plugin": "^6.1.0",
     "write-file-webpack-plugin": "^4.5.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tailwindcss": "^2.0.3"
+  }
 }
