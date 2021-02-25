@@ -20,8 +20,8 @@ const parseSodexoMenu = (sodexoDailyMenu) => {
   const coursesFi = [];
   const courses = Object.values(sodexoDailyMenu);
   for (const course of courses) {
-    coursesEn.push(course.title_en);
-    coursesFi.push(course.title_fi);
+    coursesEn.push(`${course.title_en} (${course.dietcodes})    <p><b>${course.price}</b></p>`);
+    coursesFi.push(`${course.title_fi} (${course.dietcodes})    <p><b>${course.price}</b></p>`);
   }
   return {fi: coursesFi, en: coursesEn};
 };

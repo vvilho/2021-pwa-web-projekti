@@ -9,6 +9,8 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 module.exports = {
   entry: {
     app: './src/index.js',
+  },devServer: {
+    host: '0.0.0.0'
   },
   plugins: [
     new CleanWebpackPlugin(),

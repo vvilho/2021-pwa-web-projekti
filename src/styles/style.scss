@@ -36,6 +36,9 @@ body {
     display: flex;
     justify-content: space-between;
   }
+  .hero-front{
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 735px) {
@@ -109,7 +112,7 @@ header {
   z-index: -1;
   width: 100%;
   height: 40vh;
-  background: url(../assets/img/karamalmin-kampus-ilmakuva-medium.jpg)
+  background: url(../assets/img/karamalmi-kampus-medium.jpg)
   no-repeat center center/cover;
   /*background-size: contain;
   position: relative;
@@ -142,6 +145,15 @@ h2 {
 
 #hsl-container {
   position: relative;
+}
+.hsl-container{
+  height: 220px;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hsl-container::-webkit-scrollbar{
+  display: none;
 }
 
 %card-shared {
@@ -184,7 +196,7 @@ h3 {
   border-bottom: 1px solid $color-gray;
 }
 
-.hsl-lable {
+.hsl-label {
   display: flex;
   align-items: center;
   background-color: $color-blue;
@@ -193,12 +205,14 @@ h3 {
   color: $color-white;
   font-size: 1em;
   padding: 0.25em 0.5em;
+  width: 5em;
 }
 
-.hsl-lable > img {
+.hsl-label > img {
   height: 1.2em;
   padding-right: 0.5em;
 }
+
 
 %btn--hsl-shared {
   position: absolute;
@@ -218,6 +232,9 @@ h3 {
       width: 3em;
       height: 3em;
       bottom: 0em;
+  }
+  .app-lang-campuses{
+    display: none;
   }
 }
 
@@ -254,6 +271,10 @@ h3 {
   margin-top: 0.2em;
   margin-bottom: 2em;
   line-height: 1.5;
+}
+
+.dishes li {
+  margin-top:1em;
 }
 
 .dishes-labels {
@@ -326,5 +347,100 @@ h3 {
     cursor: pointer;
   }
 
+ /*------ change languages toggle ---------*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 34px;
+  margin: 0.625em;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 0.4em;
+  background-color: $color-orange;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 30px;
+  left: 4px;
+  bottom: 4px;
+  background-color: $color-white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: $color-orange;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(52px);
+  -ms-transform: translateX(52px);
+  transform: translateX(52px);
+}
+
+
+.fi
+{
+  display: none;
+}
+
+.fi {
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 25%;
+  font-size: 0.9em;
+  font-family: Verdana, sans-serif;
+}
+
+.en {
+  color: white;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 75%;
+  font-size: 0.9em;
+  font-family: Verdana, sans-serif;
+}
+
+
+input:checked+ .slider .fi
+{display: block;}
+
+input:checked + .slider .en
+{display: none;}
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 0.5em;
+}
+
+.slider.round:before {
+  border-radius: 0.5em;
+  color: $color-brown;
+}
 
 
