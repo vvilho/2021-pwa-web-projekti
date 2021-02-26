@@ -8,6 +8,7 @@ import HSLData from './modules/hsl-data';
 import LanguageData from './data/language.json';
 import CampusData from './data/campuses.json';
 import WeatherData from './modules/weather-data';
+import './modules/carousel';
 
 const today = new Date().toISOString().split('T')[0];
 let languageSetting = 'fi';
