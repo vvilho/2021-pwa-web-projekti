@@ -146,3 +146,31 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
+
+
+
+let touchstartX = 0;
+let touchendX = 0;
+
+const slider = document.querySelector('.slideshow-container');
+
+function handleGesture() {
+  if (touchendX < touchstartX){
+    plusSlides(1);
+    pause();
+  }
+  if (touchendX > touchstartX) {
+    plusSlides(-1);
+    pause();
+  }
+}
+
+slider.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+});
+
+slider.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  handleGesture();
+});

@@ -384,7 +384,7 @@ h3 {
   position: absolute;
   content: "";
   height: 26px;
-  width: 30px;
+  width: 33px;
   left: 4px;
   bottom: 4px;
   background-color: $color-white;
@@ -403,9 +403,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(52px);
-  -ms-transform: translateX(52px);
-  transform: translateX(52px);
+  -webkit-transform: translateX(49px);
+  -ms-transform: translateX(49px);
+  transform: translateX(49px);
 }
 
 
@@ -417,7 +417,7 @@ input:checked + .slider:before {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 25%;
-  font-size: 0.9em;
+  font-size: 1.5em;
   font-family: Verdana, sans-serif;
   z-index:0;
 
@@ -429,7 +429,7 @@ input:checked + .slider:before {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 75%;
-  font-size: 0.9em;
+  font-size: 1.5em;
   font-family: Verdana, sans-serif;
   z-index: 0;
 
