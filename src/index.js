@@ -12,7 +12,6 @@ import WeatherData from './modules/weather-data';
 const today = new Date().toISOString().split('T')[0];
 let languageSetting = 'fi';
 let campus = document.querySelector('#campuses').value;
-let hslList = [];
 
 
 /**
@@ -157,7 +156,6 @@ const loadHSLData = async (stopid) => {
 
       const result = await HSLData.getRidesByStopId(i["id"]);
       const stop = result.data.stop;
-
       for (const ride of stop.stoptimesWithoutPatterns) {
         list.push({
           data: transportationVehicleIcon(stop.vehicleType) + ride.trip.routeShortName,
