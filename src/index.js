@@ -25,7 +25,8 @@ const languagDomClasses = [
   "campuses",
   "hslroute",
   "timetable",
-  "menu"
+  "menu",
+  "dishlabels"
 ];
 
 /**
@@ -78,6 +79,7 @@ const renderMenu = (menuData) => {
 const renderNoDataNotification = (message) => {
   const restaurantDiv = document.querySelector('.dishes');
   restaurantDiv.innerHTML = `<p>${message}</p>`;
+  document.querySelector('.dishes-labels').textContent = "";
 };
 
 
@@ -261,11 +263,12 @@ const campusInit = () => {
   campus = localStorage.getItem('Campus');
   document.querySelector('#campuses option[value="' + campus + '"]').selected = true;
   loadWeatherData(CampusData[campus]["location"], languageSetting);
+  createUiLanguages(languageSetting);
   loadAllMenuData();
   loadHSLData(CampusData[campus]["hslstopid"]);
   changeCampusName();
   changeBackgroundImage();
-  createUiLanguages(languageSetting);
+
   if(languageSetting== "en"){
     document.querySelector('#togBtn').checked = true;
   }
