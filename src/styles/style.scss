@@ -150,8 +150,8 @@ h2 {
 }
 
 .hsl-container {
-  height: 220px;
-  overflow: scroll;
+  height: 184px;
+  overflow: hidden;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -181,7 +181,7 @@ h2 {
 }
 
 h3 {
-  padding-bottom: 0.5em;
+  //padding-bottom: 0.5em;
   border-bottom: 1px solid $color-gray;
   margin-bottom: 0.04em;
 }

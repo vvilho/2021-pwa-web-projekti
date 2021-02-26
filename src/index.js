@@ -12,6 +12,7 @@ import WeatherData from './modules/weather-data';
 const today = new Date().toISOString().split('T')[0];
 let languageSetting = 'fi';
 let campus = document.querySelector('#campuses').value;
+let hslList = [];
 
 
 /**
@@ -91,7 +92,7 @@ const renderNoDataNotification = (message) => {
 const createUiLanguages = (language) => {
   try {
     for (const dom of languagDomClasses) {
-      document.querySelector(".app-lang-"+dom).textContent = LanguageData[dom][language];
+      document.querySelector(".app-lang-" + dom).textContent = LanguageData[dom][language];
     }
   } catch (e) {
     console.log("Error in createUiLanguages: ", e);
@@ -119,7 +120,6 @@ const switchLanguage = () => {
 };
 
 
-
 /**
  *
  * @param {number} id -Transportation vehicle id
@@ -141,8 +141,7 @@ const transportationVehicleIcon = (id) => {
 };
 
 const changeBackgroundImage = () => {
-  //TODO: tee valmiiksi changeBackGorudimage
-  document.querySelector('#hero').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
+  document.querySelector('#hero').style["background"] = "url('./assets/img/" + campus + "-kampus-big.jpg') no-repeat center center/cover";
 
 };
 
@@ -169,9 +168,9 @@ const loadHSLData = async (stopid) => {
       }
 
     }
-    list.sort((a, b) => {
-      return (a.timestamp) - (b.timestamp);
-    });
+    // list.sort((a, b) => {
+    //   return (a.timestamp) - (b.timestamp);
+    // });
 
     renderHSLData(list);
   } catch (error) {
@@ -209,7 +208,10 @@ const renderHSLData = async (list) => {
     stopElement.appendChild(ulElement);
 
   }
-
+  // for (const ride of await list) {
+  //   hslList.push(`<ul class="hsl-row"><li class="hsl-label">${ride.data}</li><li class="hsl-stop-name">${ride.where}</li><li class="hsl-time">${ride.time}</li></ul>`);
+  //
+  // }
 
 
   if (list.length == 0) {
@@ -219,6 +221,8 @@ const renderHSLData = async (list) => {
 
 
 };
+
+
 /**
  * After campus is changed from select menu
  * HSL, weather and restaurant menu are updated
@@ -244,7 +248,7 @@ const changeCampusName = () => {
   const currentCampus = document.querySelector('.current-campus');
   const data = CampusData[campus];
   currentCampus.textContent = languageSetting == "fi" ?
-    data["displayname_fi"]:data["displayname_en"];
+    data["displayname_fi"] : data["displayname_en"];
 };
 
 
@@ -269,7 +273,7 @@ const campusInit = () => {
   changeCampusName();
   changeBackgroundImage();
 
-  if(languageSetting== "en"){
+  if (languageSetting == "en") {
     document.querySelector('#togBtn').checked = true;
   }
 
@@ -324,6 +328,14 @@ const init = () => {
   campusInit();
   document.querySelector('#togBtn').addEventListener('click', switchLanguage);
   document.querySelector('#campuses').addEventListener('change', forEachCampus);
+  document.querySelector('#btn-hsl-right').addEventListener('click', () =>{
+    let y= document.querySelector('.hsl-container').scrollTop;
+    document.querySelector('.hsl-container').scroll(0, y+184);
+  });
+  document.querySelector('#btn-hsl-left').addEventListener('click', () =>{
+    let y= document.querySelector('.hsl-container').scrollTop;
+    document.querySelector('.hsl-container').scroll(0, y-184);
+  });
 
   // setModalControls();
 
