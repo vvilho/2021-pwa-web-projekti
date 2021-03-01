@@ -1,7 +1,7 @@
 /**
  * Functions for managing Sodexo menu data
  * @module modules/sodexo-data
- * @author mattpe <mattpe@metropolia.fi>
+ * @author vilhov <vilhov@metropolia.fi>
  *
  */
 import {fetchGetJson} from "./network";

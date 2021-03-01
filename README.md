@@ -1,12 +1,11 @@
-# Lounari appi
+# Metropolia Info Appi
 
-Displays menus and transportation info.
+Displays menus and transportation info for each Metropolia campus
 
 ---
 
 Based on WTMP Starter:
 
-Simple boilerplate for [Webpack](https://webpack.js.org/guides/getting-started) powered web development exercises.
 
 ES6+ without any babeling/transpilers/polyfills. Only for [modern browsers](https://kangax.github.io/compat-table/es6/).
 

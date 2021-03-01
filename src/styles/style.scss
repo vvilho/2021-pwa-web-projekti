@@ -180,7 +180,7 @@ h2 {
   background-color: $color-ligth-blue;
 }
 
-h3 {
+.app-lang-timetable {
   padding-bottom: 0.5em;
   border-bottom: 1px solid $color-gray;
   margin-bottom: 0.04em;
@@ -461,6 +461,11 @@ input:checked + .slider:before {
   margin-right: -1em;
   box-shadow: 0px 3px 10px $color-gray;
 }
+.slideshow-container:hover {
+  body{
+    position: fixed;
+  }
+}
 
 .mySlides {
   display: none;
@@ -522,3 +527,13 @@ input:checked + .slider:before {
   background-color: #717171
 }
 
+
+
+.food-list-card-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid $color-gray;
+  margin-bottom: 0.04em;
+}

@@ -2,13 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Lounari | Etsi lähimmät ruokalistat</title>
+  <title>Metropolia info APP</title>
   <script src="https://kit.fontawesome.com/1ff2ea641a.js" crossorigin="anonymous"></script>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MetropoliaInfo">
+
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon-180x180.png" />
 </head>
     <!-- Nav buttons -->
     <nav>
       <div class="tool-buttons">
-<!--          <button class="btn-lang" id="switch-lang">FI/EN</button>-->
         <label class="switch">
           <input type="checkbox" id="togBtn">
           <div class="slider round">
@@ -154,12 +167,12 @@
 <section id="food-list-container">
   <h2 class="app-lang-menu">Ruokalistat</h2>
   <div class="food-list-card">
-    <h3 class="res-heading"></h3>
+    <div class="food-list-card-header">
+      <h3 class="res-heading"></h3>
+      <h4 class="res-date">today</h4>
+    </div>
       <div class="dishes">Loading data...</div>
-      <p class="dishes-labels app-lang-dishlabels">(G) Gluteeniton, (L) Laktoositon,
-          (VL) Vähälaktoosinen, (M) Maidoton, (*) Voi hyvin,
-          (Veg) Soveltuu vegaaniruokavalioon,
-          (VS) Sis. tuoretta valkosipulia, (A) Sis. allergeeneja</p>
+      <p class="dishes-labels app-lang-dishlabels"></p>
   </div>
 </section>
 

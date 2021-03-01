@@ -42,9 +42,9 @@ module.exports = {
       skipWaiting: true,
     }),
     new WebpackPwaManifest({
-      name: 'Lunch Progressive Web App',
-      short_name: 'LunchPWA',
-      description: 'Lunch lists Progressive Web App!',
+      name: 'Metropolia INFO app',
+      short_name: 'InfoPWA',
+      description: 'Metropolia info Progressive Web App!',
       background_color: '#ffffff',
       crossorigin: 'use-credentials',
       icons: [
