@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-touch-icon-152x152.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon-180x180.png" />
 </head>
-    <!-- Nav buttons -->
+    <!-------------------------- Nav buttons --------------------------->
     <nav>
       <div class="tool-buttons">
         <label class="switch">
@@ -30,7 +30,7 @@
           </div>
         </label>
       </div>
-      <!-- Headerlogo -->
+      <!-------------------------- Header-logo --------------------------->
       <img id="metropolia-logo-small" src="./assets/icons/metropolia.svg" alt="metropolia logo">
       <form>
           <label for="campuses" class="app-lang-campuses">Campus:</label>
@@ -42,8 +42,7 @@
           </select>
       </form>
   </nav>
-
-  <!-- Headerlogo -->
+  <!-------------------------- Header-logo big --------------------------->
   <div class="container-center">
       <img id="metropolia-logo" src="./assets/icons/metropolia.svg" alt="metropolia logo">
   </div>
@@ -56,17 +55,29 @@
       </div>
   </header>
 <body>
+
   <main>
-    <!-- Säätiedot -->
+    <!------------------------- Messages -------------------------->
+    <section id="message-container">
+      <!-- <h2>Messages</h2> -->
+      <div class="metrolopia-messages">
+        <button id="btn-message-left">&#10094;</button>
+        <button id="btn-message-right">&#10095;</button>
+        <ul class="messages-list"></ul>
+      </div>
+      <div class="dots-messages">
+      </div>
+    </section>
+   <!-------------------------- Forecast --------------------------->
     <div id="forecast-container">
       <ul id="forecast">
-          <li class="name"></li>
-          <p class="weather-icon"></p>
-          <!-- <li class="desc"></li> -->
-          <li class="temp"></li>
-      </ul>
+        <li class="name"></li>
+        <p class="weather-icon"></p>
+        <li class="desc"></li>
+        <li class="temp"></li>
+    </ul>
 </div>
-
+<!-------------------- HSL transport information ------------------->
 <section id="hsl-container">
   <h2 class="app-lang-hslroute">HSL Reitit</h2>
   <div class="hsl-card">
@@ -164,6 +175,7 @@
 <!--</svg>-->
 <!--</button>-->
 </section>
+<!-------------------------- Foodlists --------------------------->
 <section id="food-list-container">
   <h2 class="app-lang-menu">Ruokalistat</h2>
   <div class="food-list-card">
@@ -176,12 +188,13 @@
   </div>
 </section>
 
-        <!-- not working in all browsers and net
+        <!-- not working in all browsers and net, just for test
         <iframe src="https://metropoliafi-my.sharepoint.com/personal/ailip_metropolia_fi/_layouts/15/Doc.aspx?sourcedoc={47d9a1e8-a353-4f79-a80b-da7a275f3693}&amp;action=embedview&amp;wdAr=1.7763888888888888" width="350px" height="221px" frameborder="0">See on manustatud <a target="_blank" href="https://office.com">Microsoft Office</a>\'i esitlus, platvorm <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
         -->
 
+        <!----------------- Corona instruction slideshow ----------------->
         <section id="corona-info-container">
-          <h2>Korona info</h2>
+          <h2 class="app-lang-coronaInfo">Koronan ohjeet</h2>
       <div class="slideshow-container">
           <button id="btn-slide-left">&#10094;</button>
           <button id="btn-slide-right">&#10095;</button>
@@ -189,11 +202,22 @@
         <div class="all-dots">
         </div>
         </section>
-
-    <section id="contact">
-      <p>Yhteystiedot tänne</p>
-    </section>
   </main>
+
+  <!-------------------------- Contact --------------------------->
+  <footer>
+    <div class="test"></div>
+    <div class="test2"></div>
+    <div class="test3"></div>
+    <section id="contact">
+      <h4 class="app-lang-contact">Yhteystiedot</h4>
+      <p>Metropolia Ammattikorkeakoulu</p>
+      <p>Käyntiosoite Myllypurontie 1, 00920 Helsinki</p>
+      <p>Postiosoite PL 4000, 00079 Metropolia</p>
+      <p>Puhelin 09 7424 5000</p>
+    </section>
+  </footer>
+
   <!-- The Modal -->
   <div id="myModal" class="modal">
     <!-- Modal content -->

@@ -9,11 +9,16 @@ import LanguageData from './data/language.json';
 import CampusData from './data/campuses.json';
 import WeatherData from './modules/weather-data';
 import './modules/carousel';
+import MetropoliaMessages from "./modules/messages-data";
 
 const today = new Date().toISOString().split('T')[0];
 const fiToday = today.split(/\D/g);
 let languageSetting = 'fi';
 let campus = document.querySelector('#campuses').value;
+
+const messageSlidesContainer = document.querySelector(".metrolopia-messages");
+let slideIndexMessages = 1;
+let myTimerMessages;
 
 
 /**
@@ -28,7 +33,9 @@ const languagDomClasses = [
   "hslroute",
   "timetable",
   "menu",
-  "dishlabels"
+  "dishlabels",
+  "coronaInfo",
+  "contact"
 ];
 
 /**
@@ -118,6 +125,8 @@ const switchLanguage = () => {
   console.log('language changed to: ', languageSetting);
   loadAllMenuData();
   changeCampusName();
+  loadMessages();
+  showSlidesMessages(slideIndexMessages);
 };
 
 
@@ -297,10 +306,141 @@ const loadWeatherData = async (campus, language) => {
 
   name.innerHTML = nameValue;
   weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png">`;
+  desc.innerHTML = descValue;
   temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
   // desc.innerHTML = descValue;
 };
 
+//message-data and slides
+//renders Message-data
+const renderMessages = (messageData) => {
+  let dotId = 0;
+  const messageDotsContainer = document.querySelector(".dots-messages");
+  const messagesList = document.querySelector(".messages-list");
+  messagesList.innerHTML = "";
+  messageDotsContainer.innerHTML = "";
+  for (const item of messageData) {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = item;
+    listItem.classList.add("messageSlides");
+    messagesList.appendChild(listItem);
+
+    //creates span (dot) element and adds id
+    const setDivId = document.createAttribute("id");
+    setDivId.value = dotId;
+    const span = document.createElement("span");
+    span.classList.add("mdot");
+    span.setAttributeNode(setDivId);
+    messageDotsContainer.append(span);
+    dotId++;
+  }
+};
+
+const loadMessages = async () => {
+  try {
+    let parsedMessages;
+    parsedMessages = await MetropoliaMessages.getMessages(languageSetting);
+    renderMessages(parsedMessages);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+//goes through all elements with class="dot" and gets current dot's id when cliked
+const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
+AllDotsFromContainerMessages.forEach((item) => {
+  item.addEventListener("click", () => {
+    let idToNumber = parseFloat(item.id);
+    //changes slide to match with dot id
+    currentSlideMessages(idToNumber);
+  });
+});
+
+const pauseMessages = () => {
+  clearInterval(myTimerMessages);
+};
+
+const resumeMessages = () => {
+  clearInterval(myTimerMessages);
+  myTimerMessages = setInterval(() => {
+    plusSlidesMessages(slideIndexMessages);
+  }, 5000);
+};
+
+const plusSlidesMessages = (n) => {
+  clearInterval(myTimerMessages);
+  if (n < 0) {
+    showSlidesMessages(slideIndexMessages -= 1);
+  } else {
+    showSlidesMessages(slideIndexMessages += 1);
+  }
+
+  if (n === -1) {
+    myTimerMessages = setInterval(() => {
+      plusSlidesMessages(n + 2);
+    }, 5000);
+  } else {
+    myTimerMessages = setInterval(() => {
+      plusSlidesMessages(n + 1);
+    }, 5000);
+  }
+};
+
+const currentSlideMessages = (n) => {
+  clearInterval(myTimerMessages);
+  myTimerMessages = setInterval(() => {
+    plusSlidesMessages(n + 1);
+  }, 5000);
+  plusSlidesMessages(slideIndexMessages = n);
+};
+
+//event listener for right button
+const btnPlusM = document.querySelector("#btn-message-right");
+btnPlusM.addEventListener("click", () => {
+  plusSlidesMessages(1);
+  pauseMessages();
+});
+
+//event listener for left button
+const btnMinusM = document.querySelector("#btn-message-left");
+btnMinusM.addEventListener("click", () => {
+  plusSlidesMessages(-1);
+  pauseMessages();
+});
+
+/**
+ * calculates which slide to show
+ *
+ * @param {Number} n
+ */
+const showSlidesMessages = (n) => {
+  let i;
+  let slides = document.getElementsByClassName("messageSlides");
+  let dots = document.getElementsByClassName("mdot");
+  if (n > slides.length) {
+    slideIndexMessages = 1;
+  }
+  //console.log("n: ", n, " slideinex: ", slideIndex);
+  if (n < 1) {
+    slideIndexMessages = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndexMessages - 1].style.display = "block";
+  dots[slideIndexMessages - 1].className += " active";
+};
+
+messageSlidesContainer.addEventListener("mouseenter", () => {
+  pauseMessages();
+});
+messageSlidesContainer.addEventListener("mouseleave", () => {
+  resumeMessages();
+});
 /**
  * Updates HSL list every minute
  *
@@ -339,6 +479,11 @@ const init = () => {
   document.querySelector('#campuses').addEventListener('change', forEachCampus);
   document.querySelector('.res-date').textContent = [fiToday[2],fiToday[1],fiToday[0]].join(".");
   everyMinute();
+  loadMessages();
+  showSlidesMessages(slideIndexMessages);
+  myTimerMessages = setInterval(() => {
+    plusSlidesMessages(1);
+  }, 5000);
 
 //
   // setModalControls();
