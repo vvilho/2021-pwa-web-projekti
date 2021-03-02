@@ -44,12 +44,23 @@
   </header>
 <body>
   <main>
+    <section id="message-container">
+      <!-- <h2>Messages</h2> -->
+      <div class="metrolopia-messages">
+        <button id="btn-message-left">&#10094;</button>
+        <button id="btn-message-right">&#10095;</button>
+        <ul class="messages-list"></ul>
+      </div>
+      <div class="dots-messages">
+      </div>
+    </section>
+
     <!-- Säätiedot -->
     <div id="forecast-container">
       <ul id="forecast">
           <li class="name"></li>
           <p class="weather-icon"></p>
-          <!-- <li class="desc"></li> -->
+          <li class="desc"></li>
           <li class="temp"></li>
       </ul>
 </div>
@@ -168,7 +179,7 @@
         -->
 
         <section id="corona-info-container">
-          <h2>Korona info</h2>
+          <h2 class="app-lang-coronaInfo">Koronan ohjeet</h2>
       <div class="slideshow-container">
           <button id="btn-slide-left">&#10094;</button>
           <button id="btn-slide-right">&#10095;</button>
@@ -176,10 +187,6 @@
         <div class="all-dots">
         </div>
         </section>
-
-    <section id="contact">
-      <p>Yhteystiedot tänne</p>
-    </section>
   </main>
   <!-- The Modal -->
   <div id="myModal" class="modal">
@@ -193,5 +200,18 @@
       </p>
     </div>
   </div>
+
+  <footer>
+    <div class="test"></div>
+    <div class="test2"></div>
+    <div class="test3"></div>
+    <section id="contact">
+      <h4 class="app-lang-contact">Yhteystiedot</h4>
+      <p>Metropolia Ammattikorkeakoulu</p>
+      <p>Käyntiosoite Myllypurontie 1, 00920 Helsinki</p>
+      <p>Postiosoite PL 4000, 00079 Metropolia</p>
+      <p>Puhelin 09 7424 5000</p>
+    </section>
+  </footer>
 </body>
 </html>
