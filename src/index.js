@@ -1,6 +1,5 @@
 import SodexoData from './modules/sodexo-data';
 import FazerData from './modules/fazer-data';
-import {setModalControls} from './modules/modal';
 import './styles/style.scss';
 import './styles/mobile.scss';
 import './styles/widescreen.scss';
@@ -16,7 +15,7 @@ const fiToday = today.split(/\D/g);
 let languageSetting = 'fi';
 let campus = document.querySelector('#campuses').value;
 
-const messageSlidesContainer = document.querySelector(".metrolopia-messages");
+const messageSlidesContainer = document.querySelector(".metropolia-messages");
 let slideIndexMessages = 1;
 let myTimerMessages;
 
@@ -104,7 +103,7 @@ const renderNoDataNotification = (message) => {
 const createUiLanguages = (language) => {
   try {
     for (const dom of languagDomClasses) {
-      document.querySelector(".app-lang-"+dom).innerHTML = LanguageData[dom][language];
+      document.querySelector(".app-lang-" + dom).innerHTML = LanguageData[dom][language];
     }
   } catch (e) {
     console.log("Error in createUiLanguages: ", e);
@@ -130,11 +129,10 @@ const switchLanguage = () => {
   loadAllMenuData();
   changeCampusName();
   loadMessages();
-  showSlidesMessages(slideIndexMessages);
+
   loadWeatherData(CampusData[campus]["location"], languageSetting);
 
 };
-
 
 
 /**
@@ -158,7 +156,7 @@ const transportationVehicleIcon = (id) => {
 };
 
 const changeBackgroundImage = () => {
-  document.querySelector('#hero').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
+  document.querySelector('#hero').style["background"] = "url('./assets/img/" + campus + "-kampus-big.jpg') no-repeat center center/cover";
 
 };
 
@@ -227,7 +225,6 @@ const renderHSLData = async (list) => {
   }
 
 
-
   if (list.length == 0) {
     stopElement.textContent = "HSL data can not be loaded";
     return;
@@ -260,7 +257,7 @@ const campusContactInfo = () => {
   const phone = document.querySelector('.phone');
 
   schoolName.innerHTML = languageSetting == "fi" ?
-    data["displayname_fi"]:data["displayname_en"];
+    data["displayname_fi"] : data["displayname_en"];
   visitingAddress.innerHTML = data["visitingaddress"];
   postalAddress.innerHTML = data["postaladdress"];
   phone.innerHTML = data["phonenumber"];
@@ -277,7 +274,7 @@ const changeCampusName = () => {
   const currentCampus = document.querySelector('.current-campus');
   const data = CampusData[campus];
   currentCampus.textContent = languageSetting == "fi" ?
-    data["displayname_fi"]:data["displayname_en"];
+    data["displayname_fi"] : data["displayname_en"];
 };
 
 
@@ -303,7 +300,7 @@ const campusInit = () => {
   changeBackgroundImage();
   campusContactInfo();
 
-  if(languageSetting== "en"){
+  if (languageSetting == "en") {
     document.querySelector('#togBtn').checked = true;
   }
 
@@ -336,12 +333,19 @@ const loadWeatherData = async (campus, language) => {
 };
 
 
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////
 //message-data and slides
 //renders Message-data
+const loadMessages = async () => {
+  try {
+    let parsedMessages;
+    parsedMessages = await MetropoliaMessages.getMessages(languageSetting);
+    await renderMessages(parsedMessages);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const renderMessages = (messageData) => {
   let dotId = 0;
   const messageDotsContainer = document.querySelector(".dots-messages");
@@ -365,26 +369,6 @@ const renderMessages = (messageData) => {
   }
 };
 
-const loadMessages = async () => {
-  try {
-    let parsedMessages;
-    parsedMessages = await MetropoliaMessages.getMessages(languageSetting);
-    renderMessages(parsedMessages);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-//goes through all elements with class="dot" and gets current dot's id when cliked
-const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
-AllDotsFromContainerMessages.forEach((item) => {
-  item.addEventListener("click", () => {
-    let idToNumber = parseFloat(item.id);
-    //changes slide to match with dot id
-    currentSlideMessages(idToNumber);
-  });
-});
 
 const pauseMessages = () => {
   clearInterval(myTimerMessages);
@@ -447,36 +431,44 @@ const showSlidesMessages = (n) => {
   let i;
   let slides = document.getElementsByClassName("messageSlides");
   let dots = document.getElementsByClassName("mdot");
+  console.log(dots.lenght);
+
   if (n > slides.length) {
     slideIndexMessages = 1;
+    console.log("tööt");
   }
+
   //console.log("n: ", n, " slideinex: ", slideIndex);
   if (n < 1) {
     slideIndexMessages = slides.length;
+
   }
+
+
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
+
+
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
+
   }
+
   slides[slideIndexMessages - 1].style.display = "block";
   dots[slideIndexMessages - 1].className += " active";
 };
 
-messageSlidesContainer.addEventListener("mouseenter", () => {
-  pauseMessages();
-});
-messageSlidesContainer.addEventListener("mouseleave", () => {
-  resumeMessages();
-});
+
+
+
 /**
  * Updates info every minute
  *
  * @constructor
  */
 const everyMinute = () => {
-  setInterval(async ()=>{
+  setInterval(async () => {
     await loadHSLData(CampusData[campus]["hslstopid"]);
     await loadAllMenuData();
     await loadWeatherData(CampusData[campus]["location"], languageSetting);
@@ -499,28 +491,46 @@ const registerServiceWorkers = () => {
   }
 };
 
+const onLoad = () => {
+  showSlidesMessages(slideIndexMessages);
+  myTimerMessages = setInterval(() => {
+    plusSlidesMessages(slideIndexMessages);
+  }, 5000);
+
+  messageSlidesContainer.addEventListener("mouseenter", () => {
+    pauseMessages();
+  });
+  messageSlidesContainer.addEventListener("mouseleave", () => {
+    resumeMessages();
+  });
+
+  //goes through all elements with class="dot" and gets current dot's id when cliked
+  const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
+  AllDotsFromContainerMessages.forEach((item) => {
+    item.addEventListener("click", () => {
+      let idToNumber = parseFloat(item.id);
+      //changes slide to match with dot id
+      currentSlideMessages(idToNumber);
+    });
+  });
+};
+
 /**
  * App initialization
  */
-const init = () => {
+const init = async () => {
+  await loadMessages();
   campusInit();
   document.querySelector('#togBtn').addEventListener('click', switchLanguage);
   document.querySelector('#campuses').addEventListener('change', forEachCampus);
-  document.querySelector('.res-date').textContent = [fiToday[2],fiToday[1],fiToday[0]].join(".");
+  document.querySelector('.res-date').textContent = [fiToday[2], fiToday[1], fiToday[0]].join(".");
   everyMinute();
-  loadMessages();
-  showSlidesMessages(slideIndexMessages);
-  myTimerMessages = setInterval(() => {
-    plusSlidesMessages(1);
-  }, 5000);
 
-//
-  // setModalControls();
-
+  window.addEventListener("load", onLoad);
 
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
-  registerServiceWorkers();
+  // registerServiceWorkers();
 };
 init();
 

@@ -1,5 +1,5 @@
 import {fetchGetJson} from "./network";
-const dailyUrl = `http://users.metropolia.fi/~ailip/messages.json`;
+const url = `http://users.metropolia.fi/~ailip/messages.json`;
 const parseMetropoliaMessages = (messageDataJson) => {
   const messagesEn = [];
   const messagesFi = [];
@@ -13,13 +13,12 @@ const parseMetropoliaMessages = (messageDataJson) => {
 const getMessages = async (lang) => {
   let messageData;
   try {
-    messageData = await fetchGetJson(dailyUrl);
+    messageData = await fetchGetJson(url, true);
   } catch (error) {
     throw new Error(error.message);
   }
   const parsedMessages = parseMetropoliaMessages(messageData.message);
   return (lang === 'fi') ? parsedMessages.fi : parsedMessages.en;
 };
-console.log(getMessages('fi'));
 const MetropoliaMessages = {getMessages};
 export default MetropoliaMessages;

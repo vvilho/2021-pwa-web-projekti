@@ -186,18 +186,20 @@ h2 {
 .hsl-container {
   height: 220px;
   overflow: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  //-ms-overflow-style: none; /* IE and Edge */
+  //scrollbar-width: none; /* Firefox */
 }
 
-.hsl-container::-webkit-scrollbar {
-  display: none;
-}
+//.hsl-container::-webkit-scrollbar {
+//  display: none;
+//}
 
 .app-lang-timetable {
   padding-bottom: 0.5em;
   border-bottom: 1px solid $color-gray;
   margin-bottom: 0.04em;
+  margin-right: 0.9em;
+
 }
 
 .hsl-card {
@@ -212,6 +214,7 @@ h2 {
   align-items: center;
   height: 2.3em;
   border-bottom: 1px solid $color-gray;
+  margin-right: 0.9em;
 }
 
 .hsl-label {
@@ -482,7 +485,7 @@ input:checked + .slider:before {
   box-shadow: 0px 3px 10px $color-gray;
 }
 
-.metrolopia-messages {
+.metropolia-messages {
   @extend %flex-center-shared;
   position: relative;
   background-color: lighten($color-orange, 35%);
@@ -493,14 +496,14 @@ input:checked + .slider:before {
 }
 
 @media screen and (min-width: 400px) {
-  .metrolopia-messages {
+  .metropolia-messages {
     min-height: 7em;
     padding: 1em 10%;
   }
 }
 
 @media screen and (min-width: 600px) {
-  .metrolopia-messages {
+  .metropolia-messages {
     min-height: 6em;
     padding: 1em 15%;
   }
