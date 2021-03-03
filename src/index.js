@@ -30,6 +30,10 @@ const languagDomClasses = [
   "dishlabels",
   "coronaInfo",
   "contact",
+  "schoolName",
+  "visitingAddress",
+  "postalAddress",
+  "phone"
 ];
 
 /**
@@ -342,7 +346,6 @@ const renderMessages = (messageData) => {
   }
 };
 
-renderMessages(MessageData.messagesEn);
 //renderMessages(MetropoliaMessages.getMessages('fi'));
 /*
 const loadMessages = async () => {
