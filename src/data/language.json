@@ -26,5 +26,21 @@
   "contact": {
     "fi": "Yhteystiedot",
     "en": "Contact"
+  },
+  "schoolName": {
+    "fi": "Metropolia Ammattikorkeakoulu",
+    "en": "Metropolia University of Applied Sciences"
+  },
+  "visitingAddress": {
+    "fi": "Käyntiosoite",
+    "en": "Visiting address"
+  },
+  "postalAddress": {
+    "fi": "Postiosoite",
+    "en": "Postal address"
+  },
+  "phone": {
+    "fi": "Puhelin",
+    "en": "Phone"
   }
 }

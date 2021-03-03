@@ -35,7 +35,11 @@ const languagDomClasses = [
   "menu",
   "dishlabels",
   "coronaInfo",
-  "contact"
+  "contact",
+  "schoolName",
+  "visitingAddress",
+  "postalAddress",
+  "phone"
 ];
 
 /**
