@@ -605,7 +605,16 @@ footer {
   line-height: 1.5;
   margin-left: 30%;
   background-color: rgba(255, 255, 255, 0.75);
+  & div {
+    display: flex;
+    justify-content: space-between;
+    & p{
+      padding-left: 2em;
+    }
+
+  }
 }
+
 
 .test {
   display: flex;
@@ -642,3 +651,4 @@ footer {
   background-color: lighten($color-orange, 30%);
   clip-path: polygon(0 100%, 100% 100%, 100% 0);
 }
+

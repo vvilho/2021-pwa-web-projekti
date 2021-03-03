@@ -104,7 +104,7 @@ const renderNoDataNotification = (message) => {
 const createUiLanguages = (language) => {
   try {
     for (const dom of languagDomClasses) {
-      document.querySelector(".app-lang-"+dom).textContent = LanguageData[dom][language];
+      document.querySelector(".app-lang-"+dom).innerHTML = LanguageData[dom][language];
     }
   } catch (e) {
     console.log("Error in createUiLanguages: ", e);
@@ -131,6 +131,8 @@ const switchLanguage = () => {
   changeCampusName();
   loadMessages();
   showSlidesMessages(slideIndexMessages);
+  loadWeatherData(CampusData[campus]["location"], languageSetting);
+
 };
 
 
@@ -246,6 +248,23 @@ const forEachCampus = () => {
   loadWeatherData(CampusData[campus]["location"], languageSetting);
   changeBackgroundImage();
   changeCampusName();
+  campusContactInfo();
+
+};
+
+const campusContactInfo = () => {
+  const data = CampusData[campus];
+  const schoolName = document.querySelector('.schoolName');
+  const visitingAddress = document.querySelector('.visitingAddress');
+  const postalAddress = document.querySelector('.postalAddress');
+  const phone = document.querySelector('.phone');
+
+  schoolName.innerHTML = languageSetting == "fi" ?
+    data["displayname_fi"]:data["displayname_en"];
+  visitingAddress.innerHTML = data["visitingaddress"];
+  postalAddress.innerHTML = data["postaladdress"];
+  phone.innerHTML = data["phonenumber"];
+
 
 };
 
@@ -282,6 +301,7 @@ const campusInit = () => {
   loadHSLData(CampusData[campus]["hslstopid"]);
   changeCampusName();
   changeBackgroundImage();
+  campusContactInfo();
 
   if(languageSetting== "en"){
     document.querySelector('#togBtn').checked = true;
@@ -315,6 +335,11 @@ const loadWeatherData = async (campus, language) => {
   // desc.innerHTML = descValue;
 };
 
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
 //message-data and slides
 //renders Message-data
 const renderMessages = (messageData) => {
@@ -446,7 +471,7 @@ messageSlidesContainer.addEventListener("mouseleave", () => {
   resumeMessages();
 });
 /**
- * Updates HSL list every minute
+ * Updates info every minute
  *
  * @constructor
  */
