@@ -124,19 +124,17 @@ const switchLanguage = () => {
     languageSetting = "en";
     createUiLanguages(languageSetting);
     localStorage.setItem("Lang", languageSetting);
-    renderMessages(MessageData.messagesEn);
-    showSlidesMessages(slideIndexMessages);
   } else {
     languageSetting = "fi";
     createUiLanguages(languageSetting);
     localStorage.setItem("Lang", languageSetting);
-    renderMessages(MessageData.messagesFi);
-    showSlidesMessages(slideIndexMessages);
+
   }
   console.log("language changed to: ", languageSetting);
   loadAllMenuData();
   changeCampusName();
   loadWeatherData(CampusData[campus]["location"], languageSetting);
+  loadnewMessages(languageSetting);
   //loadMessages();
 };
 
@@ -346,6 +344,29 @@ const renderMessages = (messageData) => {
   }
 };
 
+const loadnewMessages = (languageSetting) => {
+  clearInterval(myTimerMessages);
+  if (languageSetting === 'fi'){
+    renderMessages(MessageData.messagesFi);
+  } else {
+    renderMessages(MessageData.messagesEn);
+  }
+  showSlidesMessages(slideIndexMessages);
+
+const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
+AllDotsFromContainerMessages.forEach((item) => {
+  item.addEventListener("click", () => {
+    let idToNumber = parseFloat(item.id);
+    //changes slide to match with dot id
+    currentSlideMessages(idToNumber);
+  });
+});
+
+myTimerMessages = setInterval(function () {
+  plusSlidesMessages(1);
+}, 5000);
+};
+
 //renderMessages(MetropoliaMessages.getMessages('fi'));
 /*
 const loadMessages = async () => {
@@ -359,14 +380,6 @@ const loadMessages = async () => {
 };*/
 
 //goes through all elements with class="dot" and gets current dot's id when cliked
-const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
-AllDotsFromContainerMessages.forEach((item) => {
-  item.addEventListener("click", () => {
-    let idToNumber = parseFloat(item.id);
-    //changes slide to match with dot id
-    currentSlideMessages(idToNumber);
-  });
-});
 
 //creates list of img elemements
 for (let nro = 1; nro < 26; nro++) {
@@ -432,11 +445,7 @@ const resumeMessages = () => {
 //loads slides and timer
 window.addEventListener("load", () => {
   showSlidesCorona(slideIndexCorona);
-  showSlidesMessages(slideIndexMessages);
-
-  myTimerMessages = setInterval(function () {
-    plusSlidesMessages(1);
-  }, 5000);
+  //showSlidesMessages(slideIndexMessages);
 
   myTimerCorona = setInterval(function () {
     plusSlidesCorona(1);
@@ -588,7 +597,7 @@ function showSlidesMessages(n) {
     slideIndexMessages = 1;
   }
   //console.log("n: ", n, " slideinex: ", slideIndex);
-  if (n < 1) {
+  if (n < 0) {
     slideIndexMessages = slides.length;
   }
   for (i = 0; i < slides.length; i++) {
@@ -628,6 +637,8 @@ const init = () => {
   document.querySelector("#campuses").addEventListener("change", forEachCampus);
   // setModalControls();
 
+    showSlidesCorona(slideIndexCorona);
+    loadnewMessages('fi');
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
   //registerServiceWorkers();
