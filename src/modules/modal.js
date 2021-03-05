@@ -1,8 +1,11 @@
+import { pause } from "./carousel";
+
 /**
  * Set controls for UI modals
  * @module modules/modal
  */
-const setModalControls = () => {
+const slideshowContainer = document.getElementById("slideshow-container");
+const slideshowContainerModal = document.getElementById("slideshow-container-modal");
   // Get the modal
   const modal = document.getElementById("myModal");
   // Get the button that opens the modal
@@ -11,7 +14,7 @@ const setModalControls = () => {
   const span = document.getElementsByClassName("close")[0];
   // When the user clicks on the button, open the modal
   btn.addEventListener('click', () => {
-    modal.style.display = "block";
+    modal.style.display = "flex";
   });
   // When the user clicks on <span> (x), close the modal
   span.addEventListener('click', () => {
@@ -23,6 +26,4 @@ const setModalControls = () => {
       modal.style.display = "none";
     }
   });
-};
 
-export {setModalControls};

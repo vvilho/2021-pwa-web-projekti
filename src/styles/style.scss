@@ -101,7 +101,9 @@ label {
 }
 
 .container-center {
-  @extend %flex-center-shared;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 header {
@@ -386,13 +388,12 @@ h2 {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+#myModal {
+  display: none;
+  max-height: 100%;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center
 }
 
 /* The Close Button */
@@ -401,6 +402,11 @@ h2 {
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+
+.all-dots-modal {
+  display: flex;
+  justify-content: center;
 }
 
 .close:hover,
@@ -503,28 +509,109 @@ input:checked + .slider:before {
   color: $color-brown;
 }
 
+#message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -2em;
+  margin-left: -1em;
+  margin-right: -1em;
+}
+
+%btn-slide-shared {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 0.3em;
+  margin-top: -22px;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1.6em;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+
+
+#btn-slide-left, #btn-slide-left-modal {
+  @extend  %btn-slide-shared;
+  left: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+#btn-slide-right, #btn-slide-right-modal {
+  @extend  %btn-slide-shared;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+#btn-message-left {
+  @extend  %btn-slide-shared;
+  left: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+#btn-message-right {
+  @extend  %btn-slide-shared;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+#btn-slide-left:hover,
+#btn-slide-right:hover,
+#btn-message-left:hover,
+#btn-message-right:hover{
+  background-color: rgba(206, 206, 206, 0.8);
+}
+
+.slideshow-container {
+  display: none;
+}
 
 //corona slides
-#corona-info-container, #message-container {
+@media screen and (min-width: 540px) {
+#corona-info-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2em;
 }
 
-#message-container {
-  margin-top: -2em;
-  margin-left: -1em;
-  margin-right: -1em;
+.all-dots {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em 0;
 }
 
 .slideshow-container {
+  display: block;
   position: relative;
   max-width: 700px;
   margin-top: 1em;
   margin-left: -1em;
   margin-right: -1em;
   box-shadow: 0px 3px 10px $color-gray;
+}
+
+.mySlides{
+  display: none;
+}
+
+.dot{
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 0.2em 2px;
+  background-color: $color-gray;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color .6s ease;
+}
+
 }
 
 .metrolopia-messages {
@@ -553,65 +640,17 @@ input:checked + .slider:before {
   }
 }
 
-.mySlides, .messageSlides{
+.messageSlides{
   display: none;
 }
 
-%btn-slide-shared {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 0.3em;
-  margin-top: -22px;
-  color: rgb(0, 0, 0);
-  border: none;
-  background-color: transparent;
-  font-weight: bold;
-  font-size: 1.6em;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-#btn-slide-left {
-  @extend  %btn-slide-shared;
-  left: 0;
-  border-radius: 0 3px 3px 0;
-}
-
-#btn-slide-right {
-  @extend  %btn-slide-shared;
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-#btn-message-left {
-  @extend  %btn-slide-shared;
-  left: 0;
-  border-radius: 0 3px 3px 0;
-}
-
-#btn-message-right {
-  @extend  %btn-slide-shared;
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-#btn-slide-left:hover,
-#btn-slide-right:hover,
-#btn-message-left:hover,
-#btn-message-right:hover{
-  background-color: rgba(206, 206, 206, 0.8);
-}
-
-.all-dots, .dots-messages {
+.dots-messages {
   display: flex;
   flex-wrap: wrap;
   margin: 1em 0;
 }
 
-.dot, .mdot {
+.mdot, .dotModal {
   cursor: pointer;
   height: 8px;
   width: 8px;
@@ -622,7 +661,7 @@ input:checked + .slider:before {
   transition: background-color .6s ease;
 }
 
-.mdot {
+.mdot, .dotModal {
   background-color: #a1a1a1;
 }
 

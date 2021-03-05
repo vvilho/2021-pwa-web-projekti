@@ -198,7 +198,7 @@
 
         <!----------------- Corona instruction slideshow ----------------->
         <section id="corona-info-container">
-          <h2 class="app-lang-coronaInfo">Koronan ohjeet</h2>
+          <h2 id="trigger" class="app-lang-coronaInfo">Koronan ohjeet</h2>
       <div class="slideshow-container">
           <button id="btn-slide-left">&#10094;</button>
           <button id="btn-slide-right">&#10095;</button>
@@ -225,14 +225,19 @@
   <!-- The Modal -->
   <div id="myModal" class="modal">
     <!-- Modal content -->
+    <div class="modal-container">
+    <span class="close">&times;</span>
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Tänne sitten viikon ruokalistaa tai jotain.. <br>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quod veniam, temporibus dolorum adipisci
-        incidunt doloribus illum rerum modi libero consequuntur perferendis! Illum sunt eaque doloremque nemo? Ducimus,
-        soluta adipisci?*10
-      </p>
+      <section id="corona-info-container-modal">
+    <div class="slideshow-container-modal">
+        <button id="btn-slide-left-modal">&#10094;</button>
+        <button id="btn-slide-right-modal">&#10095;</button>
+      </div>
+      </section>
     </div>
+    <div class="all-dots-modal">
+    </div>
+  </div>
   </div>
 </body>
 </html>
