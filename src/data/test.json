@@ -1,0 +1,653 @@
+{
+  "WeekNumber": 6,
+  "LunchMenus": [
+    {
+      "DayOfWeek": "Monday",
+      "Date": "3.2.2020",
+      "SetMenus": [
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Vegetable rissoles",
+              "RecipeId": 18702,
+              "Diets": ["A", "G", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Vegetable rice",
+              "RecipeId": 14943,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Cucumber and dill mayonnaise",
+              "RecipeId": 15359,
+              "Diets": ["*", "A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "Vegetarian soup",
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Smoked cheese soup",
+              "RecipeId": 11199,
+              "Diets": ["A", "G", "VL"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted pumpkin seeds",
+              "RecipeId": 3797,
+              "Diets": ["A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Chicken Tagine",
+              "RecipeId": 17541,
+              "Diets": ["*", "A", "G", "L", "M", "VS"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Whole grain rice\n",
+              "RecipeId": 90,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Overdone beef and pork in redwine-mushroom sauce",
+              "RecipeId": 12119,
+              "Diets": ["G", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted potatoes",
+              "RecipeId": 10413,
+              "Diets": ["G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted parsnip",
+              "RecipeId": 10576,
+              "Diets": ["G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Marianne candy and curd dessert",
+              "RecipeId": 793,
+              "Diets": ["A", "G", "VL"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        }
+      ],
+      "Html": ""
+    },
+    {
+      "DayOfWeek": "Tuesday",
+      "Date": "4.2.2020",
+      "SetMenus": [
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Sweet potato and coconut curry",
+              "RecipeId": 7901,
+              "Diets": ["A", "G", "L", "M", "Veg", "VS"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Whole grain rice\n",
+              "RecipeId": 90,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "Vegetarian soup",
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Pureed cauliflower soup",
+              "RecipeId": 7460,
+              "Diets": ["*", "A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted pumpkin seeds",
+              "RecipeId": 3797,
+              "Diets": ["A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Minced meat and pasta casserole",
+              "RecipeId": 539,
+              "Diets": ["*", "A", "L", "VS"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Rainbow trout in sour cream sauce served with zucchini",
+              "RecipeId": 5728,
+              "Diets": ["A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Mashed potatoes",
+              "RecipeId": 63,
+              "Diets": ["*", "A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        }
+      ],
+      "Html": ""
+    },
+    {
+      "DayOfWeek": "Wednesday",
+      "Date": "5.2.2020",
+      "SetMenus": [
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Bean filling",
+              "RecipeId": 9581,
+              "Diets": ["*", "G", "L", "M", "Veg", "VS"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Whole grain wheat tortilla",
+              "RecipeId": 15802,
+              "Diets": ["A", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "Vegetarian soup",
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Forest mushroom soup",
+              "RecipeId": 377,
+              "Diets": ["A", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted pumpkin seeds",
+              "RecipeId": 3797,
+              "Diets": ["A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Beef and beetroot patty of the House",
+              "RecipeId": 3709,
+              "Diets": ["A", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Brown sauce",
+              "RecipeId": 33,
+              "Diets": ["A", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Boiled potatoes with parsley",
+              "RecipeId": 68,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Fish pieces with lemon",
+              "RecipeId": 11225,
+              "Diets": ["*", "A", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Sour cream sauce with dill",
+              "RecipeId": 112,
+              "Diets": ["A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Boiled potatoes with dill",
+              "RecipeId": 67,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Chicken in dark soy-lime sauce",
+              "RecipeId": 10944,
+              "Diets": ["*", "A", "G", "L", "M", "VS"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Whole grain noodles",
+              "RecipeId": 14907,
+              "Diets": ["*", "A", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted cauliflower and soya beans",
+              "RecipeId": 10589,
+              "Diets": ["A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        }
+      ],
+      "Html": ""
+    },
+    {
+      "DayOfWeek": "Thursday",
+      "Date": "6.2.2020",
+      "SetMenus": [
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Vegetable wok\n",
+              "RecipeId": 14341,
+              "Diets": ["*", "A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Whole grain rice\n",
+              "RecipeId": 90,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "Vegetarian soup",
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Pureed root vegetable soup",
+              "RecipeId": 7827,
+              "Diets": ["A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted pumpkin seeds",
+              "RecipeId": 3797,
+              "Diets": ["A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Rainbow trout and cucumber filling",
+              "RecipeId": 17421,
+              "Diets": ["A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Baked potatoes",
+              "RecipeId": 179,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Meat and macaroni casserole",
+              "RecipeId": 7418,
+              "Diets": ["*", "A", "VL"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Ketchup",
+              "RecipeId": 269,
+              "Diets": ["G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Wiener Schnitzel",
+              "RecipeId": 421,
+              "Diets": ["A", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Remoulade sauce",
+              "RecipeId": 191,
+              "Diets": ["A", "G", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Potato wedges",
+              "RecipeId": 872,
+              "Diets": ["G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        }
+      ],
+      "Html": ""
+    },
+    {
+      "DayOfWeek": "Friday",
+      "Date": "7.2.2020",
+      "SetMenus": [
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Soja beans, pumpkin and oat casserole",
+              "RecipeId": 14695,
+              "Diets": ["*", "A", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Tarragon oil",
+              "RecipeId": 17396,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "Vegetarian soup",
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Lovage purée soup",
+              "RecipeId": 17415,
+              "Diets": ["*", "A", "G", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Roasted pumpkin seeds",
+              "RecipeId": 3797,
+              "Diets": ["A", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Saithe with shrimp",
+              "RecipeId": 1440,
+              "Diets": ["*", "A", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Boiled potatoes with dill",
+              "RecipeId": 67,
+              "Diets": ["*", "G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Chicken and vegetables in sweet and sour sauce",
+              "RecipeId": 6046,
+              "Diets": ["*", "A", "G", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Whole grain wheat grits",
+              "RecipeId": 92,
+              "Diets": ["*", "A", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": null,
+          "Price": null,
+          "Meals": [
+            {
+              "Name": "Brioche burger with salmon patty",
+              "RecipeId": 17570,
+              "Diets": ["A", "L"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Potato wedges",
+              "RecipeId": 872,
+              "Diets": ["G", "L", "M", "Veg"],
+              "Nutrients": null,
+              "IconUrl": ""
+            },
+            {
+              "Name": "Tartar sauce",
+              "RecipeId": 6892,
+              "Diets": ["A", "G", "L", "M"],
+              "Nutrients": null,
+              "IconUrl": ""
+            }
+          ]
+        }
+      ],
+      "Html": ""
+    },
+    { "DayOfWeek": "Saturday", "Date": "8.2.2020", "SetMenus": [], "Html": "" },
+    { "DayOfWeek": "Sunday", "Date": "9.2.2020", "SetMenus": [], "Html": "" }
+  ],
+  "RequireDietFilters": [
+    {
+      "Name": "GlutenFree",
+      "TranslatedName": "Gluten free",
+      "Diet": "G",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": []
+    },
+    {
+      "Name": "LactoseFree",
+      "TranslatedName": "Lactose free",
+      "Diet": "L",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": ["M"]
+    },
+    {
+      "Name": "LowLactose",
+      "TranslatedName": "Low lactose",
+      "Diet": "VL",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": ["L", "M"]
+    },
+    {
+      "Name": "NoMilk",
+      "TranslatedName": "Milk-free",
+      "Diet": "M",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": []
+    },
+    {
+      "Name": "Healthy",
+      "TranslatedName": "Wellbeing",
+      "Diet": "*",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": []
+    },
+    {
+      "Name": "Vegetarian",
+      "TranslatedName": "Suitable for vegans",
+      "Diet": "Veg",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": []
+    }
+  ],
+  "ExcludeDietFilters": [
+    {
+      "Name": "Garlic",
+      "TranslatedName": "Contains fresh garlic",
+      "Diet": "VS",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": []
+    },
+    {
+      "Name": "Allergens",
+      "TranslatedName": "Contains allergens",
+      "Diet": "A",
+      "Selected": false,
+      "Inactive": false,
+      "AdditionalVisibleDiets": []
+    }
+  ],
+  "RestaurantDietFilters": [],
+  "LastWeekMenuStartDate": null,
+  "NextWeekMenuStartDate": null,
+  "ProductDataSheets": []
+}
