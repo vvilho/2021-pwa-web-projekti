@@ -25,7 +25,7 @@ module.exports = {
       ]
     }),
     new HtmlWebpackPlugin({
-      title: 'WTMP Kukkuu',
+      title: 'Metropolia INFO APP',
       meta: {
         viewport: 'width=device-width, initial-scale=1.0'
       },
@@ -46,6 +46,7 @@ module.exports = {
       short_name: 'InfoPWA',
       description: 'Metropolia info Progressive Web App!',
       background_color: '#ffffff',
+      theme_color: '#FF7820',
       crossorigin: 'use-credentials',
       icons: [
         {

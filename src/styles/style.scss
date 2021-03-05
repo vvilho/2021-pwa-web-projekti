@@ -29,6 +29,7 @@ body {
 #metropolia-logo {
   display: block;
   max-width: 28.125em;
+  height: auto;
   margin: 0 2em;
 }
 
@@ -44,6 +45,7 @@ body {
   #metropolia-logo-small {
     display: block;
     width: 250px;
+    height: auto;
     margin: 0.5em 2em;
   }
 
@@ -180,7 +182,10 @@ h2 {
   display: none;
   padding-right: 0.3em;
 }
-
+.weather-icon img {
+  width: 50px;
+  height: 50px;
+}
 @media screen and (min-width: 330px) {
   #forecast {
     margin: 1em 0;
@@ -248,6 +253,7 @@ h2 {
 
   & img {
     height: 1.2em;
+    width: 1.2em;
     padding-right: 0.3em;
   }
 }
@@ -553,8 +559,14 @@ input:checked + .slider:before {
   }
 }
 
-.mySlides, .messageSlides{
+.mySlides{
   display: none;
+  width: 700px;
+
+}
+.messageSlides{
+  display: none;
+
 }
 
 %btn-slide-shared {
@@ -648,6 +660,10 @@ footer {
     border-right: 300px solid transparent;
     border-bottom: 100px solid red;
 }*/
+
+.app-lang-contact{
+  font-size: 2em;
+}
 
 #contact {
   display: flex;

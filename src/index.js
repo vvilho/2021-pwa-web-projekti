@@ -159,7 +159,7 @@ const transportationVehicleIcon = (id) => {
   } else if (id == 3) {
     vehicle = "bus";
   }
-  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="">`;
+  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="hsl icon">`;
 };
 
 const changeBackgroundImage = () => {
@@ -323,7 +323,7 @@ const loadWeatherData = async (campus, language) => {
   let descValue = result.weather[0].description;
 
   name.innerHTML = nameValue;
-  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png">`;
+  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png" alt="${result.weather[0].description}">`;
   desc.innerHTML = descValue;
   temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
   // desc.innerHTML = descValue;
@@ -513,7 +513,7 @@ const init = () => {
     fiToday[0],
   ].join(".");
   everyMinute();
-  showAllMessages("fi");
+  showAllMessages(languageSetting);
 
   //
   // setModalControls();

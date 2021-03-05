@@ -176,9 +176,9 @@ function handleGesture() {
 
 slider.addEventListener('touchstart', e => {
   touchstartX = e.changedTouches[0].screenX;
-});
+}, {passive: true});
 
 slider.addEventListener('touchend', e => {
   touchendX = e.changedTouches[0].screenX;
   handleGesture();
-});
+}, {passive: true});
