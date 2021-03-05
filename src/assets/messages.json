@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "title": "Metropolia messages test"
+  },
+  "message": {
+    "1": {
+      "fi": "Suomeksi viesti 1: Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+      "en": "Englanniksi messgage 1: Expedita fugit velit in ducimus quia."
+    },
+    "2": {
+      "fi": "Suomeksi viesti 2: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt Nesciunt unde repudiandae voluptas ullam eaque.",
+      "en": "Englanniksi messgage 2: Deserunt Nesciunt unde repudiandae voluptas ullam eaque. Deserunt Nesciunt unde repudiandae voluptas ullam eaque."
+    },
+    "3": {
+      "fi": "Suomeksi viesti 3: Expedita fugit velit in ducimus quia.",
+      "en": "Englanniksi messgage 3: Expedita fugit velit in ducimus quia. Deserunt Nesciunt unde repudiandae voluptas ullam eaque. Expedita fugit velit in ducimus quia."
+    },
+    "4": {
+      "fi": "Suomeksi viesti 4: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita fugit velit in ducimus quia.",
+      "en": "Englanniksi messgage 4: Expedita fugit velit in ducimus quia. Deserunt Nesciunt unde repudiandae voluptas ullam eaque."
+    }
+  }
+}

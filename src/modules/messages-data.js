@@ -1,5 +1,6 @@
 import {fetchGetJson} from "./network";
-const dailyUrl = `http://users.metropolia.fi/~ailip/messages.json`;
+//const dailyUrl = `https://users.metropolia.fi/~ailip/messages.json`;
+const dailyUrl = `assets/messages.json`;
 const parseMetropoliaMessages = (messageDataJson) => {
   const messagesEn = [];
   const messagesFi = [];

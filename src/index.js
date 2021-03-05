@@ -1,25 +1,24 @@
-import SodexoData from './modules/sodexo-data';
-import FazerData from './modules/fazer-data';
-import {setModalControls} from './modules/modal';
-import './styles/style.scss';
-import './styles/mobile.scss';
-import './styles/widescreen.scss';
-import HSLData from './modules/hsl-data';
-import LanguageData from './data/language.json';
-import CampusData from './data/campuses.json';
-import WeatherData from './modules/weather-data';
-import './modules/carousel';
+import SodexoData from "./modules/sodexo-data";
+import FazerData from "./modules/fazer-data";
+import { setModalControls } from "./modules/modal";
+import "./styles/style.scss";
+import "./styles/mobile.scss";
+import "./styles/widescreen.scss";
+import HSLData from "./modules/hsl-data";
+import LanguageData from "./data/language.json";
+import CampusData from "./data/campuses.json";
+import WeatherData from "./modules/weather-data";
+import "./modules/carousel";
 import MetropoliaMessages from "./modules/messages-data";
 
-const today = new Date().toISOString().split('T')[0];
+const today = new Date().toISOString().split("T")[0];
 const fiToday = today.split(/\D/g);
-let languageSetting = 'fi';
-let campus = document.querySelector('#campuses').value;
+let languageSetting = "fi";
+let campus = document.querySelector("#campuses").value;
 
 const messageSlidesContainer = document.querySelector(".metrolopia-messages");
 let slideIndexMessages = 1;
 let myTimerMessages;
-
 
 /**
  * All classes of those DOM object that has text that has to cahnge
@@ -39,7 +38,7 @@ const languagDomClasses = [
   "schoolName",
   "visitingAddress",
   "postalAddress",
-  "phone"
+  "phone",
 ];
 
 /**
@@ -50,19 +49,29 @@ const languagDomClasses = [
 const loadAllMenuData = async () => {
   try {
     let parsedMenu;
-    document.querySelector('.res-heading').textContent = CampusData[campus]["restaurantname"];
+    document.querySelector(".res-heading").textContent =
+      CampusData[campus]["restaurantname"];
     if (CampusData[campus]["restauranttype"] === "FazerData") {
-      parsedMenu = await FazerData.getDailyMenu(CampusData[campus]["foodmenuid"], languageSetting, today);
+      parsedMenu = await FazerData.getDailyMenu(
+        CampusData[campus]["foodmenuid"],
+        languageSetting,
+        today
+      );
     } else {
-      parsedMenu = await SodexoData.getDailyMenu(CampusData[campus]["foodmenuid"], languageSetting, today);
+      parsedMenu = await SodexoData.getDailyMenu(
+        CampusData[campus]["foodmenuid"],
+        languageSetting,
+        today
+      );
     }
-    ;
-
     renderMenu(parsedMenu, CampusData[campus]["displayname"]);
   } catch (error) {
     console.error(error);
     // notify user if errors with data
-    renderNoDataNotification('No data available..', CampusData[campus]["displayname"]);
+    renderNoDataNotification(
+      "No data available..",
+      CampusData[campus]["displayname"]
+    );
   }
 };
 
@@ -72,11 +81,11 @@ const loadAllMenuData = async () => {
  * @param {Array} menuData - Lunch menu array
  */
 const renderMenu = (menuData) => {
-  const restaurantDiv = document.querySelector('.dishes');
-  restaurantDiv.innerHTML = '';
-  const ul = document.createElement('ul');
+  const restaurantDiv = document.querySelector(".dishes");
+  restaurantDiv.innerHTML = "";
+  const ul = document.createElement("ul");
   for (const item of menuData) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement("li");
     listItem.innerHTML = item;
     ul.appendChild(listItem);
   }
@@ -90,11 +99,10 @@ const renderMenu = (menuData) => {
  * @param {string} message -Error message
  */
 const renderNoDataNotification = (message) => {
-  const restaurantDiv = document.querySelector('.dishes');
+  const restaurantDiv = document.querySelector(".dishes");
   restaurantDiv.innerHTML = `<p>${message}</p>`;
-  document.querySelector('.dishes-labels').textContent = "";
+  document.querySelector(".dishes-labels").textContent = "";
 };
-
 
 /**
  * Changes every elements text that has to change during language change
@@ -104,38 +112,36 @@ const renderNoDataNotification = (message) => {
 const createUiLanguages = (language) => {
   try {
     for (const dom of languagDomClasses) {
-      document.querySelector(".app-lang-"+dom).innerHTML = LanguageData[dom][language];
+      document.querySelector(".app-lang-" + dom).innerHTML =
+        LanguageData[dom][language];
     }
   } catch (e) {
     console.log("Error in createUiLanguages: ", e);
   }
 };
 
-
 /**
  * Switches application language between en/fi
  * and updates menu data
  */
 const switchLanguage = () => {
-  if (languageSetting === 'fi') {
-    languageSetting = 'en';
+  if (languageSetting === "fi") {
+    languageSetting = "en";
     createUiLanguages(languageSetting);
-    localStorage.setItem('Lang', languageSetting);
+    localStorage.setItem("Lang", languageSetting);
   } else {
-    languageSetting = 'fi';
+    languageSetting = "fi";
     createUiLanguages(languageSetting);
-    localStorage.setItem('Lang', languageSetting);
+    localStorage.setItem("Lang", languageSetting);
   }
-  console.log('language changed to: ', languageSetting);
+  console.log("language changed to: ", languageSetting);
   loadAllMenuData();
   changeCampusName();
   loadMessages();
   showSlidesMessages(slideIndexMessages);
   loadWeatherData(CampusData[campus]["location"], languageSetting);
-
+  showAllMessages(languageSetting);
 };
-
-
 
 /**
  *
@@ -153,13 +159,14 @@ const transportationVehicleIcon = (id) => {
   } else if (id == 3) {
     vehicle = "bus";
   }
-  return `<img class="hsl-icon" src="./assets/icons/${vehicle}.svg" alt="">`;
-
+  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="">`;
 };
 
 const changeBackgroundImage = () => {
-  document.querySelector('#hero').style["background"] = "url('./assets/img/"+campus+"-kampus-big.jpg') no-repeat center center/cover";
-
+  document.querySelector("#hero").style["background"] =
+    "url('./assets/img/" +
+    campus +
+    "-kampus-big.jpg') no-repeat center center/cover";
 };
 
 /**
@@ -171,22 +178,22 @@ const loadHSLData = async (stopid) => {
   try {
     let list = [];
     for (const i of stopid) {
-
       const result = await HSLData.getRidesByStopId(i["id"]);
       const stop = result.data.stop;
 
       for (const ride of stop.stoptimesWithoutPatterns) {
         list.push({
-          data: transportationVehicleIcon(stop.vehicleType) + ride.trip.routeShortName,
+          data:
+            transportationVehicleIcon(stop.vehicleType) +
+            ride.trip.routeShortName,
           where: ride.trip.tripHeadsign,
           time: HSLData.formatTime(ride.scheduledDeparture),
-          timestamp: ride.scheduledDeparture
+          timestamp: ride.scheduledDeparture,
         });
       }
-
     }
     list.sort((a, b) => {
-      return (a.timestamp) - (b.timestamp);
+      return a.timestamp - b.timestamp;
     });
 
     renderHSLData(list);
@@ -194,8 +201,6 @@ const loadHSLData = async (stopid) => {
     renderHSLData([]);
     console.log(error);
   }
-
-
 };
 /**
  * Render HSL transportation data on website
@@ -204,15 +209,15 @@ const loadHSLData = async (stopid) => {
  * @param {array} list - List of coming HSL transportation
  */
 const renderHSLData = async (list) => {
-  const stopElement = document.querySelector('.hsl-container');
+  const stopElement = document.querySelector(".hsl-container");
   stopElement.textContent = "";
 
   for (const ride of await list) {
-    const ulElement = document.createElement('ul');
+    const ulElement = document.createElement("ul");
     ulElement.classList.add("hsl-row");
-    const hslLable = document.createElement('li');
-    const hslStopName = document.createElement('li');
-    const hslTime = document.createElement('li');
+    const hslLable = document.createElement("li");
+    const hslStopName = document.createElement("li");
+    const hslTime = document.createElement("li");
     hslLable.innerHTML = ride.data;
     hslLable.classList.add("hsl-label");
     hslStopName.innerHTML = ride.where;
@@ -223,17 +228,12 @@ const renderHSLData = async (list) => {
     ulElement.appendChild(hslStopName);
     ulElement.appendChild(hslTime);
     stopElement.appendChild(ulElement);
-
   }
-
-
 
   if (list.length == 0) {
     stopElement.textContent = "HSL data can not be loaded";
     return;
   }
-
-
 };
 /**
  * After campus is changed from select menu
@@ -241,31 +241,27 @@ const renderHSLData = async (list) => {
  * and new campus is saved to local storage
  */
 const forEachCampus = () => {
-  campus = document.querySelector('#campuses').value;
+  campus = document.querySelector("#campuses").value;
   loadHSLData(CampusData[campus]["hslstopid"]);
-  localStorage.setItem('Campus', campus);
+  localStorage.setItem("Campus", campus);
   loadAllMenuData();
   loadWeatherData(CampusData[campus]["location"], languageSetting);
   changeBackgroundImage();
   changeCampusName();
   campusContactInfo();
-
 };
 
 const campusContactInfo = () => {
   const data = CampusData[campus];
-  const schoolName = document.querySelector('.schoolName');
-  const visitingAddress = document.querySelector('.visitingAddress');
-  const postalAddress = document.querySelector('.postalAddress');
-  const phone = document.querySelector('.phone');
+  //const schoolName = document.querySelector(".schoolName");
+  const visitingAddress = document.querySelector(".visitingAddress");
+  const postalAddress = document.querySelector(".postalAddress");
+  const phone = document.querySelector(".phone");
 
-  schoolName.innerHTML = languageSetting == "fi" ?
-    data["displayname_fi"]:data["displayname_en"];
+  //schoolName.innerHTML = languageSetting == "fi" ? data["displayname_fi"] : data["displayname_en"];
   visitingAddress.innerHTML = data["visitingaddress"];
   postalAddress.innerHTML = data["postaladdress"];
   phone.innerHTML = data["phonenumber"];
-
-
 };
 
 /**
@@ -273,28 +269,28 @@ const campusContactInfo = () => {
  *
  */
 const changeCampusName = () => {
-
-  const currentCampus = document.querySelector('.current-campus');
+  const currentCampus = document.querySelector(".current-campus");
   const data = CampusData[campus];
-  currentCampus.textContent = languageSetting == "fi" ?
-    data["displayname_fi"]:data["displayname_en"];
+  currentCampus.textContent =
+    languageSetting == "fi" ? data["displayname_fi"] : data["displayname_en"];
 };
-
 
 /**
  * Runs when app is first onened
  *
  */
 const campusInit = () => {
-  if (localStorage.getItem('Campus') == null) {
-    localStorage.setItem('Campus', campus);
+  if (localStorage.getItem("Campus") == null) {
+    localStorage.setItem("Campus", campus);
   }
-  if (localStorage.getItem('Lang') == null) {
-    localStorage.setItem('Lang', languageSetting);
+  if (localStorage.getItem("Lang") == null) {
+    localStorage.setItem("Lang", languageSetting);
   }
-  languageSetting = localStorage.getItem('Lang');
-  campus = localStorage.getItem('Campus');
-  document.querySelector('#campuses option[value="' + campus + '"]').selected = true;
+  languageSetting = localStorage.getItem("Lang");
+  campus = localStorage.getItem("Campus");
+  document.querySelector(
+    '#campuses option[value="' + campus + '"]'
+  ).selected = true;
   loadWeatherData(CampusData[campus]["location"], languageSetting);
   createUiLanguages(languageSetting);
   loadAllMenuData();
@@ -303,12 +299,10 @@ const campusInit = () => {
   changeBackgroundImage();
   campusContactInfo();
 
-  if(languageSetting== "en"){
-    document.querySelector('#togBtn').checked = true;
+  if (languageSetting == "en") {
+    document.querySelector("#togBtn").checked = true;
   }
-
 };
-
 
 /**
  * Displays Weather data from openweathermap.org API
@@ -317,10 +311,10 @@ const campusInit = () => {
  * @param {String} language
  */
 const loadWeatherData = async (campus, language) => {
-  let name = document.querySelector('.name');
-  let weatherIcon = document.querySelector('.weather-icon');
-  let desc = document.querySelector('.desc');
-  let temp = document.querySelector('.temp');
+  let name = document.querySelector(".name");
+  let weatherIcon = document.querySelector(".weather-icon");
+  let desc = document.querySelector(".desc");
+  let temp = document.querySelector(".temp");
 
   const result = await WeatherData.getWeatherData(campus, language);
   let nameValue = result.name;
@@ -334,10 +328,6 @@ const loadWeatherData = async (campus, language) => {
   temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
   // desc.innerHTML = descValue;
 };
-
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////
 //message-data and slides
@@ -365,7 +355,7 @@ const renderMessages = (messageData) => {
   }
 };
 
-const loadMessages = async () => {
+const loadMessages = async (languageSetting) => {
   try {
     let parsedMessages;
     parsedMessages = await MetropoliaMessages.getMessages(languageSetting);
@@ -375,16 +365,25 @@ const loadMessages = async () => {
   }
 };
 
+const showAllMessages = async (languageSetting) => {
+  clearInterval(myTimerMessages);
+  await loadMessages(languageSetting);
+  showSlidesMessages(slideIndexMessages);
 
-//goes through all elements with class="dot" and gets current dot's id when cliked
-const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
-AllDotsFromContainerMessages.forEach((item) => {
-  item.addEventListener("click", () => {
-    let idToNumber = parseFloat(item.id);
-    //changes slide to match with dot id
-    currentSlideMessages(idToNumber);
+  //goes through all elements with class="dot" and gets current dot's id when cliked
+  const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
+  AllDotsFromContainerMessages.forEach((item) => {
+    item.addEventListener("click", () => {
+      let idToNumber = parseFloat(item.id);
+      //changes slide to match with dot id
+      currentSlideMessages(idToNumber);
+    });
   });
-});
+
+  myTimerMessages = setInterval(function () {
+    plusSlidesMessages(1);
+  }, 5000);
+};
 
 const pauseMessages = () => {
   clearInterval(myTimerMessages);
@@ -400,9 +399,9 @@ const resumeMessages = () => {
 const plusSlidesMessages = (n) => {
   clearInterval(myTimerMessages);
   if (n < 0) {
-    showSlidesMessages(slideIndexMessages -= 1);
+    showSlidesMessages((slideIndexMessages -= 1));
   } else {
-    showSlidesMessages(slideIndexMessages += 1);
+    showSlidesMessages((slideIndexMessages += 1));
   }
 
   if (n === -1) {
@@ -476,25 +475,27 @@ messageSlidesContainer.addEventListener("mouseleave", () => {
  * @constructor
  */
 const everyMinute = () => {
-  setInterval(async ()=>{
+  setInterval(async () => {
     await loadHSLData(CampusData[campus]["hslstopid"]);
     await loadAllMenuData();
     await loadWeatherData(CampusData[campus]["location"], languageSetting);
   }, 60000);
 };
 
-
 /**
  * Registers the service worker (SW) generated by Workbox
  */
 const registerServiceWorkers = () => {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./service-worker.js').then(registration => {
-        console.log('SW registered: ', registration);
-      }).catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
-      });
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("./service-worker.js")
+        .then((registration) => {
+          console.log("SW registered: ", registration);
+        })
+        .catch((registrationError) => {
+          console.log("SW registration failed: ", registrationError);
+        });
     });
   }
 };
@@ -504,24 +505,21 @@ const registerServiceWorkers = () => {
  */
 const init = () => {
   campusInit();
-  document.querySelector('#togBtn').addEventListener('click', switchLanguage);
-  document.querySelector('#campuses').addEventListener('change', forEachCampus);
-  document.querySelector('.res-date').textContent = [fiToday[2],fiToday[1],fiToday[0]].join(".");
+  document.querySelector("#togBtn").addEventListener("click", switchLanguage);
+  document.querySelector("#campuses").addEventListener("change", forEachCampus);
+  document.querySelector(".res-date").textContent = [
+    fiToday[2],
+    fiToday[1],
+    fiToday[0],
+  ].join(".");
   everyMinute();
-  loadMessages();
-  showSlidesMessages(slideIndexMessages);
-  myTimerMessages = setInterval(() => {
-    plusSlidesMessages(1);
-  }, 5000);
+  showAllMessages("fi");
 
-//
+  //
   // setModalControls();
-
 
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
   registerServiceWorkers();
 };
 init();
-
-

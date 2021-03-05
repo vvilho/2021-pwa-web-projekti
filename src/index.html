@@ -56,7 +56,7 @@
   </header>
 <body>
 
-  <main>
+  <main class="gradient">
     <!------------------------- Messages -------------------------->
     <section id="message-container">
       <!-- <h2>Messages</h2> -->
@@ -77,6 +77,22 @@
         <li class="temp"></li>
     </ul>
 </div>
+<!-------------------------- Foodlists --------------------------->
+<div class="container-center">
+
+<section id="food-list-container">
+  <h2 class="app-lang-menu">Ruokalistat</h2>
+  <div class="food-list-card">
+    <div class="food-list-card-header">
+      <h3 class="res-heading"></h3>
+      <h4 class="res-date">today</h4>
+    </div>
+      <div class="dishes">Loading data...</div>
+      <p class="dishes-labels app-lang-dishlabels"></p>
+  </div>
+</section>
+
+
 <!-------------------- HSL transport information ------------------->
 <section id="hsl-container">
   <h2 class="app-lang-hslroute">HSL Reitit</h2>
@@ -85,7 +101,7 @@
     <div class="hsl-container">
       <p>Loading data...</p>
     </div>
-<!--  </div>-->
+  </div>
 <!--  <button id="btn-hsl-left">-->
 <!--      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
 <!--viewBox="0 0 492.004 492.004" style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">-->
@@ -175,19 +191,7 @@
 <!--</svg>-->
 <!--</button>-->
 </section>
-<!-------------------------- Foodlists --------------------------->
-<section id="food-list-container">
-  <h2 class="app-lang-menu">Ruokalistat</h2>
-  <div class="food-list-card">
-    <div class="food-list-card-header">
-      <h3 class="res-heading"></h3>
-      <h4 class="res-date">today</h4>
-    </div>
-      <div class="dishes">Loading data...</div>
-      <p class="dishes-labels app-lang-dishlabels"></p>
-  </div>
-</section>
-
+</div>
         <!-- not working in all browsers and net, just for test
         <iframe src="https://metropoliafi-my.sharepoint.com/personal/ailip_metropolia_fi/_layouts/15/Doc.aspx?sourcedoc={47d9a1e8-a353-4f79-a80b-da7a275f3693}&amp;action=embedview&amp;wdAr=1.7763888888888888" width="350px" height="221px" frameborder="0">See on manustatud <a target="_blank" href="https://office.com">Microsoft Office</a>\'i esitlus, platvorm <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
         -->
@@ -211,10 +215,10 @@
     <div class="test3"></div>
     <section id="contact">
       <h4 class="app-lang-contact">Yhteystiedot</h4>
-      <div><p class="app-lang-schoolName">Metropolia Ammattikorkeakoulu</p><p class="schoolName"></p></div>
-      <div><p class="app-lang-visitingAddress">Käyntiosoite Myllypurontie 1, 00920 Helsinki</p><p class="visitingAddress"></p></div>
-      <div><p class="app-lang-postalAddress">Postiosoite PL 4000, 00079 Metropolia</p><p class="postalAddress"></p></div>
-      <div><p class="app-lang-phone">Puhelin 09 7424 5000</p><p class="phone"></p></div>
+      <div><p class="app-lang-schoolName">Metropolia Ammattikorkeakoulu</p><p class="schoolName pad"></p></div>
+      <div><p class="app-lang-visitingAddress">Käyntiosoite Myllypurontie 1, 00920 Helsinki</p><p class="visitingAddress pad"></p></div>
+      <div><p class="app-lang-postalAddress">Postiosoite PL 4000, 00079 Metropolia</p><p class="postalAddress pad"></p></div>
+      <div><p class="app-lang-phone">Puhelin 09 7424 5000</p><p class="phone pad"></p></div>
     </section>
   </footer>
 

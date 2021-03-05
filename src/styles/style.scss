@@ -32,7 +32,7 @@ body {
   margin: 0 2em;
 }
 
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 280px) {
   nav {
     display: flex;
     justify-content: space-between;
@@ -135,10 +135,20 @@ h1 {
 }
 
 main {
-  padding: 0 16px;
+  padding: 0 0.5em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+@media screen and (min-width: 330px) {
+  main {
+    padding: 0 1em;
+  }
+  }
+
+.gradient {
+  margin-top: -1em;
+  background-image: linear-gradient($color-gray, transparent, transparent, transparent);
 }
 
 h2 {
@@ -148,8 +158,8 @@ h2 {
 %card-shared {
   width: 100%;
   border-radius: 0 30px 30px 30px;
-  margin: 1em 0;
-  padding: 1.5em;
+  margin: 0.5em 0;
+  padding: 1em 0.5em;
   box-shadow: 0px 3px 10px $color-gray;
 }
 
@@ -158,20 +168,29 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  float: right;
   border-radius: 30px 0 30px 30px;
-  width: 280px;
+  max-width: 280px;
   height: 50px;
-  background-color: $color-gray;
+  float: right;
+  //background-color: $color-gray;
+  border: 1px solid white;
 }
 
 .desc {
   display: none;
+  padding-right: 0.3em;
 }
+
+@media screen and (min-width: 330px) {
+  #forecast {
+    margin: 1em 0;
+    padding: 1.5em;
+   }
+  }
 
 @media screen and (min-width: 500px) {
  #forecast {
-    width: 400px;
+    max-width: 400px;
   }
 
   .desc {
@@ -179,12 +198,14 @@ h2 {
   }
 }
 
-#hsl-container {
-  position: relative;
+
+#hsl-container, #food-list-container {
+  width: 100%;
 }
 
 .hsl-container {
-  height: 220px;
+  position: relative;
+  height: 335px;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -202,7 +223,7 @@ h2 {
 
 .hsl-card {
   @extend %card-shared;
-  height: 280px;
+  height: 415px;
   background-color: $color-ligth-blue;
 }
 
@@ -222,14 +243,29 @@ h2 {
   font-weight: 300;
   color: $color-white;
   font-size: 1em;
-  padding: 0.25em 0.5em;
-  width: 5em;
+  padding: 0.25em 0.3em;
+  width: 4em;
+
+  & img {
+    height: 1.2em;
+    padding-right: 0.3em;
+  }
 }
 
-.hsl-label > img {
-  height: 1.2em;
-  padding-right: 0.5em;
-}
+
+
+@media screen and (min-width: 300px) {
+  .hsl-label {
+    padding: 0.25em 0.5em;
+    width: 5em;
+  }
+
+  .hsl-label > img {
+    height: 1.2em;
+    padding-right: 0.5em;
+  }
+  }
+
 
 
 %btn--hsl-shared {
@@ -279,11 +315,20 @@ h2 {
   margin-top: 2em;
 }
 
+
+
 .food-list-card {
   @extend %card-shared;
   min-height: 200px;
   background-color: $color-ligth-pink;
 }
+
+@media screen and (min-width: 330px) {
+  .food-list-card, .hsl-card  {
+    padding: 1em;
+  }
+  }
+
 
 .dishes {
   margin-top: 0.2em;
@@ -468,7 +513,7 @@ input:checked + .slider:before {
 }
 
 #message-container {
-  margin-top: -1em;
+  margin-top: -2em;
   margin-left: -1em;
   margin-right: -1em;
 }
@@ -485,14 +530,16 @@ input:checked + .slider:before {
 .metrolopia-messages {
   @extend %flex-center-shared;
   position: relative;
-  background-color: lighten($color-orange, 35%);
+  background-color: rgba(255, 120, 32, 0.3);
   box-shadow: 0px 3px 10px $color-gray;
   min-width: 100%;
   min-height: 9em;
   padding: 0.5em 10%;
+  margin-top: 2em;
+  //border: 1px solid white;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 350px) {
   .metrolopia-messages {
     min-height: 7em;
     padding: 1em 10%;
@@ -575,6 +622,10 @@ input:checked + .slider:before {
   transition: background-color .6s ease;
 }
 
+.mdot {
+  background-color: #a1a1a1;
+}
+
 .active,
 .dot:hover,
 .mdot:hover {
@@ -599,34 +650,65 @@ footer {
 }*/
 
 #contact {
-  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
   margin: 2em 0 1em 0;
   z-index: 1;
   line-height: 1.5;
-  margin-left: 30%;
   background-color: rgba(255, 255, 255, 0.75);
   & div {
     display: flex;
-    justify-content: space-between;
-    & p{
-      padding-left: 2em;
-    }
-
+    flex-wrap: wrap;
   }
 }
-
 
 .test {
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 14.5em;
+  bottom: 7em;
+  height: 20em;
+  width: 100%;
+  background-color: lighten($color-orange, 35%);
+  z-index: -1;
+}
+
+@media screen and (min-width: 345px) {
+  #contact {
+    padding: 2em;
+  }
+}
+
+@media screen and (min-width: 420px) {
+#contact {
+  margin: 2em 0 1em 0;
+}
+
+.pad{
+  padding-left: 0.3em;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 14.4em;
   height: 10em;
   width: 100%;
   background-color: lighten($color-orange, 35%);
   clip-path: polygon(50% 0, 0% 100%, 100% 100%);
   z-index: -1;
 }
+}
+
+
+@media screen and (min-width: 810px) {
+#contact {
+  margin-left: 30%;
+}
+}
+
 
 .test2 {
   display: flex;
@@ -651,4 +733,50 @@ footer {
   background-color: lighten($color-orange, 30%);
   clip-path: polygon(0 100%, 100% 100%, 100% 0);
 }
+
+.filter-white {
+  filter: invert(100%) sepia(57%) saturate(1158%) hue-rotate(202deg) brightness(116%) contrast(105%);
+}
+
+@media screen and (min-width: 610px) {
+  .container-all {
+    margin: 0 5%;
+  }
+  #hsl-container, #food-list-container {
+    width: 90%;
+  }
+  .food-list-card, .hsl-card  {
+    padding: 2em;
+  }
+  .hsl-card {
+    height: 440px;
+  }
+  }
+
+  @media screen and (min-width: 800px) {
+    #hsl-container, #food-list-container {
+      width: 80%;
+    }
+    .food-list-card, .hsl-card  {
+      padding: 2em 3em;
+    }
+    }
+
+    @media screen and (min-width: 1000px) {
+      #hsl-container, #food-list-container {
+        max-width: 70%;
+      }
+      .food-list-card, .hsl-card  {
+        padding: 2em 4em;
+      }
+      }
+
+    @media screen and (min-width: 1200px) {
+        #hsl-container, #food-list-container {
+          max-width: 60%;
+        }
+        .food-list-card, .hsl-card  {
+          padding: 2em 5em;
+        }
+        }
 
