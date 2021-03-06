@@ -1,6 +1,7 @@
 import SodexoData from "./modules/sodexo-data";
 import FazerData from "./modules/fazer-data";
 import { setModalControls } from "./modules/modal";
+import { setCaroselControls } from "./modules/carousel";
 import "./styles/style.scss";
 import "./styles/mobile.scss";
 import "./styles/widescreen.scss";
@@ -9,6 +10,7 @@ import LanguageData from "./data/language.json";
 import CampusData from "./data/campuses.json";
 import WeatherData from "./modules/weather-data";
 import "./modules/carousel";
+import "./modules/carousel-modal";
 import MetropoliaMessages from "./modules/messages-data";
 
 const today = new Date().toISOString().split("T")[0];
@@ -323,7 +325,7 @@ const loadWeatherData = async (campus, language) => {
   let descValue = result.weather[0].description;
 
   name.innerHTML = nameValue;
-  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png" alt="${result.weather[0].description}">`;
+  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png" alt="${descValue}">`;
   desc.innerHTML = descValue;
   temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
   // desc.innerHTML = descValue;
@@ -523,3 +525,4 @@ const init = () => {
   registerServiceWorkers();
 };
 init();
+
