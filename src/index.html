@@ -21,40 +21,41 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon-180x180.png" />
 </head>
     <!-------------------------- Nav buttons --------------------------->
-    <nav>
-      <div class="tool-buttons">
-        <label class="switch">
-          <input type="checkbox" id="togBtn">
-          <div class="slider round">
-            <span class="fi">🇫🇮</span>
-            <span class="en">	🇬🇧</span>
-          </div>
-        </label>
+<nav>
+  <div class="tool-buttons">
+    <label class="switch">
+      <input type="checkbox" id="togBtn">
+      <div class="slider round">
+        <span class="fi">🇫🇮</span>
+        <span class="en"> 🇬🇧</span>
       </div>
-      <!-------------------------- Header-logo --------------------------->
-      <img id="metropolia-logo-small" src="./assets/icons/metropolia.svg" alt="metropolia logo">
-      <form>
-          <label for="campuses" class="app-lang-campuses">Campus:</label>
-          <select name="campuses" id="campuses">
-              <option value="arabia">Arabia</option>
-              <option value="karamalmi">Karaportti</option>
-              <option value="myllypuro">Myllypuro</option>
-              <option value="myyrmäki">Myyrmäki</option>
-          </select>
-      </form>
-  </nav>
-  <!-------------------------- Header-logo big --------------------------->
-  <div class="container-center">
-      <img id="metropolia-logo" src="./assets/icons/metropolia.svg" alt="metropolia logo">
+    </label>
   </div>
+  <!-------------------------- Header-logo --------------------------->
+  <img id="metropolia-logo-small" src="./assets/icons/metropolia.svg" alt="metropolia logo">
+  <form>
+    <label for="campuses" class="app-lang-campuses">Campus:</label>
+    <select name="campuses" id="campuses">
+      <option value="arabia">Arabia</option>
+      <option value="karamalmi">Karaportti</option>
+      <option value="myllypuro">Myllypuro</option>
+      <option value="myyrmäki">Myyrmäki</option>
+    </select>
+  </form>
+</nav>
+<!-------------------------- Header-logo big --------------------------->
+<div class="container-center">
+  <img id="metropolia-logo" src="./assets/icons/metropolia.svg" alt="metropolia logo">
+</div>
 
-  <header>
-      <div id="hero">
-          <div id="hero-front">
-              <h1 class="current-campus">Karamalmin kampus</h1>
-          </div>
-      </div>
-  </header>
+<header>
+  <div id="hero">
+    <div id="hero-front">
+      <h1 class="current-campus">Karamalmin kampus</h1>
+    </div>
+  </div>
+</header>
+
 <body>
 
   <main class="gradient">
@@ -69,171 +70,101 @@
       <div class="dots-messages">
       </div>
     </section>
-   <!-------------------------- Forecast --------------------------->
+    <!-------------------------- Forecast --------------------------->
     <div id="forecast-container">
       <ul id="forecast">
         <li class="name"></li>
         <p class="weather-icon"></p>
         <li class="desc"></li>
         <li class="temp"></li>
-    </ul>
-</div>
-<!-------------------------- Foodlists --------------------------->
-<div class="container-center">
-
-<section id="food-list-container">
-  <h2 class="app-lang-menu">Ruokalistat</h2>
-  <div class="food-list-card">
-    <div class="food-list-card-header">
-      <h3 class="res-heading"></h3>
-      <h4 class="res-date">today</h4>
+      </ul>
     </div>
-      <div class="dishes">Loading data...</div>
-      <p class="dishes-labels app-lang-dishlabels"></p>
-  </div>
-</section>
+    <!-------------------------- Foodlists --------------------------->
+    <div class="container-center">
+
+      <section id="food-list-container">
+        <h2 class="app-lang-menu">Ruokalistat</h2>
+        <div class="food-list-card">
+          <div class="food-list-card-header">
+            <h3 class="res-heading"></h3>
+            <h4 class="res-date">today</h4>
+          </div>
+          <div class="dishes">Loading data...</div>
+          <p class="dishes-labels app-lang-dishlabels"></p>
+        </div>
+      </section>
 
 
-<!-------------------- HSL transport information ------------------->
-<section id="hsl-container">
-  <h2 class="app-lang-hslroute">HSL Reitit</h2>
-  <div class="hsl-card">
-      <h3  class="app-lang-timetable">Karanristi</h3>
-    <div class="hsl-container">
-      <p>Loading data...</p>
+      <!-------------------- HSL transport information ------------------->
+      <section id="hsl-container">
+        <h2 class="app-lang-hslroute">HSL Reitit</h2>
+        <div class="hsl-card">
+          <h3 class="app-lang-timetable">Karanristi</h3>
+          <div class="hsl-container">
+            <p>Loading data...</p>
+          </div>
+        </div>
+      </section>
     </div>
-  </div>
-<!--  <button id="btn-hsl-left">-->
-<!--      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
-<!--viewBox="0 0 492.004 492.004" style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">-->
-<!--<g>-->
-<!--<g>-->
-<!--<path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136-->
-<!--c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002-->
-<!--v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864-->
-<!--c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872-->
-<!--l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z"/>-->
-<!--</g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--</svg>-->
-<!--  </button>-->
-<!--  <button id="btn-hsl-right">-->
-<!--      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
-<!--viewBox="0 0 492.004 492.004" style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">-->
-<!--<g>-->
-<!--<g>-->
-<!--<path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136-->
-<!--c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002-->
-<!--v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864-->
-<!--c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872-->
-<!--l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z"/>-->
-<!--</g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--<g>-->
-<!--</g>-->
-<!--</svg>-->
-<!--</button>-->
-</section>
-</div>
-        <!-- not working in all browsers and net, just for test
-        <iframe src="https://metropoliafi-my.sharepoint.com/personal/ailip_metropolia_fi/_layouts/15/Doc.aspx?sourcedoc={47d9a1e8-a353-4f79-a80b-da7a275f3693}&amp;action=embedview&amp;wdAr=1.7763888888888888" width="350px" height="221px" frameborder="0">See on manustatud <a target="_blank" href="https://office.com">Microsoft Office</a>\'i esitlus, platvorm <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
-        -->
 
-        <!----------------- Corona instruction slideshow ----------------->
-        <section id="corona-info-container">
-          <h2 class="app-lang-coronaInfo">Koronan ohjeet</h2>
+    <!----------------- Corona instruction slideshow ----------------->
+    <section id="corona-info-container">
+      <h2 id="trigger" class="app-lang-coronaInfo">Koronan ohjeet</h2>
       <div class="slideshow-container">
-          <button id="btn-slide-left">&#10094;</button>
-          <button id="btn-slide-right">&#10095;</button>
-        </div>
-        <div class="all-dots">
-        </div>
-        </section>
+        <button id="btn-slide-left">&#10094;</button>
+        <button id="btn-slide-right">&#10095;</button>
+      </div>
+      <div class="all-dots">
+      </div>
+    </section>
   </main>
 
   <!-------------------------- Contact --------------------------->
   <footer>
-    <div class="test"></div>
-    <div class="test2"></div>
-    <div class="test3"></div>
+    <div class="contact-gradient"></div>
+    <div class="container-center-contact">
     <section id="contact">
-      <h1 class="app-lang-contact">Yhteystiedot</h1>
-      <div><p class="app-lang-schoolName">Metropolia Ammattikorkeakoulu</p><p class="schoolName pad"></p></div>
-      <div><p class="app-lang-visitingAddress">Käyntiosoite Myllypurontie 1, 00920 Helsinki</p><p class="visitingAddress pad"></p></div>
-      <div><p class="app-lang-postalAddress">Postiosoite PL 4000, 00079 Metropolia</p><p class="postalAddress pad"></p></div>
-      <div><p class="app-lang-phone">Puhelin 09 7424 5000</p><p class="phone pad"></p></div>
+      <h2 class="app-lang-contact">Yhteystiedot</h2>
+      <div>
+        <p class="app-lang-schoolName">Metropolia Ammattikorkeakoulu</p>
+        <p class="schoolName pad"></p>
+      </div>
+      <div>
+        <p class="app-lang-visitingAddress">Käyntiosoite Myllypurontie 1, 00920 Helsinki</p>
+        <p class="visitingAddress pad"></p>
+      </div>
+      <div>
+        <p class="app-lang-postalAddress">Postiosoite PL 4000, 00079 Metropolia</p>
+        <p class="postalAddress pad"></p>
+      </div>
+      <div>
+        <p class="app-lang-phone">Puhelin 09 7424 5000</p>
+        <p class="phone pad"></p>
+      </div>
     </section>
+  </div>
   </footer>
 
-  <!-- The Modal -->
+  <!-------------------------  The Modal ---------------------------->
   <div id="myModal" class="modal">
     <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Tänne sitten viikon ruokalistaa tai jotain.. <br>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quod veniam, temporibus dolorum adipisci
-        incidunt doloribus illum rerum modi libero consequuntur perferendis! Illum sunt eaque doloremque nemo? Ducimus,
-        soluta adipisci?*10
-      </p>
+    <div class="modal-container">
+      <div class="modal-content">
+        <span class="close">
+          &times;
+        </span>
+        <section id="corona-info-container-modal">
+          <div class="slideshow-container-modal">
+            <button id="btn-slide-left-modal">&#10094;</button>
+            <button id="btn-slide-right-modal">&#10095;</button>
+          </div>
+          <div class="all-dots-modal">
+          </div>
+      </div>
+      </section>
     </div>
   </div>
 </body>
+
 </html>
+
