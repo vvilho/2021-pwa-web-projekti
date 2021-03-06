@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,18 +8,92 @@
   list-style-type: none;
 }
 
-$color-orange: #FF7820;
-$color-brown: #8F2D00;
+$color-orange: #ff7820;
+$color-brown: #8f2d00;
 $color-black: #000000;
-$color-gray: #BABABA;
+$color-gray: #bababa;
+$color-gray-darker: #a1a1a1;
+$color-gray-more-darker: #717171;
 $color-white: #ffffff;
-$color-ligth-blue: #EAF3FA;
-$color-ligth-pink: #F8F4F2;
-$color-blue: #0093FF;
+$color-ligth-blue: #eaf3fa;
+$color-ligth-pink: #f8f4f2;
+$color-blue: #258bd4;
+$color-brownish: #c9a18e;
 
+%attr-shared {
+  display: inline-block;
+  background-color: $color-orange;
+  color: $color-white;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  border-radius: 0.5em;
+  font-size: 1em;
+  padding: 0.625em 1.25em;
+  margin: 0.625em;
+  border: none;
+  cursor: pointer;
+}
+
+%flex-center-shared {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+%card-shared {
+  width: 100%;
+  border-radius: 0 30px 30px 30px;
+  margin: 0.5em 0;
+  padding: 1em 0.5em;
+  box-shadow: 0px 3px 10px $color-gray;
+}
+
+%btn--hsl-shared {
+  position: absolute;
+  bottom: -0.5em;
+  width: 4em;
+  height: 4em;
+  padding: 0.8em;
+  background-color: $color-black;
+  color: $color-white;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+}
+
+%btn-slide-shared {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 0.3em;
+  margin-top: -22px;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1.6em;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+%dot-shared {
+cursor: pointer;
+height: 8px;
+width: 8px;
+margin: 0.2em 2px;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 0.6s ease;
+}
+
+/*----------------------------  top of the page -----------------------------*/
 body {
   margin: 0;
-  font: 100% Helvetica, sans-serif;
+  font: 100% 'Quicksand', sans-serif;
+  font-weight: 500;
 }
 
 #metropolia-logo-small {
@@ -30,39 +104,6 @@ body {
   display: block;
   max-width: 28.125em;
   margin: 0 2em;
-}
-
-@media screen and (min-width: 280px) {
-  nav {
-    display: flex;
-    justify-content: space-between;
-  }
-
-}
-
-@media screen and (min-width: 735px) {
-  #metropolia-logo-small {
-    display: block;
-    width: 250px;
-    margin: 0.5em 2em;
-  }
-
-  #metropolia-logo {
-    display: none;
-  }
-}
-
-%attr-shared {
-  display: inline-block;
-  background-color: $color-orange;
-  color: $color-white;
-  font-weight: 400;
-  border-radius: 0.5em;
-  font-size: 1em;
-  padding: 0.625em 1.25em;
-  margin: 0.625em;
-  border: none;
-  cursor: pointer;
 }
 
 .btn-lang {
@@ -80,12 +121,11 @@ select {
   appearance: none;
   background-color: $color-orange;
   /* for svg icon: arrow */
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238F2D00%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%238F2D00%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
   background-repeat: no-repeat, repeat;
-  background-position: right .7em top 50%, 0 0;
-  background-size: .65em auto, 100%;
+  background-position: right 0.7em top 50%, 0 0;
+  background-size: 0.65em auto, 100%;
   box-shadow: 0px 3px 10px $color-gray;
-
 }
 
 label {
@@ -93,17 +133,11 @@ label {
   font-size: 1.2em;
 }
 
-%flex-center-shared {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .container-center {
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: 100%;
 }
 
 header {
@@ -116,10 +150,8 @@ header {
   z-index: -1;
   width: 100%;
   height: 40vh;
-  background: url(../assets/img/karamalmi-kampus-medium.jpg) no-repeat center center/cover;
-  /*background-size: contain;
-  position: relative;
-  overflow: hidden;*/
+  background: url(../assets/img/karamalmi-kampus-medium.jpg) no-repeat center
+    center/cover;
 }
 
 #hero-front {
@@ -130,41 +162,36 @@ header {
 }
 
 h1 {
+  font-family: 'Raleway', sans-serif;
   font-size: 5.5vh;
   font-weight: 500;
   color: $color-brown;
   text-align: center;
 }
 
+/*----------------------------  main container -----------------------------*/
 main {
   padding: 0 0.5em;
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (min-width: 330px) {
-  main {
-    padding: 0 1em;
-  }
-  }
-
 .gradient {
   margin-top: -1em;
-  background-image: linear-gradient($color-gray, transparent, transparent, transparent);
+  background-image: linear-gradient(
+    $color-gray,
+    transparent,
+    transparent,
+    transparent
+  );
 }
 
 h2 {
+  font-family: 'Raleway', sans-serif;
   text-align: center;
 }
 
-%card-shared {
-  width: 100%;
-  border-radius: 0 30px 30px 30px;
-  margin: 0.5em 0;
-  padding: 1em 0.5em;
-  box-shadow: 0px 3px 10px $color-gray;
-}
-
+/*----------------------------  forecast  -----------------------------*/
 #forecast {
   @extend %card-shared;
   display: flex;
@@ -174,7 +201,6 @@ h2 {
   max-width: 280px;
   height: 50px;
   float: right;
-  //background-color: $color-gray;
   border: 1px solid white;
 }
 
@@ -183,38 +209,35 @@ h2 {
   padding-right: 0.3em;
 }
 
-@media screen and (min-width: 330px) {
-  #forecast {
-    margin: 1em 0;
-    padding: 1.5em;
-   }
-  }
-
-@media screen and (min-width: 500px) {
- #forecast {
-    max-width: 400px;
-  }
-
-  .desc {
-    display: block;
-  }
+/*----------------------------  hsl and restaurant cards -----------------------------*/
+#food-list-container,
+#hsl-container {
+  flex-direction: column;
+  margin-top: 2em;
+  max-width: 100%;
+  display: flex;
+  flex: 1;
+  width: 40em;
 }
 
-
-#hsl-container, #food-list-container {
-  width: 100%;
-}
-
+/*----------------------------  hsl card -----------------------------*/
 .hsl-container {
   position: relative;
   height: 335px;
-  overflow: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 0.5em;
+  margin-right: -0.5em;
 
-.hsl-container::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #d0dce6;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
 }
 
 .app-lang-timetable {
@@ -246,51 +269,11 @@ h2 {
   color: $color-white;
   font-size: 1em;
   padding: 0.25em 0.3em;
-  width: 4em;
+  width: 4.5em;
 
   & img {
     height: 1.2em;
     padding-right: 0.3em;
-  }
-}
-
-
-
-@media screen and (min-width: 300px) {
-  .hsl-label {
-    padding: 0.25em 0.5em;
-    width: 5em;
-  }
-
-  .hsl-label > img {
-    height: 1.2em;
-    padding-right: 0.5em;
-  }
-  }
-
-
-
-%btn--hsl-shared {
-  position: absolute;
-  bottom: -0.5em;
-  width: 4em;
-  height: 4em;
-  padding: 0.8em;
-  background-color: $color-black;
-  color: $color-white;
-  border-radius: 7px;
-  border: none;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 500px) {
-  #btn-hsl-left, #btn-hsl-right {
-    width: 3em;
-    height: 3em;
-    bottom: 0em;
-  }
-  .app-lang-campuses {
-    display: none;
   }
 }
 
@@ -305,32 +288,22 @@ h2 {
   right: -1em;
 }
 
-#btn-hsl-left, #btn-hsl-right > svg {
+#btn-hsl-left,
+#btn-hsl-right > svg {
   fill: $color-white;
 }
 
-#btn-hsl-left:hover, #btn-hsl-right:hover {
+#btn-hsl-left:hover,
+#btn-hsl-right:hover {
   background-color: lighten($color-black, 25%);
 }
 
-#food-list-container, #hsl-container {
-  margin-top: 2em;
-}
-
-
-
+/*----------------------------  restaurant card -----------------------------*/
 .food-list-card {
   @extend %card-shared;
   min-height: 200px;
   background-color: $color-ligth-pink;
 }
-
-@media screen and (min-width: 330px) {
-  .food-list-card, .hsl-card  {
-    padding: 1em;
-  }
-  }
-
 
 .dishes {
   margin-top: 0.2em;
@@ -363,18 +336,7 @@ h2 {
   display: flex;
 }
 
-
-#location-icon {
-  width: 25px;
-  position: relative;
-  top: 10px;
-}
-
-#location-icon:hover {
-  fill: var(--main-bg-color);
-}
-
-/* The Modal (background) */
+/*----------------------------  Modal -----------------------------*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -385,7 +347,7 @@ h2 {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 }
 
 #myModal {
@@ -393,31 +355,42 @@ h2 {
   max-height: 100%;
   max-width: 100%;
   justify-content: center;
-  align-items: center
+  align-items: center;
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
+  color: $color-gray-darker;
   font-size: 28px;
   font-weight: bold;
+  float: right;
+  padding-right: 0.2em;
 }
 
 .all-dots-modal {
   display: flex;
   justify-content: center;
+  padding: 0.2em;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: $color-gray-more-darker;
   text-decoration: none;
   cursor: pointer;
 }
 
-/*------ change languages toggle ---------*/
+.dotModal {
+  @extend %dot-shared;
+  background-color: rgb(80, 80, 80);
+}
 
+.active-modal,
+.dotModal:hover {
+  background-color: $color-gray-more-darker;
+}
+
+/*----------------------   change languages toggle   ----------------------*/
 .switch {
   position: relative;
   display: inline-block;
@@ -441,8 +414,8 @@ h2 {
   bottom: 0;
   padding: 0 0.4em;
   background-color: $color-orange;
-  -webkit-transition: .7s;
-  transition: .7s;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 .slider:before {
@@ -453,10 +426,9 @@ h2 {
   left: 4px;
   bottom: 4px;
   background-color: $color-white;
-  -webkit-transition: .7s;
-  transition: .7s;
-  z-index:1;
-
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  z-index: 1;
 }
 
 input:checked + .slider {
@@ -464,7 +436,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
@@ -472,9 +444,6 @@ input:checked + .slider:before {
   -ms-transform: translateX(49px);
   transform: translateX(49px);
 }
-
-
-
 
 .fi {
   color: white;
@@ -484,8 +453,7 @@ input:checked + .slider:before {
   left: 25%;
   font-size: 1.5em;
   font-family: Verdana, sans-serif;
-  z-index:0;
-
+  z-index: 0;
 }
 
 .en {
@@ -497,7 +465,6 @@ input:checked + .slider:before {
   font-size: 1.5em;
   font-family: Verdana, sans-serif;
   z-index: 0;
-
 }
 
 .slider.round {
@@ -509,6 +476,7 @@ input:checked + .slider:before {
   color: $color-brown;
 }
 
+//----------------------------  slides  -----------------------------//
 #message-container {
   display: flex;
   flex-direction: column;
@@ -518,45 +486,45 @@ input:checked + .slider:before {
   margin-right: -1em;
 }
 
-%btn-slide-shared {
+.metrolopia-messages {
+  @extend %flex-center-shared;
+  position: relative;
+  //background-color: rgba(255, 120, 32, 0.3);
+  background-color: $color-brownish;
+  box-shadow: 0px 3px 10px $color-gray;
+  min-width: 100%;
+  min-height: 9em;
+  padding: 0.5em 10%;
+  margin-top: 2em;
+}
+
+#corona-info-container {
+  @extend %card-shared;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+  border: 1px solid $color-brown;
   cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 0.3em;
-  margin-top: -22px;
-  color: rgb(0, 0, 0);
-  border: none;
-  background-color: transparent;
-  font-weight: bold;
-  font-size: 1.6em;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
 }
 
-
-
-#btn-slide-left, #btn-slide-left-modal {
-  @extend  %btn-slide-shared;
-  left: 0;
-  border-radius: 0 3px 3px 0;
+.slideshow-container,
+.messageSlides {
+  display: none;
 }
 
-#btn-slide-right, #btn-slide-right-modal {
-  @extend  %btn-slide-shared;
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
+#btn-slide-left,
+#btn-slide-left-modal,
 #btn-message-left {
-  @extend  %btn-slide-shared;
+  @extend %btn-slide-shared;
   left: 0;
   border-radius: 0 3px 3px 0;
 }
 
+#btn-slide-right,
+#btn-slide-right-modal,
 #btn-message-right {
-  @extend  %btn-slide-shared;
+  @extend %btn-slide-shared;
   right: 0;
   border-radius: 3px 0 0 3px;
 }
@@ -564,84 +532,10 @@ input:checked + .slider:before {
 #btn-slide-left:hover,
 #btn-slide-right:hover,
 #btn-message-left:hover,
-#btn-message-right:hover{
+#btn-message-right:hover,
+#btn-slide-left-modal:hover,
+#btn-slide-right-modal:hover {
   background-color: rgba(206, 206, 206, 0.8);
-}
-
-.slideshow-container {
-  display: none;
-}
-
-//corona slides
-@media screen and (min-width: 540px) {
-#corona-info-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2em;
-}
-
-.all-dots {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1em 0;
-}
-
-.slideshow-container {
-  display: block;
-  position: relative;
-  max-width: 700px;
-  margin-top: 1em;
-  margin-left: -1em;
-  margin-right: -1em;
-  box-shadow: 0px 3px 10px $color-gray;
-}
-
-.mySlides{
-  display: none;
-}
-
-.dot{
-  cursor: pointer;
-  height: 8px;
-  width: 8px;
-  margin: 0.2em 2px;
-  background-color: $color-gray;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color .6s ease;
-}
-
-}
-
-.metrolopia-messages {
-  @extend %flex-center-shared;
-  position: relative;
-  background-color: rgba(255, 120, 32, 0.3);
-  box-shadow: 0px 3px 10px $color-gray;
-  min-width: 100%;
-  min-height: 9em;
-  padding: 0.5em 10%;
-  margin-top: 2em;
-  //border: 1px solid white;
-}
-
-@media screen and (min-width: 350px) {
-  .metrolopia-messages {
-    min-height: 7em;
-    padding: 1em 10%;
-  }
-}
-
-@media screen and (min-width: 600px) {
-  .metrolopia-messages {
-    min-height: 6em;
-    padding: 1em 15%;
-  }
-}
-
-.messageSlides{
-  display: none;
 }
 
 .dots-messages {
@@ -650,172 +544,205 @@ input:checked + .slider:before {
   margin: 1em 0;
 }
 
-.mdot, .dotModal {
-  cursor: pointer;
-  height: 8px;
-  width: 8px;
-  margin: 0.2em 2px;
-  background-color: $color-gray;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color .6s ease;
-}
-
-.mdot, .dotModal {
-  background-color: #a1a1a1;
+.mdot {
+  @extend %dot-shared;
+  background-color: $color-gray-darker;
 }
 
 .active,
-.dot:hover,
 .mdot:hover {
-  background-color: #717171
+  background-color: $color-gray-more-darker;
 }
 
+//----------------------------  footer  -----------------------------//
 footer {
   @extend %flex-center-shared;
-  background-color: lighten($color-orange, 35%);
   position: relative;
 }
 
-/*footer::after{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    bottom: 13em;
-    border-left: 300px solid transparent;
-    border-right: 300px solid transparent;
-    border-bottom: 100px solid red;
-}*/
+.container-center-contact {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $color-ligth-pink;
+  margin: 3.5em 0 0 0;
+}
 
 #contact {
   display: flex;
   flex-direction: column;
-  padding: 0.5em;
-  margin: 2em 0 1em 0;
+  padding: 1.5em 2%;
   z-index: 1;
   line-height: 1.5;
-  background-color: rgba(255, 255, 255, 0.75);
+
+  & h4 {
+    padding-left: 0.2em;
+  }
+
   & div {
     display: flex;
     flex-wrap: wrap;
+
+    & p {
+      padding: 0 0.2em;
+    }
   }
 }
 
-.test {
+.contact-gradient {
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 7em;
-  height: 20em;
+  bottom: 0em;
+  height: 27em;
   width: 100%;
-  background-color: lighten($color-orange, 35%);
+  background-image: linear-gradient(white, $color-brownish);
   z-index: -1;
-}
-
-@media screen and (min-width: 345px) {
-  #contact {
-    padding: 2em;
-  }
-}
-
-@media screen and (min-width: 420px) {
-#contact {
-  margin: 2em 0 1em 0;
-}
-
-.pad{
-  padding-left: 0.3em;
-}
-
-.test {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 14.4em;
-  height: 10em;
-  width: 100%;
-  background-color: lighten($color-orange, 35%);
-  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-  z-index: -1;
-}
-}
-
-
-@media screen and (min-width: 810px) {
-#contact {
-  margin-left: 30%;
-}
-}
-
-
-.test2 {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 10em;
-  width: 50%;
-  background-color: lighten($color-orange, 30%);
-  clip-path: polygon(0 0, 0% 100%, 100% 100%);
-}
-
-.test3 {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 10em;
-  width: 50%;
-  background-color: lighten($color-orange, 30%);
-  clip-path: polygon(0 100%, 100% 100%, 100% 0);
 }
 
 .filter-white {
-  filter: invert(100%) sepia(57%) saturate(1158%) hue-rotate(202deg) brightness(116%) contrast(105%);
+  filter: invert(100%) sepia(57%) saturate(1158%) hue-rotate(202deg)
+    brightness(116%) contrast(105%);
 }
 
-@media screen and (min-width: 610px) {
-  .container-all {
-    margin: 0 5%;
+//----------------------------  media queries -----------------------------//
+@media screen and (min-width: 280px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
   }
-  #hsl-container, #food-list-container {
-    width: 90%;
+}
+
+@media screen and (min-width: 330px) {
+  main {
+    padding: 0 1em;
   }
-  .food-list-card, .hsl-card  {
-    padding: 2em;
+
+  #forecast {
+    margin: 1em 0;
+    padding: 1.5em;
   }
+
+  .hsl-container {
+    padding-right: 1em;
+    margin-right: -1em;
+  }
+
+  .food-list-card,
   .hsl-card {
-    height: 440px;
+    padding: 1em;
   }
+
+  .hsl-label {
+    padding: 0.25em 0.5em;
+    width: 5em;
   }
 
-  @media screen and (min-width: 800px) {
-    #hsl-container, #food-list-container {
-      width: 80%;
-    }
-    .food-list-card, .hsl-card  {
-      padding: 2em 3em;
-    }
+  .hsl-label > img {
+    height: 1.2em;
+    padding-right: 0.5em;
+  }
+}
+
+@media screen and (min-width: 350px) {
+  .metrolopia-messages {
+    min-height: 7em;
+    padding: 1em 10%;
+  }
+  .pad {
+    padding-left: 0.3em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #forecast {
+    max-width: 400px;
+  }
+
+  .desc {
+    display: block;
+  }
+}
+
+  @media screen and (min-width: 610px) {
+    .metrolopia-messages {
+      min-height: 6em;
+      padding: 1em 15%;
     }
 
-    @media screen and (min-width: 1000px) {
-      #hsl-container, #food-list-container {
-        max-width: 70%;
-      }
-      .food-list-card, .hsl-card  {
-        padding: 2em 4em;
-      }
-      }
+    .container-all {
+      margin: 0 5%;
+    }
 
-    @media screen and (min-width: 1200px) {
-        #hsl-container, #food-list-container {
-          max-width: 60%;
-        }
-        .food-list-card, .hsl-card  {
-          padding: 2em 5em;
-        }
-        }
+    .hsl-container {
+      padding-right: 4em;
+      margin-right: -4em;
+    }
 
+    .hsl-card {
+      height: 440px;
+    }
+
+    .food-list-card,
+    .hsl-card {
+      padding: 2em 4em;
+    }
+}
+
+@media screen and (min-width: 735px) {
+  #metropolia-logo-small {
+    display: block;
+    width: 250px;
+    margin: 0.5em 2em;
+  }
+
+  #metropolia-logo {
+    display: none;
+  }
+
+  #corona-info-container {
+    border: none;
+    cursor: default;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-top: 2em;
+  }
+
+  .all-dots {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0;
+  }
+
+  .slideshow-container {
+    display: block;
+    position: relative;
+    max-width: 800px;
+    margin-top: 1em;
+    margin-left: -1em;
+    margin-right: -1em;
+    box-shadow: 0px 3px 10px $color-gray;
+  }
+
+  .mySlides {
+    display: none;
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 0.2em 2px;
+    background-color: $color-gray-darker;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active,
+  .dot:hover{
+  background-color: $color-gray-more-darker;
+}
+}
