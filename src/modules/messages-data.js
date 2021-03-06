@@ -21,6 +21,5 @@ const getMessages = async (lang) => {
   const parsedMessages = parseMetropoliaMessages(messageData.message);
   return (lang === 'fi') ? parsedMessages.fi : parsedMessages.en;
 };
-console.log(getMessages('fi'));
 const MetropoliaMessages = {getMessages};
 export default MetropoliaMessages;

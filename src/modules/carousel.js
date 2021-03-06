@@ -1,3 +1,11 @@
+/**
+ * Functions for creating carousel of the corona info
+ * @module modules/carousel
+ * @author Ailip <ailip@metropolia.fi>
+ *
+ */
+
+
 const koronaSlidesContainer = document.querySelector(".slideshow-container");
 const allDotsContainer = document.querySelector(".all-dots");
 let dot = 1;
@@ -146,3 +154,31 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
+
+
+
+let touchstartX = 0;
+let touchendX = 0;
+
+const slider = document.querySelector('.slideshow-container');
+
+function handleGesture() {
+  if (touchendX < touchstartX){
+    plusSlides(1);
+    pause();
+  }
+  if (touchendX > touchstartX) {
+    plusSlides(-1);
+    pause();
+  }
+}
+
+slider.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+slider.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  handleGesture();
+}, {passive: true});

@@ -103,7 +103,12 @@ body {
 #metropolia-logo {
   display: block;
   max-width: 28.125em;
+  height: auto;
   margin: 0 2em;
+}
+
+.app-lang-campuses {
+  display: none;
 }
 
 .btn-lang {
@@ -126,11 +131,6 @@ select {
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
   box-shadow: 0px 3px 10px $color-gray;
-}
-
-label {
-  color: $color-brown;
-  font-size: 1.2em;
 }
 
 .container-center {
@@ -208,6 +208,12 @@ h2 {
   display: none;
   padding-right: 0.3em;
 }
+
+.weather-icon img {
+  width: 50px;
+  height: 50px;
+}
+
 
 /*----------------------------  hsl and restaurant cards -----------------------------*/
 #food-list-container,
@@ -575,8 +581,10 @@ footer {
   z-index: 1;
   line-height: 1.5;
 
-  & h4 {
+  & h2 {
     padding-left: 0.2em;
+    font-size: 1em;
+    text-align: left;
   }
 
   & div {
@@ -654,6 +662,14 @@ footer {
   }
 }
 
+@media screen and (min-width: 450px) {
+  .app-lang-campuses {
+    display: inline-flex;
+    color: $color-brown;
+    font-size: 1.2em;
+  }
+}
+
 @media screen and (min-width: 500px) {
   #forecast {
     max-width: 400px;
@@ -692,6 +708,7 @@ footer {
 @media screen and (min-width: 735px) {
   #metropolia-logo-small {
     display: block;
+    height: auto;
     width: 250px;
     margin: 0.5em 2em;
   }
