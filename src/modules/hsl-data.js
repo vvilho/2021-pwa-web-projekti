@@ -54,8 +54,12 @@ const getRidesByStopId = async (id) => {
  * @returns {string} HH:MM
  */
 const formatTime = (seconds) => {
-  const hours = Math.floor(seconds / 3600);
+  let hours = Math.floor(seconds / 3600);
   const minutes = Math.floor(seconds / 60) - (hours * 60);
+
+  if(hours > 24){
+    hours -= 24;
+  }
   return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
 };
 

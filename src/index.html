@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8"/>
   <title>Metropolia info APP</title>
   <script src="https://kit.fontawesome.com/1ff2ea641a.js" crossorigin="anonymous"></script>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -9,18 +9,18 @@
 
 
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-touch-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon-180x180.png" />
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon"/>
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/icons/apple-touch-icon-57x57.png"/>
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/icons/apple-touch-icon-72x72.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/icons/apple-touch-icon-76x76.png"/>
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/icons/apple-touch-icon-114x114.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/icons/apple-touch-icon-120x120.png"/>
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/icons/apple-touch-icon-144x144.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/icons/apple-touch-icon-152x152.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon-180x180.png"/>
 </head>
-    <!-------------------------- Nav buttons --------------------------->
+<!-------------------------- Nav buttons --------------------------->
 <nav>
   <div class="tool-buttons">
     <label class="switch">
@@ -37,7 +37,7 @@
     <label for="campuses" class="app-lang-campuses">Campus:</label>
     <select name="campuses" id="campuses">
       <option value="arabia">Arabia</option>
-      <option value="karamalmi">Karaportti</option>
+      <option value="karamalmi">Karamalmi</option>
       <option value="myllypuro">Myllypuro</option>
       <option value="myyrmäki">Myyrmäki</option>
     </select>
@@ -58,71 +58,73 @@
 
 <body>
 
-  <main class="gradient">
-    <!------------------------- Messages -------------------------->
-    <section id="message-container">
-      <!-- <h2>Messages</h2> -->
-      <div class="metrolopia-messages">
-        <button id="btn-message-left">&#10094;</button>
-        <button id="btn-message-right">&#10095;</button>
-        <ul class="messages-list"></ul>
-      </div>
-      <div class="dots-messages">
+<main class="gradient">
+  <!------------------------- Messages -------------------------->
+  <section id="message-container">
+    <!-- <h2>Messages</h2> -->
+    <div class="metrolopia-messages">
+      <button id="btn-message-left">&#10094;</button>
+      <button id="btn-message-right">&#10095;</button>
+      <ul class="messages-list"></ul>
+    </div>
+    <div class="dots-messages">
+    </div>
+  </section>
+  <!-------------------------- Forecast --------------------------->
+  <div id="forecast-container">
+    <ul id="forecast">
+      <li class="name"></li>
+      <p class="weather-icon"></p>
+      <li class="desc"></li>
+      <li class="temp"></li>
+    </ul>
+  </div>
+  <!-------------------------- Foodlists --------------------------->
+  <div class="container-center">
+
+    <section id="food-list-container">
+      <h2 class="app-lang-menu">Ruokalistat</h2>
+      <div class="food-list-card">
+        <div class="food-list-card-header">
+          <h3 class="res-heading"></h3>
+          <h4 class="res-date">today</h4>
+        </div>
+        <div class="dishes">Loading data...</div>
+        <p class="dishes-labels app-lang-dishlabels"></p>
       </div>
     </section>
-    <!-------------------------- Forecast --------------------------->
-    <div id="forecast-container">
-      <ul id="forecast">
-        <li class="name"></li>
-        <p class="weather-icon"></p>
-        <li class="desc"></li>
-        <li class="temp"></li>
-      </ul>
-    </div>
-    <!-------------------------- Foodlists --------------------------->
-    <div class="container-center">
 
-      <section id="food-list-container">
-        <h2 class="app-lang-menu">Ruokalistat</h2>
-        <div class="food-list-card">
-          <div class="food-list-card-header">
-            <h3 class="res-heading"></h3>
-            <h4 class="res-date">today</h4>
-          </div>
-          <div class="dishes">Loading data...</div>
-          <p class="dishes-labels app-lang-dishlabels"></p>
+
+    <!-------------------- HSL transport information ------------------->
+    <section id="hsl-container">
+      <h2 class="app-lang-hslroute">HSL Reitit</h2>
+      <div class="hsl-card">
+        <h3 class="app-lang-timetable">Karanristi</h3>
+        <div class="hsl-container">
+          <p>Loading data...</p>
         </div>
-      </section>
-
-
-      <!-------------------- HSL transport information ------------------->
-      <section id="hsl-container">
-        <h2 class="app-lang-hslroute">HSL Reitit</h2>
-        <div class="hsl-card">
-          <h3 class="app-lang-timetable">Karanristi</h3>
-          <div class="hsl-container">
-            <p>Loading data...</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!----------------- Corona instruction slideshow ----------------->
-    <section id="corona-info-container">
-      <h2 id="trigger" class="app-lang-coronaInfo">Koronan ohjeet</h2>
-      <div class="slideshow-container">
-        <button id="btn-slide-left">&#10094;</button>
-        <button id="btn-slide-right">&#10095;</button>
-      </div>
-      <div class="all-dots">
       </div>
     </section>
-  </main>
+  </div>
 
-  <!-------------------------- Contact --------------------------->
-  <footer>
-    <div class="contact-gradient"></div>
-    <div class="container-center-contact">
+  <!----------------- Corona instruction slideshow ----------------->
+  <section id="corona-info-container">
+
+    <h2 class="app-lang-coronaInfo">Koronaohjeet</h2>
+
+    <div class="slideshow-container">
+      <button id="btn-slide-left">&#10094;</button>
+      <button id="btn-slide-right">&#10095;</button>
+    </div>
+    <div class="all-dots">
+    </div>
+  </section>
+</main>
+
+<!-------------------------- Contact --------------------------->
+<footer>
+  <div class="contact-gradient"></div>
+  <div class="container-center-contact">
     <section id="contact">
       <h2 class="app-lang-contact">Yhteystiedot</h2>
       <div>
@@ -143,27 +145,27 @@
       </div>
     </section>
   </div>
-  </footer>
+</footer>
 
-  <!-------------------------  The Modal ---------------------------->
-  <div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-container">
-      <div class="modal-content">
-        <span class="close">
+<!-------------------------  The Modal ---------------------------->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-container">
+      <span class="close">
           &times;
         </span>
-        <section id="corona-info-container-modal">
-          <div class="slideshow-container-modal">
-            <button id="btn-slide-left-modal">&#10094;</button>
-            <button id="btn-slide-right-modal">&#10095;</button>
-          </div>
-          <div class="all-dots-modal">
-          </div>
-      </div>
+    <div class="modal-content">
+      <section id="corona-info-container-modal">
+        <div class="slideshow-container-modal">
+          <button id="btn-slide-left-modal">&#10094;</button>
+          <button id="btn-slide-right-modal">&#10095;</button>
+        </div>
+        <div class="all-dots-modal">
+        </div>
       </section>
     </div>
   </div>
+</div>
 </body>
 
 </html>

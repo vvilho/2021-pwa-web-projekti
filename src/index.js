@@ -68,10 +68,10 @@ const loadAllMenuData = async () => {
     }
     renderMenu(parsedMenu, CampusData[campus]["displayname"]);
   } catch (error) {
-    console.error(error);
     // notify user if errors with data
     renderNoDataNotification(
-      "No data available..",
+      "Restaurant is closed"
+      ,
       CampusData[campus]["displayname"]
     );
   }
@@ -127,6 +127,7 @@ const createUiLanguages = (language) => {
  * and updates menu data
  */
 const switchLanguage = () => {
+  pauseMessages();
   if (languageSetting === "fi") {
     languageSetting = "en";
     createUiLanguages(languageSetting);
@@ -518,7 +519,7 @@ const init = () => {
   showAllMessages(languageSetting);
 
   //
-  // setModalControls();
+  setModalControls();
 
   // Service workers registeration below disabled temporarily for easier local development
   // must be uncommented from init() before building for "production"
