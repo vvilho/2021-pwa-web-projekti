@@ -76,6 +76,31 @@ btnMinusModal.addEventListener("click", () => {
   plusSlidesModal(-1);
 });
 
+
+
+let touchstartX = 0;
+let touchendX = 0;
+
+const slider = document.querySelector('.slideshow-container-modal');
+
+const handleGesture = () => {
+  if (touchendX < touchstartX){
+    plusSlidesModal(1);
+  }
+  if (touchendX > touchstartX) {
+    plusSlidesModal(-1);
+  }
+};
+
+slider.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+slider.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  handleGesture();
+}, {passive: true});
+
 /**
  * calculates which slide to show
  *

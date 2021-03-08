@@ -163,7 +163,7 @@ let touchendX = 0;
 
 const slider = document.querySelector('.slideshow-container');
 
-function handleGesture() {
+const handleGesture= () => {
   if (touchendX < touchstartX){
     plusSlides(1);
     pause();
@@ -172,7 +172,7 @@ function handleGesture() {
     plusSlides(-1);
     pause();
   }
-}
+};
 
 slider.addEventListener('touchstart', e => {
   touchstartX = e.changedTouches[0].screenX;

@@ -8,7 +8,7 @@ const setModalControls = () => {
   // Get the button that opens the modal
   const btn = document.getElementById("corona-info-container");
   // Get the <span> element that closes the modal
-  const span = document.getElementsByClassName("close")[0];
+  const span = document.querySelector(".close");
   // Get Corona slides
   const slides = document.querySelector('.slideshow-container');
   // When the user clicks on the button, open the modal
@@ -17,7 +17,7 @@ const setModalControls = () => {
     btn.addEventListener('click', () => {
       if(window.innerWidth <= 735){
         modal.style.display = "flex";
-        document.body.style.position = 'fixed';
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
       }
     });
 
@@ -25,14 +25,14 @@ const setModalControls = () => {
   // When the user clicks on <span> (x), close the modal
   span.addEventListener('click', () => {
     modal.style.display = "none";
-    document.body.style.position = 'static';
+    document.getElementsByTagName('body')[0].style.overflow = 'visible';
 
   });
   // When the user clicks anywhere outside of the modal, close it
   document.addEventListener('click', (event) => {
     if (event.target == modal) {
       modal.style.display = "none";
-      document.body.style.position = 'static';
+      document.getElementsByTagName('body')[0].style.overflow = 'visible';
 
     }
   });

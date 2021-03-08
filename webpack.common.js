@@ -10,8 +10,11 @@ module.exports = {
   entry: {
     app: './src/index.js',
   },devServer: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    compress: true,
+    disableHostCheck: true,
   },
+
   plugins: [
     new CleanWebpackPlugin(),
     new WriteFilePlugin(),

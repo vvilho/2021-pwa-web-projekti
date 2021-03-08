@@ -1,7 +1,6 @@
 import SodexoData from "./modules/sodexo-data";
 import FazerData from "./modules/fazer-data";
 import { setModalControls } from "./modules/modal";
-import { setCaroselControls } from "./modules/carousel";
 import "./styles/style.scss";
 import "./styles/mobile.scss";
 import "./styles/widescreen.scss";
@@ -9,18 +8,17 @@ import HSLData from "./modules/hsl-data";
 import LanguageData from "./data/language.json";
 import CampusData from "./data/campuses.json";
 import WeatherData from "./modules/weather-data";
+import Messages from "./modules/messages-functions";
 import "./modules/carousel";
 import "./modules/carousel-modal";
-import MetropoliaMessages from "./modules/messages-data";
 
 const today = new Date().toISOString().split("T")[0];
 const fiToday = today.split(/\D/g);
 let languageSetting = "fi";
 let campus = document.querySelector("#campuses").value;
 
-const messageSlidesContainer = document.querySelector(".metrolopia-messages");
-let slideIndexMessages = 1;
-let myTimerMessages;
+const messageSlidesContainer = document.querySelector(".metropolia-messages");
+
 
 /**
  * All classes of those DOM object that has text that has to cahnge
@@ -127,7 +125,7 @@ const createUiLanguages = (language) => {
  * and updates menu data
  */
 const switchLanguage = () => {
-  pauseMessages();
+  Messages.pauseMessages();
   if (languageSetting === "fi") {
     languageSetting = "en";
     createUiLanguages(languageSetting);
@@ -139,11 +137,12 @@ const switchLanguage = () => {
   }
   console.log("language changed to: ", languageSetting);
   loadAllMenuData();
+  Messages.resumeMessages();
   changeCampusName();
-  loadMessages();
-  showSlidesMessages(slideIndexMessages);
+  Messages.loadMessages();
+  Messages.showSlidesMessages(Messages.slideIndexMessages);
   loadWeatherData(CampusData[campus]["location"], languageSetting);
-  showAllMessages(languageSetting);
+  Messages.showAllMessages(languageSetting);
 };
 
 /**
@@ -335,142 +334,27 @@ const loadWeatherData = async (campus, language) => {
 //////////////////////////////////////////////////////////////////////////////////////
 //message-data and slides
 //renders Message-data
-const renderMessages = (messageData) => {
-  let dotId = 0;
-  const messageDotsContainer = document.querySelector(".dots-messages");
-  const messagesList = document.querySelector(".messages-list");
-  messagesList.innerHTML = "";
-  messageDotsContainer.innerHTML = "";
-  for (const item of messageData) {
-    const listItem = document.createElement("li");
-    listItem.innerHTML = item;
-    listItem.classList.add("messageSlides");
-    messagesList.appendChild(listItem);
-
-    //creates span (dot) element and adds id
-    const setDivId = document.createAttribute("id");
-    setDivId.value = dotId;
-    const span = document.createElement("span");
-    span.classList.add("mdot");
-    span.setAttributeNode(setDivId);
-    messageDotsContainer.append(span);
-    dotId++;
-  }
-};
-
-const loadMessages = async (languageSetting) => {
-  try {
-    let parsedMessages;
-    parsedMessages = await MetropoliaMessages.getMessages(languageSetting);
-    renderMessages(parsedMessages);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const showAllMessages = async (languageSetting) => {
-  clearInterval(myTimerMessages);
-  await loadMessages(languageSetting);
-  showSlidesMessages(slideIndexMessages);
-
-  //goes through all elements with class="dot" and gets current dot's id when cliked
-  const AllDotsFromContainerMessages = document.querySelectorAll(".mdot");
-  AllDotsFromContainerMessages.forEach((item) => {
-    item.addEventListener("click", () => {
-      let idToNumber = parseFloat(item.id);
-      //changes slide to match with dot id
-      currentSlideMessages(idToNumber);
-    });
-  });
-
-  myTimerMessages = setInterval(function () {
-    plusSlidesMessages(1);
-  }, 5000);
-};
-
-const pauseMessages = () => {
-  clearInterval(myTimerMessages);
-};
-
-const resumeMessages = () => {
-  clearInterval(myTimerMessages);
-  myTimerMessages = setInterval(() => {
-    plusSlidesMessages(slideIndexMessages);
-  }, 5000);
-};
-
-const plusSlidesMessages = (n) => {
-  clearInterval(myTimerMessages);
-  if (n < 0) {
-    showSlidesMessages((slideIndexMessages -= 1));
-  } else {
-    showSlidesMessages((slideIndexMessages += 1));
-  }
-
-  if (n === -1) {
-    myTimerMessages = setInterval(() => {
-      plusSlidesMessages(n + 2);
-    }, 5000);
-  } else {
-    myTimerMessages = setInterval(() => {
-      plusSlidesMessages(n + 1);
-    }, 5000);
-  }
-};
-
-const currentSlideMessages = (n) => {
-  clearInterval(myTimerMessages);
-  myTimerMessages = setInterval(() => {
-    plusSlidesMessages(n + 1);
-  }, 5000);
-  plusSlidesMessages(slideIndexMessages = n);
-};
 
 //event listener for right button
 const btnPlusM = document.querySelector("#btn-message-right");
 btnPlusM.addEventListener("click", () => {
-  plusSlidesMessages(1);
-  pauseMessages();
+  Messages.plusSlidesMessages(1);
+  Messages.pauseMessages();
 });
 
 //event listener for left button
 const btnMinusM = document.querySelector("#btn-message-left");
 btnMinusM.addEventListener("click", () => {
-  plusSlidesMessages(-1);
-  pauseMessages();
+  Messages.plusSlidesMessages(-1);
+  Messages.pauseMessages();
 });
 
-/**
- * calculates which slide to show
- *
- * @param {Number} n
- */
-const showSlidesMessages = (n) => {
-  let i;
-  let slides = document.getElementsByClassName("messageSlides");
-  let dots = document.getElementsByClassName("mdot");
-  if (n > slides.length) {
-    slideIndexMessages = 1;
-  }
-  //console.log("n: ", n, " slideinex: ", slideIndex);
-  if (n < 1) {
-    slideIndexMessages = slides.length;
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndexMessages - 1].style.display = "block";
-  dots[slideIndexMessages - 1].className += " active";
-};
 
 messageSlidesContainer.addEventListener("mouseenter", () => {
-  pauseMessages();
+  Messages.pauseMessages();
 });
 messageSlidesContainer.addEventListener("mouseleave", () => {
-  resumeMessages();
+  Messages.resumeMessages();
 });
 /**
  * Updates info every minute
@@ -516,7 +400,7 @@ const init = () => {
     fiToday[0],
   ].join(".");
   everyMinute();
-  showAllMessages(languageSetting);
+  Messages.showAllMessages(languageSetting);
 
   //
   setModalControls();
