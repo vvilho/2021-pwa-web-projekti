@@ -18,11 +18,11 @@ const weeklyUrlFi = `${fazerProxyUrl}/api/restaurant/menu/week?language=fi&resta
  * @returns {Array} daily menu
  */
 const parseDailyMenu = (menuData, dayOfWeek) => {
-
-  if(menuData.LunchMenus[dayOfWeek].setMenus.length === 0){
+  //Check if list is empty -> Then restaurant is closed.
+  if (menuData.LunchMenus[dayOfWeek].SetMenus.length == 0) {
     throw new Error;
+    console.log(Error);
   }
-  console.log(menuData.LunchMenus[dayOfWeek]);
   let dailyMenu = menuData.LunchMenus[dayOfWeek].SetMenus.map(setMenu => {
     // console.log(setMenu);
 
@@ -41,7 +41,7 @@ const parseDailyMenu = (menuData, dayOfWeek) => {
  * @async
  * @param {string} lang
  * @param {string} date in ISO format (YYYY-MM-DD)
- * @return {Promise<string>} Daily menu data
+ * @return {Promise<Array>} Daily menu data
  */
 const getDailyMenu = async (restaurantId, lang, date) => {
   // Get number of the weekday (0: Sun, 1: Mon, etc.)
@@ -54,9 +54,10 @@ const getDailyMenu = async (restaurantId, lang, date) => {
   }
   let menuData;
   try {
-    menuData = await fetchGetJson(`${lang == 'fi'?weeklyUrlFi:weeklyUrlEn}2020-02-07`);
+    menuData = await fetchGetJson(`${lang == 'fi' ? weeklyUrlFi : weeklyUrlEn}2020-02-07`);
   } catch (error) {
     throw new Error(error.message);
+    console.log('FazerMenu load error: ' + error);
   }
   return parseDailyMenu(menuData, dayOfWeek);
 };
