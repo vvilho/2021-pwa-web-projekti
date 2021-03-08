@@ -164,11 +164,32 @@ const transportationVehicleIcon = (id) => {
   return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="hsl icon">`;
 };
 
-const changeBackgroundImage = () => {
+
+let kampusPictureSize = '';
+const getOriginPicturesize = () => {
+  if (window.innerWidth >= 400 && window.innerWidth < 900) {
+    kampusPictureSize = '-kampus-medium.jpg';
+  } else if (window.innerWidth >= 900) {
+    kampusPictureSize = '-kampus-big.jpg';
+  } else {
+    kampusPictureSize = '-kampus-small.jpg';
+  }
+  return kampusPictureSize;
+};
+
+const resizePicture = () => {
+    window.addEventListener('resize', () => {
+      const picSize = getOriginPicturesize();
+      changeBackgroundImage(picSize);
+    });
+};
+
+const changeBackgroundImage = (kampusPictureSize) => {
   document.querySelector("#hero").style["background"] =
     "url('./assets/img/" +
     campus +
-    "-kampus-big.jpg') no-repeat center center/cover";
+    kampusPictureSize +
+    "') no-repeat center center/cover";
 };
 
 /**
@@ -248,7 +269,8 @@ const forEachCampus = () => {
   localStorage.setItem("Campus", campus);
   loadAllMenuData();
   loadWeatherData(CampusData[campus]["location"], languageSetting);
-  changeBackgroundImage();
+  changeBackgroundImage(kampusPictureSize);
+  resizePicture();
   changeCampusName();
   campusContactInfo();
 };
@@ -298,7 +320,9 @@ const campusInit = () => {
   loadAllMenuData();
   loadHSLData(CampusData[campus]["hslstopid"]);
   changeCampusName();
-  changeBackgroundImage();
+  getOriginPicturesize();
+  changeBackgroundImage(kampusPictureSize);
+  resizePicture();
   campusContactInfo();
 
   if (languageSetting == "en") {
