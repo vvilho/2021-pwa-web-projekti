@@ -2,6 +2,7 @@
  * Functions for creating messages
  * @module modules/messages-functions
  * @author Ailip <ailip@metropolia.fi>
+ * @author Vilhov <vilhov@metropolia.fi>
  *
  */
 import MetropoliaMessages from "./messages-data";

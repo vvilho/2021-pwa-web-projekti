@@ -2,6 +2,7 @@
  * Functions for creating carousel of the corona info
  * @module modules/carousel
  * @author Ailip <ailip@metropolia.fi>
+ * @author Vilhov <vilhov@metropolia.fi>
  *
  */
 

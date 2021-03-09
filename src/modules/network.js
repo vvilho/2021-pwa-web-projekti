@@ -1,6 +1,7 @@
 /**
  * Network functions
  * @module modules/network
+ * @author Ailip <ailip@metropolia.fi>
  * @author vilhov <vilhov@metropolia.fi>
  *
  */

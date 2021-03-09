@@ -1,3 +1,9 @@
+/**
+ * Module for fetching weather data
+ * @module modules/weather-data
+ * @author Ailip <ailip@metropolia.fi>
+ * @author vilhov <vilhov@metropolia.fi>
+ */
 import {fetchGetJson} from "./network";
 
 /**

@@ -1,3 +1,11 @@
+/**
+ * Module for fetching HSL data from graphQL API
+ * @module modules/hsl-data
+ * @author Ailip <ailip@metropolia.fi>
+ * @author Vilhov <vilhov@metropolia.fi>
+ *
+ */
+
 import {fetchPostJson} from "./network";
 
 const apiUrl = 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql';

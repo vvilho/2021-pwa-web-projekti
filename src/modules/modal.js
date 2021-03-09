@@ -1,6 +1,8 @@
 /**
  * Set controls for UI modals
  * @module modules/modal
+ * @author Ailip <ailip@metropolia.fi>
+ * @author vilhov <vilhov@metropolia.fi>
  */
 const setModalControls = () => {
   // Get the modal

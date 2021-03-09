@@ -1,6 +1,7 @@
 /**
  * Functions for managing Sodexo menu data
  * @module modules/sodexo-data
+ * @author Ailip <ailip@metropolia.fi>
  * @author vilhov <vilhov@metropolia.fi>
  *
  */

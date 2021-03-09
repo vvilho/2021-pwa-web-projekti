@@ -1,6 +1,7 @@
 /**
  * Functions for managing Fazer menu data
  * @module modules/fazer-data
+ * @author Ailip <ailip@metropolia.fi>
  * @author vilhov <vilhov@metropolia.fi>
  *
  */
@@ -30,7 +31,7 @@ const parseDailyMenu = (menuData, dayOfWeek) => {
     let dishes = setMenu.Meals.map(dish => {
       return `${dish.Name} (${dish.Diets.join(', ')})`;
     });
-    return mealName ? `${mealName}: ${dishes.join(', ')}` : dishes.join(', ');
+    return mealName ? `${mealName}: ${dishes.join(', ')} <p><b>1,90€ / 2,70€ / 5,71€</b></p>` : `${dishes.join(', ')} <p><b>1,90€ / 2,70€ / 5,71€</b></p>`;
   });
   return dailyMenu;
 };

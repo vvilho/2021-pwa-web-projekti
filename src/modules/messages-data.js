@@ -1,5 +1,10 @@
+/**
+ * Fetch messagedata from assets folder
+ * @module modules/messages-data
+ * @author Ailip <ailip@metropolia.fi>
+ * @author vilhov <vilhov@metropolia.fi>
+ */
 import {fetchGetJson} from "./network";
-//const dailyUrl = `https://users.metropolia.fi/~ailip/messages.json`;
 const dailyUrl = `assets/messages.json`;
 const parseMetropoliaMessages = (messageDataJson) => {
   const messagesEn = [];

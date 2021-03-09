@@ -21,7 +21,7 @@ const messageSlidesContainer = document.querySelector(".metropolia-messages");
 
 
 /**
- * All classes of those DOM object that has text that has to cahnge
+ * All classes of those DOM object that has text that has to change
  * When language setting is changed
  *
  * @each {string[]} list of classnames
@@ -193,8 +193,10 @@ const changeBackgroundImage = (kampusPictureSize) => {
 };
 
 /**
+ * Loads transportation information based on each
+ * campuses transportation vehicle stops
  *
- * @param {number} stopid -Id for current bus stop etc.
+ * @param {number} stopid -Id for current transportation vehicle stop.
  * @async
  */
 const loadHSLData = async (stopid) => {
@@ -275,6 +277,10 @@ const forEachCampus = () => {
   campusContactInfo();
 };
 
+
+/**
+ * Renders contact information of the current campus on footer
+ */
 const campusContactInfo = () => {
   const data = CampusData[campus];
   //const schoolName = document.querySelector(".schoolName");
@@ -300,7 +306,7 @@ const changeCampusName = () => {
 };
 
 /**
- * Runs when app is first onened
+ * Runs when app is first opened
  *
  */
 const campusInit = () => {
@@ -355,18 +361,16 @@ const loadWeatherData = async (campus, language) => {
   // desc.innerHTML = descValue;
 };
 
-//////////////////////////////////////////////////////////////////////////////////////
-//message-data and slides
-//renders Message-data
 
-//event listener for right button
+
+//event listener for message right button
 const btnPlusM = document.querySelector("#btn-message-right");
 btnPlusM.addEventListener("click", () => {
   Messages.plusSlidesMessages(1);
   Messages.pauseMessages();
 });
 
-//event listener for left button
+//event listener for message left button
 const btnMinusM = document.querySelector("#btn-message-left");
 btnMinusM.addEventListener("click", () => {
   Messages.plusSlidesMessages(-1);

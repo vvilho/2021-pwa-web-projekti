@@ -1,3 +1,11 @@
+/**
+ * Functions for creating carousel of the corona info
+ * @module modules/carousel-modal
+ * @author Ailip <ailip@metropolia.fi>
+ * @author Vilhov <vilhov@metropolia.fi>
+ *
+ */
+
 const koronaSlidesContainerModal = document.querySelector(".slideshow-container-modal");
 const allDotsContainerModal = document.querySelector(".all-dots-modal");
 let dotModal = 1;
