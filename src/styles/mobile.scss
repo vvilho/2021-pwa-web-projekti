@@ -1,0 +1,156 @@
+$color-gray: #bababa;
+$color-gray-darker: #a1a1a1;
+$color-gray-more-darker: #717171;
+$color-brown: #8f2d00;
+
+//----------------------------  media queries -----------------------------//
+@media screen and (min-width: 280px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 330px) {
+  main {
+    padding: 0 1em;
+  }
+
+  #forecast {
+    margin: 1em 0;
+    padding: 1.5em;
+  }
+
+  .hsl-container {
+    padding-right: 1em;
+    margin-right: -1em;
+  }
+
+  .food-list-card,
+  .hsl-card {
+    padding: 1em;
+  }
+
+  .hsl-label {
+    padding: 0.25em 0.5em;
+    width: 5em;
+  }
+
+  .hsl-label > img {
+    height: 1.2em;
+    padding-right: 0.5em;
+  }
+}
+
+@media screen and (min-width: 350px) {
+  .metropolia-messages {
+    min-height: 7em;
+    padding: 1em 10%;
+  }
+  .pad {
+    padding-left: 0.3em;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .app-lang-campuses {
+    display: inline-flex;
+    color: $color-brown;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #forecast {
+    max-width: 400px;
+  }
+
+  .desc {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 610px) {
+  .metropolia-messages {
+    min-height: 6em;
+    padding: 1em 15%;
+  }
+
+  .container-all {
+    margin: 0 5%;
+  }
+
+  .hsl-container {
+    padding-right: 4em;
+    margin-right: -4em;
+  }
+
+  .hsl-card {
+    height: 440px;
+  }
+
+  .food-list-card,
+  .hsl-card {
+    padding: 2em 4em;
+  }
+}
+
+@media screen and (min-width: 735px) {
+  #metropolia-logo-small {
+    display: block;
+    height: auto;
+    width: 250px;
+    margin: 0.5em 2em;
+  }
+
+  #metropolia-logo {
+    display: none;
+  }
+
+  #corona-info-container {
+    border: none;
+    cursor: default;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    margin-top: 2em;
+  }
+
+
+  .all-dots {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0;
+  }
+
+  .slideshow-container {
+    display: block;
+    position: relative;
+    max-width: 800px;
+    margin-top: 1em;
+    margin-left: -1em;
+    margin-right: -1em;
+    box-shadow: 0px 3px 10px $color-gray;
+  }
+
+  .mySlides {
+    display: none;
+  }
+
+  .dot {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 0.2em 2px;
+    background-color: $color-gray-darker;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active,
+  .dot:hover {
+    background-color: $color-gray-more-darker;
+  }
+}

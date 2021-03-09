@@ -17,7 +17,7 @@ $color-gray-more-darker: #717171;
 $color-white: #ffffff;
 $color-ligth-blue: #eaf3fa;
 $color-ligth-pink: #f8f4f2;
-$color-blue: #258bd4;
+$color-blue: #217ABA;
 $color-brownish: #c9a18e;
 
 %attr-shared {
@@ -357,8 +357,6 @@ h2 {
   background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 }
 
-
-
 #myModal {
   display: none;
   max-height: 100%;
@@ -369,15 +367,17 @@ h2 {
 
 /* The Close Button */
 .close {
+  position: absolute;
+  right: 0;
+  top: 0;
   color: $color-gray-darker;
-  font-size: 28px;
+  font-size: 4em;
   font-weight: bold;
-  float: right;
-  padding-right: 0.8em;
+  padding-right: 0.3em;
 }
 
 .all-dots-modal {
-  display: flex;
+  display: none;
   justify-content: center;
   padding: 0.2em;
 }
@@ -525,8 +525,21 @@ input:checked + .slider:before {
   //padding: 0 0.5em;
 }
 
+#btn-slide-left-modal {
+  @extend %btn-slide-shared;
+  left: 0;
+  top: 39%;
+  padding: 3em 2em 3em 0.3em;
+}
+
+#btn-slide-right-modal {
+  @extend %btn-slide-shared;
+  right: 0;
+  top: 39%;
+  padding: 3em 0.3em 3em 2em;
+}
+
 #btn-slide-left,
-#btn-slide-left-modal,
 #btn-message-left {
   @extend %btn-slide-shared;
   left: 0;
@@ -535,7 +548,6 @@ input:checked + .slider:before {
 }
 
 #btn-slide-right,
-#btn-slide-right-modal,
 #btn-message-right {
   @extend %btn-slide-shared;
   right: 0;
@@ -546,9 +558,7 @@ input:checked + .slider:before {
 #btn-slide-left:hover,
 #btn-slide-right:hover,
 #btn-message-left:hover,
-#btn-message-right:hover,
-#btn-slide-left-modal:hover,
-#btn-slide-right-modal:hover {
+#btn-message-right:hover {
   background-color: rgba(206, 206, 206, 0.8);
 }
 
@@ -558,9 +568,7 @@ input:checked + .slider:before {
 #btn-message-right:focus,
 #btn-slide-left-modal:focus,
 #btn-slide-right-modal:focus {
-
   outline: 0;
-
 }
 
 .dots-messages {
@@ -635,156 +643,6 @@ footer {
   filter: invert(100%) sepia(57%) saturate(1158%) hue-rotate(202deg) brightness(116%) contrast(105%);
 }
 
-//----------------------------  media queries -----------------------------//
-@media screen and (min-width: 280px) {
-  nav {
-    display: flex;
-    justify-content: space-between;
-  }
-}
 
-@media screen and (min-width: 330px) {
-  main {
-    padding: 0 1em;
-  }
-
-  #forecast {
-    margin: 1em 0;
-    padding: 1.5em;
-  }
-
-  .hsl-container {
-    padding-right: 1em;
-    margin-right: -1em;
-  }
-
-  .food-list-card,
-  .hsl-card {
-    padding: 1em;
-  }
-
-  .hsl-label {
-    padding: 0.25em 0.5em;
-    width: 5em;
-  }
-
-  .hsl-label > img {
-    height: 1.2em;
-    padding-right: 0.5em;
-  }
-}
-
-@media screen and (min-width: 350px) {
-  .metropolia-messages {
-    min-height: 7em;
-    padding: 1em 10%;
-  }
-  .pad {
-    padding-left: 0.3em;
-  }
-}
-
-@media screen and (min-width: 450px) {
-  .app-lang-campuses {
-    display: inline-flex;
-    color: $color-brown;
-    font-size: 1.2em;
-  }
-}
-
-@media screen and (min-width: 500px) {
-  #forecast {
-    max-width: 400px;
-  }
-
-  .desc {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 610px) {
-  .metropolia-messages {
-    min-height: 6em;
-    padding: 1em 15%;
-  }
-
-  .container-all {
-    margin: 0 5%;
-  }
-
-  .hsl-container {
-    padding-right: 4em;
-    margin-right: -4em;
-  }
-
-  .hsl-card {
-    height: 440px;
-  }
-
-  .food-list-card,
-  .hsl-card {
-    padding: 2em 4em;
-  }
-}
-
-@media screen and (min-width: 735px) {
-  #metropolia-logo-small {
-    display: block;
-    height: auto;
-    width: 250px;
-    margin: 0.5em 2em;
-  }
-
-  #metropolia-logo {
-    display: none;
-  }
-
-  #corona-info-container {
-    border: none;
-    cursor: default;
-    border-radius: 0;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-    margin-top: 2em;
-  }
-
-
-  .all-dots {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1em 0;
-  }
-
-  .slideshow-container {
-    display: block;
-    position: relative;
-    max-width: 800px;
-    margin-top: 1em;
-    margin-left: -1em;
-    margin-right: -1em;
-    box-shadow: 0px 3px 10px $color-gray;
-  }
-
-  .mySlides {
-    display: none;
-  }
-
-  .dot {
-    cursor: pointer;
-    height: 8px;
-    width: 8px;
-    margin: 0.2em 2px;
-    background-color: $color-gray-darker;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-
-  .active,
-  .dot:hover {
-    background-color: $color-gray-more-darker;
-  }
-}
 
 
