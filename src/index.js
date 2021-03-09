@@ -23,7 +23,7 @@ const messageSlidesContainer = document.querySelector(".metropolia-messages");
 
 //////////////////////////////////////////////Language//////////////////////////////////////////
 /**
- * All classes of those DOM object that has text that has to change
+ * All classes of those DOM objects that has text that has to change
  * When language setting is changed
  *
  * @each {string[]} list of classnames
@@ -196,6 +196,7 @@ const changeBackgroundImage = (kampusPictureSize) => {
 
 //////////////////////////////////////////////HSL//////////////////////////////////////////
 /**
+ * Adds transportation vehicle icon to HSL data
  *
  * @param {number} id -Transportation vehicle id
  * @returns {string} -Icon/image of vehicle
@@ -440,8 +441,6 @@ slider.addEventListener('touchend', e => {
 //////////////////////////////////////////////Update//////////////////////////////////////////
 /**
  * Updates info every minute
- *
- * @constructor
  */
 const everyMinute = () => {
   setInterval(async () => {

@@ -4,6 +4,10 @@
  * @author Ailip <ailip@metropolia.fi>
  * @author vilhov <vilhov@metropolia.fi>
  */
+
+/**
+ *
+ */
 const setModalControls = () => {
   // Get the modal
   const modal = document.getElementById("myModal");
