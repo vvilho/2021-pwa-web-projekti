@@ -1,5 +1,14 @@
 /**
- * Functions for creating carousel of the corona info
+ * Functions for creating carousel for slides<br><br>
+ *
+ * Import <b>jpeg</b> files into <i>assets/infoSlidesJPG</i> folder<br>
+ * Image size 960px x 540px<br>
+ * Name files with same name but index changing on the end e.g. "koronaInfoJPG.001"<br>
+ * Make sure the first slide has number 001->002->003...<br>
+ * Set total number of slides to <u><strong>slidesTotal</strong></u> variable<br>
+ * Set name of the files to <u><strong>slidesName</strong></u> variable e.g. 'koronaInfoJPG'    without '.' (dot) or indexnumber<br>
+ *
+ *
  * @module modules/carousel-modal
  * @author Ailip <ailip@metropolia.fi>
  * @author Vilhov <vilhov@metropolia.fi>
@@ -11,15 +20,21 @@ const allDotsContainerModal = document.querySelector(".all-dots-modal");
 let dotModal = 1;
 let slideIndexModal = 1;
 
+//change variable data for current slides (check documentation on top of the page)
+const slidesTotal = 25;
+const slidesName = 'koronaInfoJPG';
+
 //creates list of img elemements
-for (let nro = 1; nro < 26; nro++) {
+for (let nro = 1; nro < slidesTotal + 1; nro++) {
   if (nro < 10) {
+    nro = "00" + nro;
+  } else if (nro < 100) {
     nro = "0" + nro;
   }
-  let filePath = `./assets/koronaInfoJPG/koronaInfoJPG.0${nro}.jpeg`;
+  let filePath = `./assets/infoSlidesJPG/${slidesName}.${nro}.jpeg`;
   const img = document.createElement("img");
   img.src = filePath;
-  img.alt = "koronainfo slide";
+  img.alt = `${slidesName} slide`;
   img.classList.add(dotModal);
   img.classList.add("mySlidesModal");
   img.style.width = "100%";
@@ -85,14 +100,13 @@ btnMinusModal.addEventListener("click", () => {
 });
 
 
-
 let touchstartX = 0;
 let touchendX = 0;
 
 const slider = document.querySelector('.slideshow-container-modal');
 
 const handleGesture = () => {
-  if (touchendX < touchstartX){
+  if (touchendX < touchstartX) {
     plusSlidesModal(1);
   }
   if (touchendX > touchstartX) {

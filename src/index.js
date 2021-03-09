@@ -21,7 +21,7 @@ let kampusPictureSize = '';
 
 const messageSlidesContainer = document.querySelector(".metropolia-messages");
 
-
+//////////////////////////////////////////////Language//////////////////////////////////////////
 /**
  * All classes of those DOM object that has text that has to change
  * When language setting is changed
@@ -42,6 +42,52 @@ const languagDomClasses = [
   "postalAddress",
   "phone",
 ];
+
+
+/**
+ * Changes every elements text that has to change during language change
+ *
+ * @param {string} language -language shortname ("fi"/"en")
+ */
+const createUiLanguages = (language) => {
+  try {
+    for (const dom of languagDomClasses) {
+      document.querySelector(".app-lang-" + dom).innerHTML =
+        LanguageData[dom][language];
+    }
+  } catch (e) {
+    console.log("Error in createUiLanguages: ", e);
+  }
+};
+
+/**
+ * Switches application language between en/fi
+ * and updates menu data
+ */
+const switchLanguage = () => {
+  Messages.pauseMessages();
+  if (languageSetting === "fi") {
+    languageSetting = "en";
+    createUiLanguages(languageSetting);
+    localStorage.setItem("Lang", languageSetting);
+  } else {
+    languageSetting = "fi";
+    createUiLanguages(languageSetting);
+    localStorage.setItem("Lang", languageSetting);
+  }
+  console.log("language changed to: ", languageSetting);
+  loadAllMenuData();
+  Messages.resumeMessages();
+  changeCampusName();
+  Messages.loadMessages();
+  Messages.showSlidesMessages(Messages.slideIndexMessages);
+  loadWeatherData(CampusData[campus]["location"], languageSetting);
+  Messages.showAllMessages(languageSetting);
+};
+
+
+
+//////////////////////////////////////////////Menu//////////////////////////////////////////
 
 /**
  * Loads menudata for current campus' restaurant
@@ -106,67 +152,8 @@ const renderNoDataNotification = (message) => {
   document.querySelector(".dishes-labels").textContent = "";
 };
 
-/**
- * Changes every elements text that has to change during language change
- *
- * @param {string} language -language shortname ("fi"/"en")
- */
-const createUiLanguages = (language) => {
-  try {
-    for (const dom of languagDomClasses) {
-      document.querySelector(".app-lang-" + dom).innerHTML =
-        LanguageData[dom][language];
-    }
-  } catch (e) {
-    console.log("Error in createUiLanguages: ", e);
-  }
-};
 
-/**
- * Switches application language between en/fi
- * and updates menu data
- */
-const switchLanguage = () => {
-  Messages.pauseMessages();
-  if (languageSetting === "fi") {
-    languageSetting = "en";
-    createUiLanguages(languageSetting);
-    localStorage.setItem("Lang", languageSetting);
-  } else {
-    languageSetting = "fi";
-    createUiLanguages(languageSetting);
-    localStorage.setItem("Lang", languageSetting);
-  }
-  console.log("language changed to: ", languageSetting);
-  loadAllMenuData();
-  Messages.resumeMessages();
-  changeCampusName();
-  Messages.loadMessages();
-  Messages.showSlidesMessages(Messages.slideIndexMessages);
-  loadWeatherData(CampusData[campus]["location"], languageSetting);
-  Messages.showAllMessages(languageSetting);
-};
-
-/**
- *
- * @param {number} id -Transportation vehicle id
- * @returns {string} -Icon/image of vehicle
- */
-const transportationVehicleIcon = (id) => {
-  let vehicle;
-  if (id == 0) {
-    vehicle = "tram";
-  } else if (id == 1) {
-    vehicle = "subway";
-  } else if (id == 109) {
-    vehicle = "train";
-  } else if (id == 3) {
-    vehicle = "bus";
-  }
-  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="hsl icon">`;
-};
-
-
+//////////////////////////////////////////////BG-Image//////////////////////////////////////////
 /**
  * Changes campus image
  * size according to screen size
@@ -204,6 +191,27 @@ const changeBackgroundImage = (kampusPictureSize) => {
     campus +
     kampusPictureSize +
     "') no-repeat center center/cover";
+};
+
+
+//////////////////////////////////////////////HSL//////////////////////////////////////////
+/**
+ *
+ * @param {number} id -Transportation vehicle id
+ * @returns {string} -Icon/image of vehicle
+ */
+const transportationVehicleIcon = (id) => {
+  let vehicle;
+  if (id == 0) {
+    vehicle = "tram";
+  } else if (id == 1) {
+    vehicle = "subway";
+  } else if (id == 109) {
+    vehicle = "train";
+  } else if (id == 3) {
+    vehicle = "bus";
+  }
+  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="hsl icon">`;
 };
 
 /**
@@ -274,6 +282,8 @@ const renderHSLData = async (list) => {
     return;
   }
 };
+
+//////////////////////////////////////////////Campus-info//////////////////////////////////////////
 /**
  * After campus is changed from select menu
  * HSL, weather and restaurant menu are updated
@@ -350,6 +360,8 @@ const campusInit = () => {
   }
 };
 
+
+//////////////////////////////////////////////Weather//////////////////////////////////////////
 /**
  * Displays Weather data from openweathermap.org API
  *
@@ -375,7 +387,7 @@ const loadWeatherData = async (campus, language) => {
   // desc.innerHTML = descValue;
 };
 
-
+//////////////////////////////////////////////Eventlisteners//////////////////////////////////////////
 
 //event listener for message right button
 const btnPlusM = document.querySelector("#btn-message-right");
@@ -398,6 +410,34 @@ messageSlidesContainer.addEventListener("mouseenter", () => {
 messageSlidesContainer.addEventListener("mouseleave", () => {
   Messages.resumeMessages();
 });
+
+let touchstartX = 0;
+let touchendX = 0;
+
+let slider = document.querySelector('.metropolia-messages');
+
+const handleGesture= () => {
+  if (touchendX < touchstartX){
+    Messages.plusSlidesMessages(1);
+    Messages.pauseMessages();
+  }
+  if (touchendX > touchstartX) {
+    Messages.plusSlidesMessages(-1);
+    Messages.pauseMessages();
+  }
+};
+
+
+slider.addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+slider.addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  handleGesture();
+}, {passive: true});
+
+//////////////////////////////////////////////Update//////////////////////////////////////////
 /**
  * Updates info every minute
  *
@@ -411,6 +451,8 @@ const everyMinute = () => {
   }, 60000);
 };
 
+
+//////////////////////////////////////////////Serviceworker//////////////////////////////////////////
 /**
  * Registers the service worker (SW) generated by Workbox
  */
@@ -429,6 +471,8 @@ const registerServiceWorkers = () => {
   }
 };
 
+
+//////////////////////////////////////////////Init//////////////////////////////////////////
 /**
  * App initialization
  */

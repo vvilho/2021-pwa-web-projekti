@@ -9,8 +9,6 @@
     "restaurantname": "Sodexo Arabia",
     "foodmenuid": "86",
     "restauranttype": "SodexoData",
-    "coverimage": "",
-    "wheather": "",
     "hslstopid": [
       {
         "id": 1230101,
@@ -36,8 +34,6 @@
     "restaurantname": "Fazer Karamalmi",
     "foodmenuid": "270540",
     "restauranttype": "FazerData",
-    "coverimage": "",
-    "wheather": "",
     "hslstopid": [
       {
         "id": 2132208,
@@ -67,8 +63,6 @@
     "restaurantname": "Sodexo Myllypuro",
     "foodmenuid": "158",
     "restauranttype": "SodexoData",
-    "coverimage": "",
-    "wheather": "",
     "hslstopid": [
       {
         "id": 1454601,
@@ -88,7 +82,7 @@
       }
     ]
   },
-  "myyrmäki": {
+  "myyrmaki": {
     "displayname_fi": "Myyrmäen kampus",
     "displayname_en": "Myyrmäki campus",
     "location": "Vantaa",
@@ -98,8 +92,6 @@
     "restaurantname": "Sodexo Myyrmäki",
     "foodmenuid": "152",
     "restauranttype": "SodexoData",
-    "coverimage": "",
-    "wheather": "",
     "hslstopid": [
       {
         "id": 4150269,
