@@ -16,6 +16,8 @@ const today = new Date().toISOString().split("T")[0];
 const fiToday = today.split(/\D/g);
 let languageSetting = "fi";
 let campus = document.querySelector("#campuses").value;
+let kampusPictureSize = '';
+
 
 const messageSlidesContainer = document.querySelector(".metropolia-messages");
 
@@ -165,7 +167,11 @@ const transportationVehicleIcon = (id) => {
 };
 
 
-let kampusPictureSize = '';
+/**
+ * Changes campus image
+ * size according to screen size
+ * @returns {string} - Current campus image file name
+ */
 const getOriginPicturesize = () => {
   if (window.innerWidth >= 400 && window.innerWidth < 900) {
     kampusPictureSize = '-kampus-medium.jpg';
@@ -177,6 +183,9 @@ const getOriginPicturesize = () => {
   return kampusPictureSize;
 };
 
+/**
+ * Checks what current screen size is
+ */
 const resizePicture = () => {
     window.addEventListener('resize', () => {
       const picSize = getOriginPicturesize();
@@ -184,6 +193,11 @@ const resizePicture = () => {
     });
 };
 
+/**
+ * Change campus background image
+ *
+ * @param {string} kampusPictureSize - Name of the image file
+ */
 const changeBackgroundImage = (kampusPictureSize) => {
   document.querySelector("#hero").style["background"] =
     "url('./assets/img/" +
@@ -430,11 +444,8 @@ const init = () => {
   everyMinute();
   Messages.showAllMessages(languageSetting);
 
-  //
   setModalControls();
 
-  // Service workers registeration below disabled temporarily for easier local development
-  // must be uncommented from init() before building for "production"
   registerServiceWorkers();
 };
 init();
