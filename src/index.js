@@ -196,30 +196,10 @@ const changeBackgroundImage = (kampusPictureSize) => {
 
 //////////////////////////////////////////////HSL//////////////////////////////////////////
 /**
- * Adds transportation vehicle icon to HSL data
- *
- * @param {number} id -Transportation vehicle id
- * @returns {string} -Icon/image of vehicle
- */
-const transportationVehicleIcon = (id) => {
-  let vehicle;
-  if (id == 0) {
-    vehicle = "tram";
-  } else if (id == 1) {
-    vehicle = "subway";
-  } else if (id == 109) {
-    vehicle = "train";
-  } else if (id == 3) {
-    vehicle = "bus";
-  }
-  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="hsl icon">`;
-};
-
-/**
  * Loads transportation information based on each
  * campuses transportation vehicle stops
  *
- * @param {number} stopid -Id for current transportation vehicle stop.
+ * @param {array} stopid -Array of stop ids for current campus.
  * @async
  */
 const loadHSLData = async (stopid) => {
@@ -249,6 +229,25 @@ const loadHSLData = async (stopid) => {
     renderHSLData([]);
     console.log(error);
   }
+};
+/**
+ * Adds transportation vehicle icon to HSL data
+ *
+ * @param {number} id -Transportation vehicle id
+ * @returns {string} -Icon/image of vehicle
+ */
+const transportationVehicleIcon = (id) => {
+  let vehicle;
+  if (id == 0) {
+    vehicle = "tram";
+  } else if (id == 1) {
+    vehicle = "subway";
+  } else if (id == 109) {
+    vehicle = "train";
+  } else if (id == 3) {
+    vehicle = "bus";
+  }
+  return `<img class="hsl-icon filter-white" src="./assets/icons/${vehicle}.svg" alt="hsl icon">`;
 };
 /**
  * Render HSL transportation data on website
@@ -382,7 +381,7 @@ const loadWeatherData = async (campus, language) => {
   let descValue = result.weather[0].description;
 
   name.innerHTML = nameValue;
-  weatherIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIconValue}.png" alt="${descValue}">`;
+  weatherIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${weatherIconValue}.png" alt="${descValue}">`;
   desc.innerHTML = descValue;
   temp.innerHTML = `${tempValue.toFixed(1)} &deg;C`;
   // desc.innerHTML = descValue;
